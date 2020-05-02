@@ -1,0 +1,9 @@
+{
+  "name": "Aglomerou?",
+  "version": "1.0.0",
+  "description": "Rastreamento anônimo de usuários para detecção e notificação de aglomerações",
+  "main": "index.js",
+  "repository": "https://github.com/ifto-palmas/aglomerou",
+  "author": "Beatriz Araujo, Manoel Campos, Ragir Fernando, Silvio Antônio Junior, Thányla Sales",
+  "license": "GPLv3"
+}
