@@ -1,6 +1,6 @@
 const dispositivo = require('express').Router();
 
-const getDispositivo = (req, res) => {
+const getDispositivo = async(req, res) => {
     //TODO: buscar dados do BD
     res.status(200).json({ id: req.params.id, ativo: true });
 };
@@ -8,4 +8,3 @@ const getDispositivo = (req, res) => {
 dispositivo.get('/:id', getDispositivo);
 
 module.exports = dispositivo;
-

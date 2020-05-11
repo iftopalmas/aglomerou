@@ -1,3 +1,5 @@
+require('dotenv/config')
+
 const express = require('express');
 const app = express();
 app.use(express.static("public"));
@@ -20,4 +22,3 @@ http.listen(porta, () => {
         console.log('Servidor iniciado. Abra o navegador em ' + host);
     else console.log('Servidor iniciado. Abra o navegador em ' + host + portaStr);
 });
-    
