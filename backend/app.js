@@ -1,4 +1,12 @@
-/*
+require('dotenv/config')
+
+const express = require('express');
+const app = express();
+app.use(express.static("public"));
+
+const rotas = require('./rotas');
+app.use('/', rotas);
+
 const http = require('http').Server(app);
 
 const serverSocket = require('socket.io')(http);
@@ -14,6 +22,3 @@ http.listen(porta, () => {
         console.log('Servidor iniciado. Abra o navegador em ' + host);
     else console.log('Servidor iniciado. Abra o navegador em ' + host + portaStr);
 });
-    
-serverSocket.listen();
-*/
