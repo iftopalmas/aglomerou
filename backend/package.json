@@ -1,20 +1,22 @@
 {
-  "name": "Aglomerou?",
+  "name": "Aglomerou",
   "version": "1.0.0",
   "description": "Rastreamento anônimo de usuários para detecção e notificação de aglomerações",
   "main": "app.js",
-  "start": "node app.js",
   "repository": "https://github.com/ifto-palmas/aglomerou",
   "author": "Beatriz Araujo, Manoel Campos, Ragir Fernando, Silvio Antônio Junior, Thányla Sales",
-  "license": "GPLv3",
+  "license": "GPL-3.0",
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "pg": "^8.0.3",
     "socket.io": "^2.3.0"
-  },
+  },  
   "devDependencies": {
     "@types/node": "^13.13.5"
+  },
+  "scripts": {
+    "start": "node app.js"
   }
 }
