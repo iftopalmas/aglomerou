@@ -1,0 +1,5 @@
+LICENSE
+README.*
+node_modules
+npm-debug.log
+install.sh
