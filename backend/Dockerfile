@@ -8,7 +8,6 @@ WORKDIR /build
 
 # Copia os arquivos do contexto atual (parâmetro path do comando docker build)
 # para a WORKDIR no container.
-# Ver Makefile
 COPY package-lock.json package.json ./
 RUN npm update
 RUN npm ci
