@@ -22,5 +22,4 @@ USER node
 RUN mkdir /home/node/backend
 WORKDIR /home/node/backend
 COPY --from=build --chown=node:node /build .
-EXPOSE 8080
-CMD ["node", "index.js"]
+CMD ["node", "app.js"]
