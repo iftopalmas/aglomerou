@@ -10,13 +10,11 @@ if [[ $1 == "build" ]]; then
 	docker build -f Dockerfile -t $IMAGE_NAME .
 	echo ""
 	echo "Use $0 run pra iniciar container criado"
-elif [[ $1 == "run" ]]; then
-	echo "Postgres Production Config: db: $DB_DATABASE user: $DB_USER password: $DB_PASSWORD"
-	echo ""
-	
+elif [[ $1 == "run" ]]; then	
 	# Executar o container em background (-d)
-    #docker run -d --name aglomerou-postgres e POSTGRES_USER=postgres -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=aglomerou -p 5432:5432 postgres:alpine
-	docker run -d --name $CONTAINER_NAME -e POSTGRES_USER=$DB_USER -e POSTGRES_PASSWORD=$DB_PASSWORD -p $DB_PORT:$DB_PORT $IMAGE_NAME
+	docker run -d --name $CONTAINER_NAME \
+		   -e POSTGRES_USER=$DB_USER -e POSTGRES_PASSWORD=$DB_PASSWORD \
+		   -p $DB_PORT:$DB_PORT $IMAGE_NAME
 	echo "Use $0 connect pra conectar ao servidor Postgres no container criado"
 elif [[ $1 == "connect" ]]; then
 	#https://www.postgresql.org/docs/9.1/libpq-envars.html
