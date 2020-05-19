@@ -7,6 +7,8 @@ app.use(express.static("public"));
 const rotas = require('./rotas');
 app.use('/', rotas);
 
+require('./swagger-setup')(app);
+
 const http = require('http').Server(app);
 
 const serverSocket = require('socket.io')(http);
