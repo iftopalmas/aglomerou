@@ -5,6 +5,21 @@ const getDispositivo = async(req, res) => {
     res.status(200).json({ id: req.params.id, ativo: true });
 };
 
+/**
+ * @swagger
+ * /dispositivo/{id}:
+ *  get: 
+ *    parameters:
+ *      - name: id
+ *        in: path
+ *        description: id do dispositivo
+ *        required: true
+ *        type: integer
+ *    description: Obtém um dispositivo pelo id
+ *    responses:
+ *      '200': 
+ *        description: Dispositivo obtido com sucesso 
+ */
 dispositivo.get('/:id', getDispositivo);
 
 module.exports = dispositivo;
