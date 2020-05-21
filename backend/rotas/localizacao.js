@@ -18,7 +18,7 @@ const localizacaoController = require('../controllers/localizacao.controller');
  */
 localizacao.get('/:idDispositivo', localizacaoController.getUltimaLocalizacao);
 
-localizacao.post('/usuario/:idDispositivo/:lat/:long', localizacaoController.inserir);
+localizacao.post('/:idDispositivo/:lat/:long', localizacaoController.inserir);
 
 module.exports = localizacao;
 
