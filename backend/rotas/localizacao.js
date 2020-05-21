@@ -1,9 +1,7 @@
 const localizacao = require('express').Router();
+const localizacaoController = require('../controllers/localizacao.controller');
 
-const getUltimaLocalizacao = (req, res) => {
-    //TODO: buscar dados do BD
-    res.status(200).json({ idDispositivo: req.params.idDispositivo, latitude: 1, longitude: 2 });
-};
+
 
 /**
  * @swagger
@@ -20,7 +18,9 @@ const getUltimaLocalizacao = (req, res) => {
  *      '200': 
  *        description: Localização do dispositivo obtido com sucesso 
  */
-localizacao.get('/:idDispositivo', getUltimaLocalizacao);
+localizacao.get('/:idDispositivo', localizacaoController.getUltimaLocalizacao);
+
+localizacao.post('/usuario/:idDispositivo/:lat/:long', localizacaoController.inserirLocalUsuario);
 
 module.exports = localizacao;
 

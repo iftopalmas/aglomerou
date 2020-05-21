@@ -9,7 +9,7 @@ const client = new pool.Client({
     port: process.env.DB_PORT,
 });
 
-client.on('connect', () => {
+client.connect(() => {
     console.log('Base de dados conectado com sucesso!');
 });
 
