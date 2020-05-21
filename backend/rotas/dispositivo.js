@@ -1,4 +1,4 @@
-const dispositivo = require('express').Router();
+const router = require('express').Router();
 
 const getDispositivo = async(req, res) => {
     //TODO: buscar dados do BD
@@ -20,6 +20,6 @@ const getDispositivo = async(req, res) => {
  *      '200': 
  *        description: Dispositivo obtido com sucesso 
  */
-dispositivo.get('/:id', getDispositivo);
+router.get('/:id', getDispositivo);
 
-module.exports = dispositivo;
+module.exports = router;
