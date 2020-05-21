@@ -1,8 +1,6 @@
 const localizacao = require('express').Router();
 const localizacaoController = require('../controllers/localizacao.controller');
 
-
-
 /**
  * @swagger
  * /localizacao/{idDispositivo}:
@@ -20,7 +18,7 @@ const localizacaoController = require('../controllers/localizacao.controller');
  */
 localizacao.get('/:idDispositivo', localizacaoController.getUltimaLocalizacao);
 
-localizacao.post('/usuario/:idDispositivo/:lat/:long', localizacaoController.inserirLocalUsuario);
+localizacao.post('/usuario/:idDispositivo/:lat/:long', localizacaoController.inserir);
 
 module.exports = localizacao;
 

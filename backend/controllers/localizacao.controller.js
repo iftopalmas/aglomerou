@@ -5,7 +5,7 @@ exports.getUltimaLocalizacao = (req, res) => {
     res.status(200).json({ idDispositivo: req.params.idDispositivo, latitude: 1, longitude: 2 });
 };
 
-exports.inserirLocalUsuario = async (req, res) => {
+exports.inserir = async (req, res) => {
     const idDispositivo = req.params.idDispositivo;
     const lat = req.params.lat;
     const long = req.params.long;
