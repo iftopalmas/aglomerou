@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const localizacaoController = require('../controllers/localizacao.controller');
+const controller = require('../controllers/localizacao.controller');
 
 /**
  * @swagger
@@ -16,7 +16,7 @@ const localizacaoController = require('../controllers/localizacao.controller');
  *      '200': 
  *        description: Localização do dispositivo obtido com sucesso 
  */
-router.get('/:idDispositivo', localizacaoController.getUltimaLocalizacao);
+router.get('/:idDispositivo', controller.getUltimaLocalizacao);
 
 /**
  * @swagger
@@ -43,7 +43,7 @@ router.get('/:idDispositivo', localizacaoController.getUltimaLocalizacao);
  *      '200': 
  *        description: Localização do dispositivo inserida com sucesso 
  */
-router.post('/:idDispositivo/:lat/:long', localizacaoController.inserir);
+router.post('/:idDispositivo/:lat/:long', controller.inserir);
 
 module.exports = router;
 
