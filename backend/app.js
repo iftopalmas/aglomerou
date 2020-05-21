@@ -1,8 +1,13 @@
 require('dotenv/config')
-
+const cors = require('cors');
 const express = require('express');
 const app = express();
 app.use(express.static("public"));
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(express.json({ type: 'application/vnd.api+json' }));
+app.use(cors());
 
 const rotas = require('./rotas');
 app.use('/', rotas);
