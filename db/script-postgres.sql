@@ -19,10 +19,11 @@ create table dispositivo (
     uid varchar(200) not null unique
 );
 
--- Os campos latitude e longitude são representados em decimal,
+-- Os campos latitude e longitude são representados em Graus Decimais,
 -- mas não sei se a quantidade de casas é exata.
 -- Por isso, defini como varchar, pelo menos por enquanto.
--- https:--support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en
+-- https://support.google.com/maps/answer/18539?co=GENIE.Platform%3DDesktop&hl=en
+-- https://en.wikipedia.org/wiki/Geographic_coordinate_conversion#Change_of_units_and_format
 
 create table localizacao_dispositivo (
     id bigserial not null primary key, 
@@ -34,5 +35,8 @@ create table localizacao_dispositivo (
 
     constraint fk_localizacao_dispositivo foreign key (id_dispositivo) references dispositivo(id)
 );
+
+comment on column localizacao_dispositivo.latitude is 'Latitude em Graus Decimais';
+comment on column localizacao_dispositivo.longitude is 'Longitude em Graus Decimais';
 
 
