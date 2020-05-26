@@ -3,7 +3,7 @@ const db = require("../config/db");
 exports.getUltimaLocalizacao = async (req, res) => {
     try {
         const resultado = await db.query(
-            " SELECT id, latitude, longitude, data_hora_ultima_atualizacao " +
+            " SELECT id, id_dispositivo, latitude, longitude, data_hora_ultima_atualizacao " +
             " FROM localizacao_dispositivo " +
             " WHERE id_dispositivo = $1 order by id desc limit 1",
             [req.params.idDispositivo]);
