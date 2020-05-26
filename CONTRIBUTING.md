@@ -20,7 +20,7 @@ As seções abaixo apresentam mais informações de como contribuir em algumas d
 
 ## Solicitando recurso ou relatando um problema
 
-Se você quer solicitar um recurso ou relatar um problema, verifique primeiro se o problema/recurso que você quer reportar/requisitar não foi reportado/requisitado ainda na [página de issues](https://github.com/ifto-palmas/aglomerou).
+Se você quer solicitar um recurso ou relatar um problema, verifique primeiro se o problema/recurso que você quer reportar/requisitar não foi reportado/requisitado ainda na [página de issues](https://github.com/ifto-palmas/aglomerou/issues).
 Tente pesquisar as issues existentes usando alguma palavra-chave antes de criar nova issue. 
 Se não existe uma issue relacionada ainda, sinta-se livre para criar uma.
 Por fim, tenha certeza de que cada issue criada esteja relacionada a um único recurso solicitado ou bug.
