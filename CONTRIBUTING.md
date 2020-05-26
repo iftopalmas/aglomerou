@@ -1,6 +1,6 @@
 # Guia de Contribuição
 
-Contribuições são sempre bem vindas. Você pode contribuir de diferentes formas como são descritas a seguir.
+Contribuições são sempre bem vindas. Você pode contribuir de diferentes formas como descrito a seguir.
 No entanto, para manter a qualidade do projeto existem algumas diretrizes que precisamos que os colaboradores siga.
 Desta forma, podemos manter o controle das coisas.
 Estas diretrizes são principalmente relevantes quando você está planejando contribuir com o código fonte do projeto,
