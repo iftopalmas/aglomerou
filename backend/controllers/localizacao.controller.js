@@ -23,23 +23,28 @@ exports.inserir = async (req, res) => {
     const long = req.params.long;
 
     try {
-        if( inRange( lat, -90, 90 ) ) {
-            if(inRange( long, -180, 180 ) ) {
-                const result = await db.query(
-                    " INSERT INTO localizacao_dispositivo ( id_dispositivo, latitude, longitude) " +
-                    " VALUES ( $1, $2, $3 )",
-                    [idDispositivo, lat, long]
-                );
-                res.status(201).send({message: "Local inserido com Sucesso!"});
-            } else
-                res.status(404).send({message: "Valor de Longitude Incorreto!"});
-        }else
-            res.status(404).send({message: "Valor de Latitude Incorreto!"});
-         
+        if( !inRange( lat, -90, 90 ) ) {
+            res.status(404).send({message: "Valor de Latitude deve estar entre -90 e 90!"});
+            return;
+        }
+
+        if(!inRange( long, -180, 180 ) ) {
+            res.status(404).send({message: "Valor de Longitude deve estar entre -180 e 180!"});
+            return;
+        }
+
+        const result = await db.query(
+            " INSERT INTO localizacao_dispositivo ( id_dispositivo, latitude, longitude) " +
+            " VALUES ( $1, $2, $3 )",
+            [idDispositivo, lat, long]
+        );
+
+        res.status(201).send({message: "Local inserido com Sucesso!"});
      } catch (error) {
-         if(error.message.includes('fk_localizacao_dispositivo')){
+        if(error.message.includes('fk_localizacao_dispositivo')){
             res.status(401).send({message: "Falha ao inserir localização, dispositivo não cadastrado!"});
         }
+        
         console.error(error.message);
      }
 };
