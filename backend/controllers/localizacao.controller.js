@@ -1,5 +1,5 @@
 const db = require("../config/db");
-const { inRange } = require("../util");
+const { inRange, serverError } = require("../util");
 
 exports.getUltimaLocalizacao = async (req, res) => {
     try {
@@ -13,8 +13,7 @@ exports.getUltimaLocalizacao = async (req, res) => {
                 res.status(200).send(resultado.rows[0]);
             else res.status(404).send({message: "Dispositivo não localizado!"});
     } catch (error) {
-        res.status(400).send({message: error.messge});
-        console.error(error.message, error.stack);
+        serverError(res, error);
     }
 };
 
@@ -44,9 +43,7 @@ exports.inserir = async (req, res) => {
      } catch (error) {
         if(error.message.includes('fk_localizacao_dispositivo'))
             res.status(403).send({message: "Dispositivo não cadastrado!"});
-        else res.status(500).send({message: "Erro interno do servidor"});
-        
-        console.error(error.message);
+        else serverError(res, error);
      }
 };
 
