@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "manoelcampos",
+      "name": "Manoel Campos da Silva Filho",
+      "avatar_url": "https://avatars0.githubusercontent.com/u/261605?v=4",
+      "profile": "http://twitter.com/manoelcampos",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "aglomerou",
+  "projectOwner": "ifto-palmas",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
