@@ -11,11 +11,6 @@ O projeto é composto por 3 sub-projetos:
 - [frontend](frontend): aplicação web em [React](http://reactjs.org) que fornece uma interface gráfica para acesso a relatórios e gráficos estatísticos.
 - [mobile](mobile): aplicativo mobile em [React Native](http://reactnative.dev) que obtém a localização do usuário de forma automatizada e anônima, enviando ao backend.
 
-
-## Como contribuir
-
-Contribuições são muito bem vindas. Veja nosso [Guia de Contribuição](CONTRIBUTING.md) antes de iniciar.
-
 ## Equipe e Colaboradores
 
 Este projeto só foi possível graças as pessoas listadas abaixo ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
@@ -37,4 +32,4 @@ Este projeto só foi possível graças as pessoas listadas abaixo ([emoji key](h
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-Este projeto segue a especificação [all-contributors](https://github.com/all-contributors/all-contributors). Contribuições de qualquer tipo são bem vindas!
+Este projeto segue a especificação [all-contributors](https://github.com/all-contributors/all-contributors). Contribuições de qualquer tipo são bem vindas! Mas veja nosso [Guia de Contribuição](https://github.com/ifto-palmas/aglomerou/blob/master/CONTRIBUTING.md) antes de iniciar.
