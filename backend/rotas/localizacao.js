@@ -11,7 +11,7 @@ const controller = require('../controllers/localizacao.controller');
  *        description: id do dispositivo
  *        required: true
  *        type: integer
- *    description: Obtém a última localização de um dispositivo com um detemrinado id
+ *    description: Obtém a última localização de um dispositivo com um determinado id
  *    responses:
  *      '200': 
  *        description: Localização do dispositivo obtido com sucesso 
@@ -32,12 +32,12 @@ router.get('/:idDispositivo', controller.getUltimaLocalizacao);
  *        in: path
  *        description: latitude da localização do dispositivo
  *        required: true
- *        type: double
+ *        type: number
  *      - name: long
  *        in: path
  *        description: longitude da localização do dispositivo
  *        required: true
- *        type: double
+ *        type: number
  *    description: Insere a localização de um dispositivo com um detemrinado id
  *    responses:
  *      '201': 
