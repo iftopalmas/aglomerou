@@ -42,7 +42,7 @@ seguindo mandatoriamente os passos abaixo:
 O último passo antes de você iniciar a programar é ter em mente as seguintes diretrizes, de forma que a probabilidade de suas contribuições serem incluídas no projeto serão maiores:
 
 - Evite duplicação de código. 
-- Declare tudo como constante, até descobrir que precisa de fato de uma variável. Neste caso, sempre use `let`, nunca `var`.
+- Declare tudo como constante, até descobrir que precisa de fato de uma variável. Neste caso, use `let`, nunca `var`.
 - Crie funções pequenas e com uma única responsabilidade.
 - Considere incluir documentação nas funções.
 - Nós nos importamos com organização e indentação do código.
