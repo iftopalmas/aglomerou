@@ -20,7 +20,7 @@ Este projeto só foi possível graças as pessoas listadas abaixo ([emoji key](h
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/anabeatrix"><img src="https://avatars1.githubusercontent.com/u/46926584?v=4" width="100px;" alt=""/><br /><sub><b>Ana Beatriz Araujo</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=anabeatrix" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/anabeatrix"><img src="https://avatars1.githubusercontent.com/u/46926584?v=4" width="100px;" alt=""/><br /><sub><b>Ana Beatriz Araujo</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=anabeatrix" title="Code">💻</a> <a href="#design-anabeatrix" title="Design">🎨</a></td>
     <td align="center"><a href="http://twitter.com/manoelcampos"><img src="https://avatars0.githubusercontent.com/u/261605?v=4" width="100px;" alt=""/><br /><sub><b>Manoel Campos da Silva Filho</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=manoelcampos" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/ragirfernando"><img src="https://avatars1.githubusercontent.com/u/47224423?v=4" width="100px;" alt=""/><br /><sub><b>Ragir Fernando</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=ragirfernando" title="Code">💻</a></td>
     <td align="center"><a href="https://silvioantonio.ml"><img src="https://avatars1.githubusercontent.com/u/41794605?v=4" width="100px;" alt=""/><br /><sub><b>Silvio Antonio de Oliveira Junior</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=silvioantonio" title="Code">💻</a></td>
