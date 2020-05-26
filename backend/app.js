@@ -12,7 +12,7 @@ app.use(cors());
 const rotas = require('./rotas');
 app.use('/', rotas);
 
-require('./swagger-setup')(app);
+require('./config/swagger')(app);
 
 const http = require('http').Server(app);
 

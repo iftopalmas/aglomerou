@@ -1,4 +1,4 @@
-const db = require("../db/config");
+const db = require("../config/db");
 
 exports.getUltimaLocalizacao = async (req, res) => {
     try {
