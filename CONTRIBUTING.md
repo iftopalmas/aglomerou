@@ -59,7 +59,7 @@ Gaste algum tempo escrevendo mensagens de commit estruturadas, informativas e qu
 * Atualize o branch `dev` do seu fork para obter a última versão do projeto:  
 
 ```bash
-#Adicioknar o endereço do repositório original (se ainda não fez)
+#Adicionar o endereço do repositório original (se ainda não fez)
 git remote add upstream https://github.com/ifto-palmas/aglomerou.git
 #Obter os branches remotos
 git fetch upstream
