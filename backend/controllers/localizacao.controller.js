@@ -25,12 +25,12 @@ exports.inserir = async (req, res) => {
 
     try {
         if( !inRange( lat, -90, 90 ) ) {
-            res.status(404).send({message: "Valor de Latitude deve estar entre -90 e 90!"});
+            res.status(422).send({message: "Valor de Latitude deve estar entre -90 e 90!"});
             return;
         }
 
         if(!inRange( long, -180, 180 ) ) {
-            res.status(404).send({message: "Valor de Longitude deve estar entre -180 e 180!"});
+            res.status(422).send({message: "Valor de Longitude deve estar entre -180 e 180!"});
             return;
         }
 
