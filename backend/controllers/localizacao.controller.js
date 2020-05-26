@@ -42,7 +42,7 @@ exports.inserir = async (req, res) => {
         res.status(201).send({message: "Local inserido com Sucesso!"});
      } catch (error) {
         if(error.message.includes('fk_localizacao_dispositivo')){
-            res.status(401).send({message: "Falha ao inserir localização, dispositivo não cadastrado!"});
+            res.status(403).send({message: "Falha ao inserir localização, dispositivo não cadastrado!"});
         }
         
         console.error(error.message);
