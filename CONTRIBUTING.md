@@ -47,7 +47,7 @@ O último passo antes de você iniciar a programar é ter em mente as seguintes 
 - Considere incluir documentação nas funções.
 - Nós nos importamos com organização e indentação do código.
 
-### 3. Crie seus commits
+### 3. Faça seus commits
 
 Crie commits pequenos, específicos.
 Assim como suas funções devem ser pequenas, seus commits devem ser focados em resolver um único problema.
