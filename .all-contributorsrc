@@ -1,0 +1,24 @@
+{
+  "files": [
+    "README.md"
+  ],
+  "imageSize": 100,
+  "commit": false,
+  "contributors": [
+    {
+      "login": "anabeatrix",
+      "name": "Ana Beatriz Araujo",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/46926584?v=4",
+      "profile": "https://github.com/anabeatrix",
+      "contributions": [
+        "code"
+      ]
+    }
+  ],
+  "contributorsPerLine": 7,
+  "projectName": "aglomerou",
+  "projectOwner": "ifto-palmas",
+  "repoType": "github",
+  "repoHost": "https://github.com",
+  "skipCi": true
+}
