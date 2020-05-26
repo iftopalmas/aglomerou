@@ -58,6 +58,15 @@
         "ideas",
         "video"
       ]
+    },
+    {
+      "login": "ifto-palmas",
+      "name": "Instituto Federal de Educação do Tocantins (IFTO)",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/39141526?v=4",
+      "profile": "http://palmas.ifto.edu.br",
+      "contributions": [
+        "financial"
+      ]
     }
   ],
   "contributorsPerLine": 7,
