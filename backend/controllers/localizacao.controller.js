@@ -49,5 +49,5 @@ exports.inserir = async (req, res) => {
      }
 };
 
-function inRange(number, min, max) { return ( ( number - min ) * ( number - max ) <= 0 ); }
+function inRange(number, min, max) { return ( number - min ) * ( number - max ) <= 0; }
 
