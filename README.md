@@ -11,15 +11,14 @@ O projeto é composto por 3 sub-projetos:
 - [frontend](frontend): aplicação web em [React](http://reactjs.org) que fornece uma interface gráfica para acesso a relatórios e gráficos estatísticos.
 - [mobile](mobile): aplicativo mobile em [React Native](http://reactnative.dev) que obtém a localização do usuário de forma automatizada e anônima, enviando ao backend.
 
-## Equipe e Colaboradores
-
 
 ## Como contribuir
 
 Contribuições são muito bem vindas. Veja nosso [Guia de Contribuição](CONTRIBUTING.md) antes de iniciar.
-## Contributors ✨
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+## Equipe e Colaboradores
+
+Este projeto só foi possível graças as pessoas listadas abaixo ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
@@ -38,4 +37,4 @@ Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/d
 <!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+Este projeto segue a especificação [all-contributors](https://github.com/all-contributors/all-contributors). Contribuições de qualquer tipo são bem vindas!
