@@ -1,4 +1,7 @@
 # Aglomerou? 
+<!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors-)
+<!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Em busca de soluções tecnológicas para a atual pandemia do coronavírus, o presente projeto visa o desenvolvimento de um software para rastrear a localização de pessoas, sem coletar qualquer informação pessoal, incluindo aplicativo para smartphones e aplicação web para monitoramento pelas autoridades públicas. O aplicativo pode ser usado para fornecer informações em tempo real para a população decidir o melhor momento de ir a um estabelecimento. O sistema web pode ser usado para autoridades obterem informações e estatísticas sobre o isolamento social, receber denúncias e dispersar multidões.
 
@@ -14,3 +17,21 @@ O projeto é composto por 3 sub-projetos:
 ## Como contribuir
 
 Contribuições são muito bem vindas. Veja nosso [Guia de Contribuição](CONTRIBUTING.md) antes de iniciar.
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="http://twitter.com/manoelcampos"><img src="https://avatars0.githubusercontent.com/u/261605?v=4" width="100px;" alt=""/><br /><sub><b>Manoel Campos da Silva Filho</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=manoelcampos" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
