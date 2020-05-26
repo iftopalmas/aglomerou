@@ -24,7 +24,7 @@ Este projeto só foi possível graças as pessoas listadas abaixo ([emoji key](h
     <td align="center"><a href="http://twitter.com/manoelcampos"><img src="https://avatars0.githubusercontent.com/u/261605?v=4" width="100px;" alt=""/><br /><sub><b>Manoel Campos da Silva Filho</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=manoelcampos" title="Code">💻</a></td>
     <td align="center"><a href="https://github.com/ragirfernando"><img src="https://avatars1.githubusercontent.com/u/47224423?v=4" width="100px;" alt=""/><br /><sub><b>Ragir Fernando</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=ragirfernando" title="Code">💻</a></td>
     <td align="center"><a href="https://silvioantonio.ml"><img src="https://avatars1.githubusercontent.com/u/41794605?v=4" width="100px;" alt=""/><br /><sub><b>Silvio Antonio de Oliveira Junior</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=silvioantonio" title="Code">💻</a></td>
-    <td align="center"><a href="https://github.com/Thanyla"><img src="https://avatars0.githubusercontent.com/u/44912443?v=4" width="100px;" alt=""/><br /><sub><b>Thányla Sales</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=Thanyla" title="Code">💻</a></td>
+    <td align="center"><a href="https://github.com/Thanyla"><img src="https://avatars0.githubusercontent.com/u/44912443?v=4" width="100px;" alt=""/><br /><sub><b>Thányla Sales</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=Thanyla" title="Code">💻</a> <a href="#design-Thanyla" title="Design">🎨</a></td>
   </tr>
 </table>
 
