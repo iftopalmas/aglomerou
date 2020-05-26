@@ -1,24 +1,20 @@
 const db = require("../db/config");
 
 exports.getUltimaLocalizacao = async (req, res) => {
-    
     try {
         const resultado = await db.query(
-            "SELECT latitude, longitude, max(data_hora_ultima_atualizacao) " +
-            "FROM localizacao_dispositivo " +
-            "WHERE id_dispositivo = $1 GROUP BY latitude, longitude;" ,
+            " SELECT id, latitude, longitude, data_hora_ultima_atualizacao " +
+            " FROM localizacao_dispositivo " +
+            " WHERE id_dispositivo = $1 order by id desc limit 1",
             [req.params.idDispositivo]);
 
             if(resultado.rows.length > 0)
-                res.status(200).send(resultado.rows);
-            else 
-                res.status(404).send({message:"ID invalido!"});
-
+                res.status(200).send(resultado.rows[0]);
+            else res.status(404).send({message: "Dispositivo não localizado!"});
     } catch (error) {
-        res.status(400).send({message: "O Id deve ser um numero inteiro!"});
-        console.error('Id nulo', error.message, error.stack);
+        res.status(400).send({message: error.messge});
+        console.error(error.message, error.stack);
     }
-    
 };
 
 exports.inserir = async (req, res) => {
