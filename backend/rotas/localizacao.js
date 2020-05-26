@@ -32,12 +32,12 @@ router.get('/:idDispositivo', controller.getUltimaLocalizacao);
  *        in: path
  *        description: latitude da localização do dispositivo
  *        required: true
- *        type: integer
+ *        type: double
  *      - name: long
  *        in: path
  *        description: longitude da localização do dispositivo
  *        required: true
- *        type: integer
+ *        type: double
  *    description: Insere a localização de um dispositivo com um detemrinado id
  *    responses:
  *      '200': 
