@@ -4,6 +4,6 @@ Em busca de soluções tecnológicas para a atual pandemia do coronavírus, o pr
 
 O projeto é composto por 3 sub-projetos:
 
-- [backend](backend): aplicação servidor desenvolvida em Node.js, fornecendo APIs REST para integração entre os outros sub-projetos.
+- [backend](backend): aplicação servidor desenvolvida em [Node.js](http://nodejs.org), fornecendo APIs REST para integração entre os outros sub-projetos.
 - [frontend](frontend): aplicação web em [React](http://reactjs.org) que fornece uma interface gráfica para acesso a relatórios e gráficos estatísticos.
 - [mobile](mobile): aplicativo mobile em [React Native](http://reactnative.dev) que obtém a localização do usuário de forma automatizada e anônima, enviando ao backend.
