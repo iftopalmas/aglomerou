@@ -1,4 +1,5 @@
 const db = require("../config/db");
+const { inRange } = require("../util");
 
 exports.getUltimaLocalizacao = async (req, res) => {
     try {
@@ -49,5 +50,4 @@ exports.inserir = async (req, res) => {
      }
 };
 
-function inRange(number, min, max) { return ( number - min ) * ( number - max ) <= 0; }
 
