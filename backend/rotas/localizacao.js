@@ -40,8 +40,12 @@ router.get('/:idDispositivo', controller.getUltimaLocalizacao);
  *        type: double
  *    description: Insere a localização de um dispositivo com um detemrinado id
  *    responses:
- *      '200': 
+ *      '201': 
  *        description: Localização do dispositivo inserida com sucesso 
+ *      '403': 
+ *        description: Dispositivo não cadastrado, não sendo autorizado a enviar localização.
+ *      '422': 
+ *        description: Latitude ou longitude inválida.
  */
 router.post('/:idDispositivo/:lat/:long', controller.inserir);
 
