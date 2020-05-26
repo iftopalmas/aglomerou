@@ -3,7 +3,9 @@ create database aglomerou encoding = utf8;
 -- Conectar ao banco pelo psql
 \connect aglomerou
 
--- Usuários que podem acessar o dashboard web para administração
+-- Habilita o módulo de criptografia para funções como crypt e gen_sault
+create extension pgcrypto;
+
 create table usuario (
     id serial not null primary key, 
     data_hora_cadastro timestamp default CURRENT_TIMESTAMP,
@@ -12,12 +14,15 @@ create table usuario (
     senha varchar(255)
 );
 
--- Dispositivos móveis usados pelo app (representando as pessoas que o utilizam)
+comment on table usuario is 'Usuários que podem acessar o dashboard web para administração';
+
 create table dispositivo (
     id serial not null primary key, 
     data_hora_cadastro timestamp default CURRENT_TIMESTAMP,
     uid varchar(200) not null unique
 );
+
+comment on table dispositivo is 'Dispositivos móveis usados pelo app (representando as pessoas que o utilizam)';
 
 -- Os campos latitude e longitude são representados em Graus Decimais,
 -- mas não sei se a quantidade de casas é exata.
@@ -31,12 +36,9 @@ create table localizacao_dispositivo (
     latitude varchar(20) not null, 
     longitude varchar(20) not null,
     data_hora_ultima_atualizacao timestamp default CURRENT_TIMESTAMP,
-    ativo boolean not null default true,
 
     constraint fk_localizacao_dispositivo foreign key (id_dispositivo) references dispositivo(id)
 );
 
 comment on column localizacao_dispositivo.latitude is 'Latitude em Graus Decimais';
 comment on column localizacao_dispositivo.longitude is 'Longitude em Graus Decimais';
-
-
