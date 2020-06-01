@@ -16,7 +16,7 @@ const swaggerUi = require('swagger-ui-express');
 
 const swaggerOptions = {
   swaggerDefinition,
-  apis: ["./rotas/*.js"]
+  apis: ["./routes/*.js"]
 };
 
 /**
