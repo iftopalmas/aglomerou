@@ -42,7 +42,7 @@ router.get('/:idDispositivo', controller.getUltimaLocalizacao);
  *        type: number
  *        minimum: -180
  *        maximum: 180
- *    description: Insere a localização de um dispositivo com um detemrinado id
+ *    description: Insere a localização de um dispositivo com um determinado id
  *    responses:
  *      '201': 
  *        description: Localização do dispositivo inserida com sucesso 
