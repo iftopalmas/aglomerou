@@ -16,7 +16,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # Instala o Node.js
 echo ""; echo "## INSTALANDO VERSÃO DO NODE DEFINIDA EM .nvmrc"; echo ""
-nvm install `cat .nvmrc`
+nvm install `cat backend/.nvmrc`
 
 # Coloca em uso a versão instalada do node
 echo ""; echo "## USANDO VERSÃO DO NODE DEFINIDA EM .nvmrc"; echo ""
