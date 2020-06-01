@@ -3,31 +3,31 @@ const controller = require('../controllers/localizacao.controller');
 
 /**
  * @swagger
- * /localizacao/{idDispositivo}:
+ * /localizacao/{uid}:
  *  get: 
  *    parameters:
- *      - name: idDispositivo
+ *      - name: uid
  *        in: path
- *        description: id do dispositivo
+ *        description: Identificador único do dispositivo
  *        required: true
- *        type: integer
- *    description: Obtém a última localização de um dispositivo com um determinado id
+ *        type: string
+ *    description: Obtém a última localização de um dispositivo com um determinado UID
  *    responses:
  *      '200': 
  *        description: Localização do dispositivo obtido com sucesso 
  */
-router.get('/:idDispositivo', controller.getUltimaLocalizacao);
+router.get('/:uid', controller.getUltimaLocalizacao);
 
 /**
  * @swagger
- * /localizacao/{idDispositivo}/{lat}/{long}:
+ * /localizacao/{uid}/{lat}/{long}:
  *  post: 
  *    parameters:
- *      - name: idDispositivo
+ *      - name: uid
  *        in: path
- *        description: id do dispositivo
+ *        description: Identificador único do dispositivo
  *        required: true
- *        type: integer
+ *        type: string
  *      - name: lat
  *        in: path
  *        description: latitude da localização do dispositivo
@@ -51,7 +51,7 @@ router.get('/:idDispositivo', controller.getUltimaLocalizacao);
  *      '422': 
  *        description: Latitude ou longitude inválida.
  */
-router.post('/:idDispositivo/:lat/:long', controller.inserir);
+router.post('/:uid/:lat/:long', controller.inserir);
 
 module.exports = router;
 
