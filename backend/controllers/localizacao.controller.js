@@ -18,9 +18,7 @@ exports.getUltimaLocalizacao = async (req, res) => {
 };
 
 exports.inserir = async (req, res) => {
-    const uid = req.params.uid;
-    const lat = req.params.lat;
-    const long = req.params.long;
+    const { uid, lat, long } = req.params;
 
     try {
         if( !inRange( lat, -90, 90 ) ) {
