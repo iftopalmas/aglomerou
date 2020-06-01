@@ -4,10 +4,10 @@ const { inRange, serverError } = require("../util");
 exports.getUltimaLocalizacao = async (req, res) => {
     try {
         const resultado = await db.query(
-            " SELECT id, id_dispositivo, latitude, longitude, data_hora_ultima_atualizacao " +
+            " SELECT id, uid, latitude, longitude, data_hora_ultima_atualizacao " +
             " FROM localizacao_dispositivo " +
-            " WHERE id_dispositivo = $1 order by id desc limit 1",
-            [req.params.idDispositivo]);
+            " WHERE uid = $1 order by id desc limit 1",
+            [req.params.uid]);
 
             if(resultado.rows.length > 0)
                 res.status(200).send(resultado.rows[0]);
@@ -18,9 +18,7 @@ exports.getUltimaLocalizacao = async (req, res) => {
 };
 
 exports.inserir = async (req, res) => {
-    const idDispositivo = req.params.idDispositivo;
-    const lat = req.params.lat;
-    const long = req.params.long;
+    const { uid, lat, long } = req.params;
 
     try {
         if( !inRange( lat, -90, 90 ) ) {
@@ -34,9 +32,9 @@ exports.inserir = async (req, res) => {
         }
 
         const result = await db.query(
-            " INSERT INTO localizacao_dispositivo ( id_dispositivo, latitude, longitude) " +
+            " INSERT INTO localizacao_dispositivo ( uid, latitude, longitude) " +
             " VALUES ( $1, $2, $3 )",
-            [idDispositivo, lat, long]
+            [uid, lat, long]
         );
 
         res.status(201).send({message: "Localização inserida com Sucesso!"});

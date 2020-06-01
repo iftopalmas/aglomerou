@@ -8,13 +8,13 @@ values ('2020-05-01', 'usuario1@gmail.com', crypt('123456', gen_salt('bf'))),
        ('2020-05-04', 'usuario4@gmail.com', crypt('123456', gen_salt('bf'))),
        ('2020-05-05', 'usuario5@gmail.com', crypt('123456', gen_salt('bf')));
 
-insert into dispositivo (data_hora_cadastro, uid)
-values ('2020-05-01', '1'),
-       ('2020-05-02', '2'),
-       ('2020-05-03', '3'),
-       ('2020-05-04', '5');
+insert into dispositivo (data_hora_cadastro, tipo, uid)
+values ('2020-05-01', 'android', '1'),
+       ('2020-05-02', 'android', '2'),
+       ('2020-05-03', 'iOS', '3'),
+       ('2020-05-04', 'iOS', '4');
 
-insert into localizacao_dispositivo (id_dispositivo, latitude, longitude)
+insert into localizacao_dispositivo (uid, latitude, longitude)
 values (1, 90, 180),
        (1, -90, 180),
        (1, 90, -180),
