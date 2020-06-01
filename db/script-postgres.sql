@@ -17,9 +17,9 @@ create table usuario (
 comment on table usuario is 'Usuários que podem acessar o dashboard web para administração';
 
 create table dispositivo (
-    id serial not null primary key, 
-    data_hora_cadastro timestamp default CURRENT_TIMESTAMP,
-    uid varchar(200) not null unique
+    uid varchar(200) not null primary key,
+    tipo varchar(100) not null,
+    data_hora_cadastro timestamp default CURRENT_TIMESTAMP
 );
 
 comment on table dispositivo is 'Dispositivos móveis usados pelo app (representando as pessoas que o utilizam)';
@@ -32,12 +32,12 @@ comment on table dispositivo is 'Dispositivos móveis usados pelo app (represent
 
 create table localizacao_dispositivo (
     id bigserial not null primary key, 
-    id_dispositivo int not null, 
+    uid varchar(200) not null, 
     latitude varchar(20) not null, 
     longitude varchar(20) not null,
     data_hora_ultima_atualizacao timestamp default CURRENT_TIMESTAMP,
 
-    constraint fk_localizacao_dispositivo foreign key (id_dispositivo) references dispositivo(id)
+    constraint fk_localizacao_dispositivo foreign key (uid) references dispositivo(uid)
 );
 
 comment on column localizacao_dispositivo.latitude is 'Latitude em Graus Decimais';
