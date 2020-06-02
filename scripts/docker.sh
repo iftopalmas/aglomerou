@@ -3,15 +3,19 @@
 clear
 
 if [[ $# -lt 2 ]]; then
-	echo "Forma de uso: $0 backend|database comando"
-	echo "  build   - Criar container com servidor Postgres"
-	echo "  run     - Iniciar container"
-	echo "  logs    - Mostrar logs do container executado"
-	echo "  connect - Conectar ao servidor Postgres no container criado"
-	echo "  remove  - Excluir container"
-	echo "  push    - Enviar imagem para hub.docker.com"
-	echo "  pull    - Baixar imagem de hub.docker.com"
+	echo "Forma de uso:"
+	echo -e "\t$0 backend|database comando"
+	echo -e "\t\tbuild   - Criar container"
+	echo -e "\t\trun     - Iniciar container"
+	echo -e "\t\tlogs    - Mostrar logs do container executado"
+	echo -e "\t\tremove  - Excluir container"
+	echo -e "\t\tpush    - Enviar imagem para hub.docker.com"
+	echo -e "\t\tpull    - Baixar imagem de hub.docker.com"
 	echo ""
+	echo -e "\t$0 database comando"
+	echo -e "\t\tconnect - Conectar ao servidor Postgres no container (requer o psql na máquina host)"
+	echo ""
+
 	exit -1
 fi
 
