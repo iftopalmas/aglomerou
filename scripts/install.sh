@@ -6,6 +6,8 @@ echo ""; echo "# INSTALANDO FERRAMENTAS DE DESENVOLVIMENTO"; echo ""
 
 clear
 
+# FERRAMENTAS GERAIS
+
 # Instala o nvm
 echo ""; echo "## INSTALANDO NVM"; echo ""
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
@@ -25,3 +27,7 @@ nvm use
 source ~/.bashrc
 echo ""; echo "## REABRA O TERMINAL SE NÃO CONSEGUIR USAR nvm, node ou npm"; echo ""
 
+
+# FERRAMENTAS PARA O APP MOBILE
+
+npm install expo-cli --global
