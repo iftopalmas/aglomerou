@@ -8,10 +8,7 @@
     "eject": "expo eject"
   },
   "dependencies": {
-<<<<<<< HEAD
     "axios": "^0.19.2",
-=======
->>>>>>> 44f7c58d8c693e998d5bbcad5d4404caafb7b504
     "expo": "^37.0.12",
     "expo-constants": "~9.0.0",
     "react": "~16.9.0",

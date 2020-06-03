@@ -11,8 +11,8 @@ export default class IdDispositivo extends Component {
     }
 
     dispositivos = async () => {
-        let idDispositivo = Constants.installationId;
-        let tipoDispositivo = Constants.deviceName;
+        const idDispositivo = Constants.installationId;
+        const tipoDispositivo = Constants.deviceName;
         try {
             const response = await api.post('/' + idDispositivo + '/' + tipoDispositivo + '');
         } catch (error) {
