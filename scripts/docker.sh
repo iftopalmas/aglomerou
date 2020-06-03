@@ -22,6 +22,7 @@ fi
 if [[ $1 == "backend" ]]; then
 	IMAGE_NAME="manoelcampos/aglomerou:backend"
 	CONTAINER_NAME="aglomerou-backend"
+	#Usa porta 8080 pra não ter que rodar o node como root no container
 	PORT=8080
 
 	if [[ $2 == "build" ]]; then
@@ -39,7 +40,7 @@ elif [[ $1 == "database" ]]; then
 	# Assim, nenhuma informação possivelmente sensível
 	# é armazenada dentro do imagem públic em hub.docker.com
 	if [[ ! -f .env.production ]]; then
-		echo "Arquivo .env.production não foi localizado" >&2
+		echo "Arquivo .env.production não foi localizado. Copie a partir de backend/.env" >&2
 		exit -1
 	fi
 
