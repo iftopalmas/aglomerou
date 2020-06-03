@@ -34,7 +34,9 @@ exports.inserir = async (req, res) => {
             [uid, tipo]
         );
 
-        res.status(201).send({message: "Dispositivo registrado com Sucesso!"});
+        const msg = {message: "Dispositivo registrado com Sucesso!"};
+        console.log(msg);
+        res.status(201).send(msg);
      } catch (error) {
         if(error.message.includes('dispositivo_uid_key'))
             res.status(409).send({message: "Dispositivo com o UID informado já foi registrado!"});
