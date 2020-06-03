@@ -8,5 +8,5 @@ Para testar o app em smartphones Android, é preciso baixar o [Expo App](https:/
 ## Iniciar o projeto no ambiente de desenvolvimento
 
 ```bash
-npm start
+expo start
 ````
