@@ -14,7 +14,7 @@ const client = new pool.Client({
 
 client.connect( err => {
     if (err) {
-      return console.error('Error acquiring client', err.stack);
+      return console.error('Não foi possível conectar ao banco de dados', err.stack);
     }
     console.log('Base de dados conectado com sucesso!');
 });
