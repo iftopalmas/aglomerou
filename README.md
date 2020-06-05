@@ -1,6 +1,6 @@
 # Aglomerou? 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
-[![All Contributors](https://img.shields.io/badge/all_contributors-6-orange.svg?style=flat-square)](#contributors-)
+[![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
 Em busca de soluções tecnológicas para a atual pandemia do coronavírus, o presente projeto visa o desenvolvimento de um software para rastrear a localização de pessoas, sem coletar qualquer informação pessoal, incluindo aplicativo para smartphones e aplicação web para monitoramento pelas autoridades públicas. O aplicativo pode ser usado para fornecer informações em tempo real para a população decidir o melhor momento de ir a um estabelecimento. O sistema web pode ser usado para autoridades obterem informações e estatísticas sobre o isolamento social, receber denúncias e dispersar multidões.
@@ -24,10 +24,13 @@ Este projeto só foi possível graças aos colaboradores listados abaixo ([emoji
     <td align="center"><a href="http://twitter.com/manoelcampos"><img src="https://avatars0.githubusercontent.com/u/261605?v=4" width="100px;" alt=""/><br /><sub><b>Manoel Campos da Silva Filho</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=manoelcampos" title="Code">💻</a> <a href="https://github.com/ifto-palmas/aglomerou/commits?author=manoelcampos" title="Documentation">📖</a> <a href="#infra-manoelcampos" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a> <a href="https://github.com/ifto-palmas/aglomerou/pulls?q=is%3Apr+reviewed-by%3Amanoelcampos" title="Reviewed Pull Requests">👀</a></td>
     <td align="center"><a href="https://github.com/ragirfernando"><img src="https://avatars1.githubusercontent.com/u/47224423?v=4" width="100px;" alt=""/><br /><sub><b>Ragir Fernando</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=ragirfernando" title="Code">💻</a></td>
     <td align="center"><a href="https://silvioantonio.ml"><img src="https://avatars1.githubusercontent.com/u/41794605?v=4" width="100px;" alt=""/><br /><sub><b>Silvio Antonio de Oliveira Junior</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=silvioantonio" title="Code">💻</a> <a href="#security-silvioantonio" title="Security">🛡️</a></td>
-    <td align="center"><a href="https://github.com/Thanyla"><img src="https://avatars0.githubusercontent.com/u/44912443?v=4" width="100px;" alt=""/><br /><sub><b>Thányla Sales</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=Thanyla" title="Code">💻</a> <a href="#design-Thanyla" title="Design">🎨</a> <a href="#ideas-Thanyla" title="Ideas, Planning, & Feedback">🤔</a> <a href="#video-Thanyla" title="Videos">📹</a></td>  </tr>
-  <tr>
-    <td align="center" colspan="5"><a href="http://palmas.ifto.edu.br"><img src="https://avatars1.githubusercontent.com/u/39141526?v=4" width="100px;" alt=""/><br /><sub><b>Instituto Federal de Educação do Tocantins (IFTO)</b></sub></a><br /><a href="#financial-ifto-palmas" title="Financial">💵</a></td>  
+    <td align="center"><a href="https://github.com/Thanyla"><img src="https://avatars0.githubusercontent.com/u/44912443?v=4" width="100px;" alt=""/><br /><sub><b>Thányla Sales</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=Thanyla" title="Code">💻</a> <a href="#design-Thanyla" title="Design">🎨</a> <a href="#ideas-Thanyla" title="Ideas, Planning, & Feedback">🤔</a> <a href="#video-Thanyla" title="Videos">📹</a></td>
+    <td align="center"><a href="https://github.com/ccmmonteiro"><img src="https://avatars2.githubusercontent.com/u/8394675?v=4" width="100px;" alt=""/><br /><sub><b>ccmmonteiro</b></sub></a><br /><a href="#infra-ccmmonteiro" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
+  <tr>
+    <td align="center" colspan="6"><a href="http://palmas.ifto.edu.br"><img src="https://avatars1.githubusercontent.com/u/39141526?v=4" width="100px;" alt=""/><br /><sub><b>Instituto Federal de Educação do Tocantins (IFTO)</b></sub></a><br /><a href="#financial-ifto-palmas" title="Financial">💵</a></td>  
+  </tr>
+  
 </table>
 
 <!-- markdownlint-enable -->
