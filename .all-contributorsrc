@@ -67,6 +67,15 @@
       "contributions": [
         "financial"
       ]
+    },
+    {
+      "login": "ccmmonteiro",
+      "name": "ccmmonteiro",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/8394675?v=4",
+      "profile": "https://github.com/ccmmonteiro",
+      "contributions": [
+        "infra"
+      ]
     }
   ],
   "contributorsPerLine": 7,
