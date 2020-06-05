@@ -1,5 +1,6 @@
 # Aglomerou? 
 <!-- ALL-CONTRIBUTORS-BADGE:START - Do not remove or modify this section -->
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/64aff335ce0744bc88e51cd9306a90f7)](https://app.codacy.com/gh/ifto-palmas/aglomerou?utm_source=github.com&utm_medium=referral&utm_content=ifto-palmas/aglomerou&utm_campaign=Badge_Grade_Settings)
 [![All Contributors](https://img.shields.io/badge/all_contributors-7-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
