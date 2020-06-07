@@ -2,7 +2,7 @@ const db = require("../config/db");
 const { serverError } = require("../util");
 
 exports.inserir = async (req, res) => {
-    const { data_hora_cadastro, ativo, email, senha } = req.body;
+    const { email, senha } = req.body;
     if (!validateEmail(email)) { 
         res.status(400).send({message: "Um valor valido deve ser passado como EMAIL!"}); 
         return;
