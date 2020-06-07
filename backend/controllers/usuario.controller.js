@@ -19,7 +19,6 @@ exports.inserir = async (req, res) => {
         console.log(msg);
         res.status(201).send(msg);
     } catch (error) {
-        
         if(error.message.includes('usuario_email_key'))
             res.status(409).send({message: "Já existe um usuário com o email informado!"});
         else serverError(res, error);
@@ -41,7 +40,7 @@ exports.atualizar = async (req, res) => {
             [ email, ativo, senha, id ]
         );
 
-        if (resultado.rows.length > 0){ 
+        if (resultado.rowCount > 0){ 
             res.status(204).send({ message: "Usuario Atualizado com sucesso!" }); 
         }
         else { 

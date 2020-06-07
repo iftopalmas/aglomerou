@@ -21,7 +21,7 @@ exports.get = async (req, res) => {
             " FROM dispositivo WHERE uid = $1 ",
             [req.params.uid]);
 
-        if(resultado.rows.length > 0)
+        if(resultado.rowCount > 0)
             res.status(200).send(resultado.rows[0]);
         else res.status(404).send({message: "Dispositivo não localizado!"});
     } catch (error) {
