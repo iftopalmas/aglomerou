@@ -3,11 +3,15 @@ const { serverError } = require("../util");
 
 exports.inserir = async (req, res) => {
     const { data_hora_cadastro, ativo, email, senha } = req.body;
-    if (!validateEmail(email)) { res.status(400).send({message: "Um valor valido deve ser passado como EMAIL!"}); }
+    if (!validateEmail(email)) { 
+        res.status(400).send({message: "Um valor valido deve ser passado como EMAIL!"}); 
+        return;
+    }
+    
     try {
         await db.query(
-            "INSERT INTO usuario ( data_hora_cadastro, ativo, email, senha ) VALUES ( $1, $2, $3, $4 )",
-            [ data_hora_cadastro, ativo, email, senha ]
+            "INSERT INTO usuario ( email, senha ) VALUES ( $1, $2 )",
+            [ email, senha ]
         );
         const msg = { message: "Usuario cadastrado com sucesso!" };
         console.log(msg);
