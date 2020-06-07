@@ -10,7 +10,7 @@ create table usuario (
     id serial not null primary key, 
     data_hora_cadastro timestamp default CURRENT_TIMESTAMP,
     ativo boolean not null default false,
-    email varchar(120) not null,
+    email varchar(120) not null unique,
     senha varchar(255)
 );
 
