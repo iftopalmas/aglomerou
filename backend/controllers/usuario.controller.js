@@ -37,7 +37,7 @@ exports.atualizar = async (req, res) => {
     const client = await db.connect();
     try {
         const resultado = await client.query(
-            "UPDATE usuario SET email = $1, ativo = $2, senha = $3 WHERE id = $4",
+            "UPDATE usuario SET email = $1, ativo = $2, senha = crypt($3, gen_salt('bf')) WHERE id = $4",
             [ email, ativo, senha, id ]
         );
 
