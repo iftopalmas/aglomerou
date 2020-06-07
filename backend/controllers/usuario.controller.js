@@ -56,8 +56,10 @@ exports.atualizar = async (req, res) => {
 exports.deletar = async (req, res) => {
     const client = await db.connect();
     try {
-        await client.query( " DELETE FROM usuario WHERE id = $1 ", [ req.params.id ]);
-        res.status(200).send({message: "Usuario deletado!"});
+        const resultado = await client.query( " DELETE FROM usuario WHERE id = $1 ", [ req.params.id ]);
+        if(resultado.rowCount > 0)
+            res.status(200).send({message: "Usuário deletado!"});
+        else res.status(404).send({message: "Usuário com o id informado não foi localizado!"});
     } catch (error) {
         serverError(res, error);
     } finally{
