@@ -1,5 +1,5 @@
 const db = require("../config/db");
-const { serverError } = require("../util");
+const { validateEmail, serverError } = require("../util");
 
 exports.inserir = async (req, res) => {
     const { email, senha } = req.body;
@@ -67,7 +67,3 @@ exports.deletar = async (req, res) => {
     }
 };
 
-function validateEmail(email) {
-    const re = /^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-    return re.test(email);
-  }
