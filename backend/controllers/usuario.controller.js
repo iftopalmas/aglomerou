@@ -11,7 +11,7 @@ exports.inserir = async (req, res) => {
     const client = await db.connect();
     try {
         await client.query(
-            "INSERT INTO usuario ( email, senha ) VALUES ( $1, $2 )",
+            "INSERT INTO usuario ( email, senha ) VALUES ( $1, crypt($2, gen_salt('bf')) )",
             [ email, senha ]
         );
             
