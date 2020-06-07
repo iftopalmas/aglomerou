@@ -27,7 +27,10 @@ exports.inserir = async (req, res) => {
 
 exports.atualizar = async (req, res) => {
     const { data_hora_cadastro, ativo, email, senha } = req.body;
-    if (!validateEmail(email)) { res.status(400).send({message: "Um valor valido deve ser passado como EMAIL!"}); }
+    if (!validateEmail(email)) { 
+        res.status(400).send({message: "Um valor valido deve ser passado como EMAIL!"}); 
+    }
+    
     const client = await db.connect();
     try {
         const resultado = await client.query(
@@ -37,8 +40,12 @@ exports.atualizar = async (req, res) => {
             [ data_hora_cadastro, ativo, email, senha ]
         );
 
-        if (resultado.rows.length > 0){ res.status(204).send({ message: "Usuario Atualizado com sucesso!" }); }
-        else { res.status(404).send({message: "Email nao cadastrado na base de dados!"}); }
+        if (resultado.rows.length > 0){ 
+            res.status(204).send({ message: "Usuario Atualizado com sucesso!" }); 
+        }
+        else { 
+            res.status(404).send({message: "Email nao cadastrado na base de dados!"}); 
+        }
     } catch (error) {
         serverError(res, error);
     } finally{
