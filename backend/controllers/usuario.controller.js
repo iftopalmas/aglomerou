@@ -26,18 +26,16 @@ exports.inserir = async (req, res) => {
 };
 
 exports.atualizar = async (req, res) => {
-    const { data_hora_cadastro, ativo, email, senha } = req.body;
+    const { id, ativo, email, senha } = req.body;
     if (!validateEmail(email)) { 
         res.status(400).send({message: "Um valor valido deve ser passado como EMAIL!"}); 
     }
-    
+
     const client = await db.connect();
     try {
         const resultado = await client.query(
-            "UPDATE usuario SET data_hora_cadastro = $1, ativo = $2, senha = $4 "+
-            "WHERE email = $3 "+
-            "RETURNING id",
-            [ data_hora_cadastro, ativo, email, senha ]
+            "UPDATE usuario SET email = $1, ativo = $2, senha = $3 WHERE id = $4",
+            [ email, ativo, senha, id ]
         );
 
         if (resultado.rows.length > 0){ 
