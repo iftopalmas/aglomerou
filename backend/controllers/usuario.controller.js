@@ -4,7 +4,9 @@ const { validateEmail, serverError } = require("../util");
 exports.inserir = async (req, res) => {
     const { email, senha } = req.body;
     if (!validateEmail(email)) { 
-        res.status(400).send({message: "Um valor valido deve ser passado como EMAIL!"}); 
+        const msg = {message: "Um valor válido deve ser passado como EMAIL!"};
+        console.log(msg); 
+        res.status(400).send(msg); 
         return;
     }
     
@@ -29,8 +31,11 @@ exports.inserir = async (req, res) => {
 
 exports.atualizar = async (req, res) => {
     const { id, ativo, email, senha } = req.body;
-    if (!validateEmail(email)) { 
-        res.status(400).send({message: "Um valor valido deve ser passado como EMAIL!"}); 
+    if (!validateEmail(email)) {
+        const msg = {message: "Um valor válido deve ser passado como EMAIL!"};
+        console.log(msg); 
+        res.status(400).send(msg); 
+        return;
     }
 
     const client = await db.connect();
