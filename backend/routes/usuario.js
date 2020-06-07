@@ -35,7 +35,7 @@ router.post('/', controller.inserir);
  *      '204': 
  *        description: Usuário atualizado com sucesso
  *      '404': 
- *        description: Usuário não encontrado
+ *        description: Usuário com o id informado não foi encontrado
  *      '409': 
  *        description: Usuário com o email informado já foi cadastrado
  */
@@ -51,12 +51,12 @@ router.put('/', controller.atualizar);
  *        description: Id do Usuário a ser excluído
  *        required: true
  *        type: integer
- *    description: Atualiza um usuário da aplicação web
+ *    description: Exclui um usuário da aplicação web
  *    responses:
  *      '200': 
  *        description: Usuário excluído com sucesso
  *      '404': 
- *        description: Usuário não encontrado
+ *        description: Usuário com o id informado não foi encontrado
  */
 router.delete('/:id', controller.deletar);
 

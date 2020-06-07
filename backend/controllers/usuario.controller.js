@@ -45,7 +45,7 @@ exports.atualizar = async (req, res) => {
             res.status(204).send({ message: "Usuario Atualizado com sucesso!" }); 
         }
         else { 
-            res.status(404).send({message: "Email nao cadastrado na base de dados!"}); 
+            res.status(404).send({message: "Usuário com o id informado não foi encontrado!"}); 
         }
     } catch (error) {
         serverError(res, error);
