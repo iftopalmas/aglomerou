@@ -43,7 +43,7 @@ router.put('/', controller.atualizar);
 
 /**
  * @swagger
- * /usuario:
+ * /usuario/{id}:
  *  delete: 
  *    parameters:
  *      - name: id
