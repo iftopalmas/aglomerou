@@ -17,6 +17,8 @@ const controller = require('../controllers/usuario.controller');
  *        description: Usuário cadastrado com sucesso
  *      '409': 
  *        description: Usuário com o email informado já foi cadastrado
+ *      '422': 
+ *        description: Email inválido
  */
 router.post('/', controller.inserir);
 
@@ -38,6 +40,8 @@ router.post('/', controller.inserir);
  *        description: Usuário com o id informado não foi encontrado
  *      '409': 
  *        description: Usuário com o email informado já foi cadastrado
+ *      '422': 
+ *        description: Email inválido
  */
 router.put('/', controller.atualizar);
 

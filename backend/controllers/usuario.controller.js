@@ -6,7 +6,7 @@ exports.inserir = async (req, res) => {
     if (!validateEmail(email)) { 
         const msg = {message: "Um valor válido deve ser passado como EMAIL!"};
         console.log(msg); 
-        res.status(400).send(msg); 
+        res.status(422).send(msg); 
         return;
     }
     
@@ -34,7 +34,7 @@ exports.atualizar = async (req, res) => {
     if (!validateEmail(email)) {
         const msg = {message: "Um valor válido deve ser passado como EMAIL!"};
         console.log(msg); 
-        res.status(400).send(msg); 
+        res.status(422).send(msg); 
         return;
     }
 
