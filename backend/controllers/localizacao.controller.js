@@ -35,7 +35,7 @@ exports.inserir = async (req, res) => {
 
     const client = await db.connect();        
     try {
-        const result = await client.query(
+        await client.query(
             " INSERT INTO localizacao_dispositivo ( uid, latitude, longitude) " +
             " VALUES ( $1, $2, $3 )",
             [uid, lat, long]

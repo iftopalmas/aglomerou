@@ -36,7 +36,7 @@ exports.inserir = async (req, res) => {
 
     const client = await db.connect();
     try {
-        const result = await client.query(
+        await client.query(
             " INSERT INTO dispositivo ( uid, tipo ) VALUES ( $1, $2 )",
             [uid, tipo]
         );
