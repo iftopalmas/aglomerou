@@ -1,9 +1,9 @@
 const router = require('express').Router();
 const controller = require('../controllers/usuario.controller');
 
-router.post('',controller.inserir);
+router.post('/', controller.inserir);
 
-router.put('',controller.atualizar);
+router.put('/', controller.atualizar);
 
 router.delete('/:id', controller.deletar);
 
