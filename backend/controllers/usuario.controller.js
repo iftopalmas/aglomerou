@@ -19,7 +19,10 @@ exports.inserir = async (req, res) => {
         console.log(msg);
         res.status(201).send(msg);
     } catch (error) {
-        serverError(res, error);
+        
+        if(error.message.includes('usuario_email_key'))
+            res.status(409).send({message: "Já existe um usuário com o email informado!"});
+        else serverError(res, error);
     } finally{
         client.end();
     }
