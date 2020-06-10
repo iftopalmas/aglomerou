@@ -4,4 +4,8 @@ node_modules
 npm-debug.log
 *.sh
 Dockerfile
+.dockerignore
 Makefile
+.env
+.env.*
+.DS_Store
