@@ -22,4 +22,5 @@ USER node
 RUN mkdir /home/node/backend
 WORKDIR /home/node/backend
 COPY --from=build --chown=node:node /build .
-CMD ["node_modules/pm2/bin/pm2-runtime", "app.js"]
+ENV PATH="${PATH}:node_modules/pm2/bin/"
+CMD ["pm2-runtime", "app.js"]
