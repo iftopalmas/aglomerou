@@ -16,8 +16,7 @@
     "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
-    "@types/node": "^13.13.5",
-    "nodemon": "^2.0.4"
+    "@types/node": "^13.13.5"
   },
   "scripts": {
     "start": "nodemon app.js"
