@@ -11,6 +11,7 @@ WORKDIR /build
 COPY package-lock.json package.json ./
 RUN npm update
 RUN npm ci
+RUN npm i pm2
 COPY . .
 
 # Runtime Stage
@@ -21,4 +22,4 @@ USER node
 RUN mkdir /home/node/backend
 WORKDIR /home/node/backend
 COPY --from=build --chown=node:node /build .
-CMD ["node", "app.js"]
+CMD ["node_modules/pm2/bin/pm2-runtime", "app.js"]
