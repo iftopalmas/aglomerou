@@ -5,7 +5,6 @@ import * as Location from 'expo-location';
 
 import api from '../service/api';
 
-
 export default class LocalizacaoDispositivo extends Component {
 
     componentDidMount() {
@@ -15,7 +14,7 @@ export default class LocalizacaoDispositivo extends Component {
     localizacao = async () => {
         const { status } = await Location.requestPermissionsAsync();
         if (status !== 'granted') {
-            setErrorMsg('A permissão para acessar o local foi negada');
+            setErrorMsg('A permissão para acessar a localização do dispositivo foi negada!');
             return;
         }
 
@@ -24,17 +23,18 @@ export default class LocalizacaoDispositivo extends Component {
         try {
             const {latitude, longitude} = location.coords;
             const response = await api.post(`/localizacao/${uid}/${latitude}/${longitude}`);
-            console.log(`Enviando localização: UID ${uid} Lat/Long: ${latitude}/${longitude}`);
+            if (__DEV__) {
+                console.log(`Enviando localização: UID ${uid} Lat/Long: ${latitude}/${longitude}`);
+            }
         } catch (error) {
             alert(error);
         }
-        
     };
 
     render() {
         return (
             <View style={styles.container}>
-                <Text>Projeto Aglomerou, pegando localização do dispositivo</Text>
+                <Text>Obtendo a localização do dispositivo</Text>
             </View>
         );
     }
