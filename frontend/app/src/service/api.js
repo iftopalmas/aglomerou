@@ -6,7 +6,7 @@ export const fetchData = async (country) => {
     let changeableUrl = url;
 
     if(country) {
-        changeableUrl = `${url}/countries/${country}`
+        changeableUrl = `${url}/countries/${country}`;
     }
 
     try {
@@ -17,7 +17,7 @@ export const fetchData = async (country) => {
     } catch (error) {
         console.log(error);        
     }
-}
+};
 
 export const fetchDailyData = async () => {
     try {
@@ -31,7 +31,7 @@ export const fetchDailyData = async () => {
           
         return modifiedData;
     }   catch (error) {
-        
+        return null;
     }
 }
 

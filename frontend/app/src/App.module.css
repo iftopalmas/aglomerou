@@ -13,14 +13,6 @@ body {
   justify-content: center;
 }
 
-.custom-btn-toolbar {
-  display: inline !important;
-}
-
-.custom-btn-toolbar>.btn {
-  margin-right: 1rem;
-}
-
 .headerNav {
   display: flex;
   flex-direction: row;
@@ -28,7 +20,7 @@ body {
   justify-content: space-between;
   background-color: #fff;
   padding: 20px;
-  border-radius: .3rem;
+  border-radius: 0.3rem;
   width: 100%;
   height: 5rem;
 }

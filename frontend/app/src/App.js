@@ -29,13 +29,13 @@ class App extends React.Component {
     async componentDidMount() {
         const fetchedData = await fetchData();
 
-        this.setState({ data: fetchedData })
+        this.setState({ data: fetchedData });
     }
 
     handleCountryChange = async (country) => {
         const fetchedData = await fetchData(country);
 
-        this.setState({ data: fetchedData, country: country })
+        this.setState({ data: fetchedData, country: country });
     }
 
 
@@ -90,7 +90,7 @@ class App extends React.Component {
                     <Chart data={data} country={country} />
                 </div>
             </div>
-        )
+        );
     }
 
 }

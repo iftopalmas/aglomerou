@@ -4,13 +4,13 @@ import { Line } from 'react-chartjs-2';
 
 import styles from './Grafico.module.css';
 
-const Grafico = ({ data: { confirmed, deaths, recovered }, country }) => {
+const Grafico = ({ country }) => {
     const [dailyData, setDailyData] = useState([]);
 
     useEffect(() => {
         const fetchAPI = async () => {
             setDailyData(await fetchDailyData());
-        }
+        };
 
         fetchAPI();
     }, []);
@@ -41,7 +41,7 @@ const Grafico = ({ data: { confirmed, deaths, recovered }, country }) => {
         <div className={styles.container}>
             {country ? 'Loading...' : lineChart }
         </div>
-    )
+    );
 }
 
 export default Grafico;
