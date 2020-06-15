@@ -9,22 +9,22 @@ import api from '../service/api';
 export default class LocalizacaoDispositivo extends Component {
 
     componentDidMount() {
-        setInterval(() => {
-         this.localizacao();
-        }, 30000);
-       }
+        setInterval(() => this.localizacao(), 30000);
+    }
     
     localizacao = async () => {
         const { status } = await Location.requestPermissionsAsync();
         if (status !== 'granted') {
             setErrorMsg('A permissão para acessar o local foi negada');
+            return;
         }
 
-        const idDispositivo = Constants.installationId;
+        const uid = Constants.installationId;
         const location = await Location.getLastKnownPositionAsync();
         try {
-            const response = await api.post('/localizacao/' + idDispositivo + '/' + location.coords.latitude
-            +'/'+location.coords.longitude);
+            const {latitude, longitude} = location.coords;
+            const response = await api.post(`/localizacao/${uid}/${latitude}/${longitude}`);
+            console.log(`Enviando localização: UID ${uid} Lat/Long: ${latitude}/${longitude}`);
         } catch (error) {
             alert(error);
         }
@@ -34,9 +34,7 @@ export default class LocalizacaoDispositivo extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Projeto Aglomerou, pegando localização do 
-                    dispositivo
-                </Text>
+                <Text>Projeto Aglomerou, pegando localização do dispositivo</Text>
             </View>
         );
     }
