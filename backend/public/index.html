@@ -4,12 +4,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aglomerou?</title>
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </head>
 <body>
     <h1>Aglomerou?</h1>
 
     <p>
         <a href="/api-docs/">Swagger UI: Documentação e Teste da API REST.</a>
-    </p>        
+    </p>
+
+    <form id="inserir-form">
+        <div id="uid"></div>
+        <div class="form-group">
+            <div class="g-recaptcha" data-sitekey="6LdvnlMUAAAAAKwtucdOIuYPT2zsVPSCUp3QswKw"></div>
+        </div>
+        <input type="submit" value="Submit">
+        <div id="message"></div>
+    </form>    
 </body>
 </html>
+
+<script>
+const submitForm = async e => {
+        e.preventDefault();
+
+        const captcha = document.querySelector('#g-recaptcha-response').value;
+        try{
+            const res = await fetch(`/dispositivo/${uid}/android`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json, text/plain, /',
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ captcha })
+            });
+
+            const data = await res.json();
+            if(res.status !== 201)
+               throw new Error(data.message);
+            document.getElementById('message').innerHTML = data.message; 
+        } catch(error){
+            document.getElementById('message').innerHTML = error;
+        }
+    };
+
+    document.getElementById('inserir-form').addEventListener('submit', submitForm);
+    const uid = Math.round(Math.random() * 100000);
+    document.getElementById('uid').innerHTML = `ID de dispositivo gerado aleatoriamente: ${uid}`; 
+</script>

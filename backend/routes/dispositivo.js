@@ -44,6 +44,11 @@ router.get('/:uid', controller.get);
  *        description: Tipo do dispositivo
  *        required: true
  *        type: string
+ *      - name: captcha
+ *        in: body
+ *        description: Código de validação do CAPTCHA
+ *        required: true
+ *        type: string
  *    description: Registra um dispositivo com um determinado UID (Unique Identifier)
  *    responses:
  *      '201': 
