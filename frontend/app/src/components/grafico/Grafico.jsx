@@ -8,9 +8,7 @@ const Grafico = ({ country }) => {
     const [dailyData, setDailyData] = useState([]);
 
     useEffect(() => {
-        const fetchAPI = async () => {
-            setDailyData(await fetchDailyData());
-        };
+        const fetchAPI = async () => setDailyData(await fetchDailyData());
 
         fetchAPI();
     }, []);
@@ -39,7 +37,7 @@ const Grafico = ({ country }) => {
 
     return (
         <div className={styles.container}>
-            {country ? 'Loading...' : lineChart }
+            {country ? 'Carregando...' : lineChart }
         </div>
     );
 }
