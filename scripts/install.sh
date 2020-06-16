@@ -31,3 +31,7 @@ echo ""; echo "## REABRA O TERMINAL SE NÃO CONSEGUIR USAR nvm, node ou npm"; ec
 # FERRAMENTAS PARA O APP MOBILE
 
 npm install expo-cli --global
+
+# FERRAMENTAS DO FRONT-END
+
+npm install -g create-react-app
