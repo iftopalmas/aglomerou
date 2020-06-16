@@ -22,6 +22,7 @@ git rebase dev
 ```
 
 O `git rebase` vai manter o histórico de commits linear, melhor organizando a "timeline" do repositório.
+Se desejar entender mais sobre o comando, veja [este artigo curto](https://www.treinaweb.com.br/blog/git-merge-e-git-rebase-quando-usa-los/) que deixa bem claro.
 
 ## 2. Enviando as atualizações no seu branch pro GitHub
 
