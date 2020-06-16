@@ -18,6 +18,18 @@ const controller = require('../controllers/localizacao.controller');
  */
 router.get('/:uid', controller.getUltimaLocalizacao);
 
+
+/**
+ * @swagger
+ * /localizacao:
+ *  get: 
+ *    description: Obtém a última localização de todos os dispositivos registrados
+ *    responses:
+ *      '200': 
+ *        description: Localização dos dispositivos obtidas com sucesso 
+ */
+router.get('/', controller.getUltimaLocalizacaoTodos);
+
 /**
  * @swagger
  * /localizacao/{uid}/{lat}/{long}:
