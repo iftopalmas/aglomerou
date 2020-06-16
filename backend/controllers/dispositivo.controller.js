@@ -16,10 +16,10 @@ exports.total = async (req, res) => {
 exports.get = async (req, res) => {
     const client = await db.connect();
     try {
-        const resultado = await client.query(
-            " SELECT uid, tipo, data_hora_cadastro " +
-            " FROM dispositivo WHERE uid = $1 ",
-            [req.params.uid]);
+        const sql =
+            `SELECT uid, tipo, data_hora_cadastro 
+             FROM dispositivo WHERE uid = $1 `;
+        const resultado = await client.query(sql, [req.params.uid]);
 
         if(resultado.rowCount > 0)
             res.status(200).send(resultado.rows[0]);
@@ -37,7 +37,7 @@ exports.inserir = async (req, res) => {
     const client = await db.connect();
     try {
         await client.query(
-            " INSERT INTO dispositivo ( uid, tipo ) VALUES ( $1, $2 )",
+            "INSERT INTO dispositivo ( uid, tipo ) VALUES ( $1, $2 )",
             [uid, tipo]
         );
 
