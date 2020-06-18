@@ -22,7 +22,17 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "config": {
+        "googleMapsApiKey": "precisa obter a chave a partir de uma variável de ambiente. No mobile foi process.env.REACT_APP_GOOGLE_MAPS_API_KEY, mas era dentro de um arquivo js"
+      }
+    },
+    "android": {
+      "config": {
+        "googleMaps": {
+          "apiKey": "precisa obter a chave a partir de uma variável de ambiente. No mobile foi process.env.REACT_APP_GOOGLE_MAPS_API_KEY, mas era dentro de um arquivo js"
+        }
+      }
     }
   }
 }
