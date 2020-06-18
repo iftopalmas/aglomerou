@@ -12,7 +12,7 @@ e incluir suas alterações no topo de tal branch:
 git checkout dev
 
 # Obter as últimas atualizações do branch dev
-git pull dev
+git pull
 
 # Voltar para o branch da issue que você está resolvendo
 git checkout issue-XYZ
