@@ -37,7 +37,7 @@ create table localizacao_dispositivo (
     longitude varchar(20) not null,
     data_hora_ultima_atualizacao timestamp default CURRENT_TIMESTAMP,
 
-    constraint fk_localizacao_dispositivo foreign key (uid) references dispositivo(uid)
+    constraint fk_localizacao_dispositivo foreign key (uid) references dispositivo(uid) on delete cascade
 );
 
 comment on column localizacao_dispositivo.latitude is 'Latitude em Graus Decimais';
