@@ -2,17 +2,29 @@ const db = require("../config/db");
 const { inRange, serverError } = require("../util");
 
 exports.getUltimaLocalizacao = async (req, res) => {
+    const uid = req.params.uid;
     const client = await db.connect();
     try {
-        const sql =
-            `SELECT id, uid, latitude, longitude, data_hora_ultima_atualizacao
-             FROM localizacao_dispositivo
-             WHERE uid = $1 order by id desc limit 1`;
-        const resultado = await client.query(sql, [req.params.uid]);
 
-        if(resultado.rowCount > 0)
-            res.status(200).send(resultado.rows[0]);
-        else res.status(404).send({message: "Dispositivo não localizado!"});
+        const sql = `SELECT bloqueado FROM dispositivo WHERE uid = $1 `;
+        const resultado = await client.query(sql, [uid]);
+
+        if(resultado.rowCount > 0) {
+            console.log({message:`Dispositivo retornado no uid: ${uid}`, bloqueado: resultado.rows[0].bloqueado})
+            if(!resultado.rows[0].bloqueado) {
+
+                const resultado = await client.query(
+                    'SELECT id, uid, latitude, longitude, data_hora_ultima_atualizacao FROM localizacao_dispositivo WHERE uid = $1 order by id desc limit 1',
+                    [uid]);
+                console.log(resultado.rows[0])
+
+                if(resultado.rowCount > 0)
+                    res.status(200).send(resultado.rows[0]);
+                else res.status(404).send({message: "Dispositivo não localizado!"});
+
+            } else res.status(404).send({message: 'Dispositivo bloqueado!'});
+        } else res.status(404).send({message: 'Dispositivo não localizado!'});
+
     } catch (error) {
         serverError(res, error);
     } finally{
@@ -29,7 +41,7 @@ exports.getUltimaLocalizacaoTodos = async (req, res) => {
              from localizacao_dispositivo l where l.id = 
              (select max(l2.id) from localizacao_dispositivo as l2 
               where l2.uid = l.uid and 
-              extract(epoch from (current_timestamp - l2.data_hora_ultima_atualizacao)) <= $1)`;        
+              extract(epoch from (current_timestamp - l2.data_hora_ultima_atualizacao)) <= $1)`;
         const resultado = await client.query(sql, [seconds]);
 
         res.status(200).send(resultado.rows);
