@@ -6,24 +6,24 @@ exports.getUltimaLocalizacao = async (req, res) => {
     const client = await db.connect();
     try {
 
-        const sql = `SELECT bloqueado FROM dispositivo WHERE uid = $1 `;
+        const sql = 'SELECT bloqueado FROM dispositivo WHERE uid = $1 ';
         const resultado = await client.query(sql, [uid]);
 
         if(resultado.rowCount > 0) {
-            console.log({message:`Dispositivo retornado no uid: ${uid}`, bloqueado: resultado.rows[0].bloqueado})
+            console.log({message:`Dispositivo retornado no uid: ${uid}`, bloqueado: resultado.rows[0].bloqueado});
             if(!resultado.rows[0].bloqueado) {
 
                 const resultado = await client.query(
                     'SELECT id, uid, latitude, longitude, data_hora_ultima_atualizacao FROM localizacao_dispositivo WHERE uid = $1 order by id desc limit 1',
                     [uid]);
-                console.log(resultado.rows[0])
+                console.log(resultado.rows[0]);
 
                 if(resultado.rowCount > 0)
                     res.status(200).send(resultado.rows[0]);
-                else res.status(404).send({message: "Dispositivo não localizado!"});
+                else {res.status(404).send({message: "Dispositivo não localizado!"});}
 
-            } else res.status(404).send({message: 'Dispositivo bloqueado!'});
-        } else res.status(404).send({message: 'Dispositivo não localizado!'});
+            } else {res.status(404).send({message: 'Dispositivo bloqueado!'});}
+        } else {res.status(404).send({message: 'Dispositivo não localizado!'});}
 
     } catch (error) {
         serverError(res, error);
@@ -65,11 +65,14 @@ exports.inserir = async (req, res) => {
         return;
     }
 
-    const client = await db.connect();        
+    const client = await db.connect();
     try {
+
         const sql =
             `INSERT INTO localizacao_dispositivo (uid, latitude, longitude)
-             VALUES ( $1, $2, $3 )`;
+             SELECT $1, $2, $3 
+             FROM dispositivo
+             WHERE bloqueado = false`;
         await client.query(sql, [uid, lat, long]);
 
         res.status(201).send({message: "Localização inserida com Sucesso!"});
