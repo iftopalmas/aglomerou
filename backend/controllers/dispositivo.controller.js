@@ -17,14 +17,15 @@ exports.total = async (req, res) => {
 exports.get = async (req, res) => {
     const client = await db.connect();
     try {
-        const sql =
-            `SELECT uid, tipo, data_hora_cadastro 
-             FROM dispositivo WHERE uid = $1 `;
+        const sql = `SELECT uid, tipo, bloqueado, data_hora_cadastro FROM dispositivo WHERE uid = $1 `;
         const resultado = await client.query(sql, [req.params.uid]);
 
-        if(resultado.rowCount > 0)
-            res.status(200).send(resultado.rows[0]);
-        else res.status(404).send({message: 'Dispositivo não localizado!'});
+        if(resultado.rowCount > 0) {
+            console.log({message:`Dispositivo retornado no uid: ${req.params.uid}`, bloqueado: resultado.rows[0].bloqueado})
+            if(!resultado.rows[0].bloqueado)
+                res.status(200).send(resultado.rows[0]);
+            else res.status(404).send({message: 'Dispositivo bloqueado!'});
+        } else res.status(404).send({message: 'Dispositivo não localizado!'});
     } catch (error) {
         serverError(res, error);
     } finally{
@@ -47,7 +48,7 @@ exports.inserir = async (req, res) => {
     if(!response.data.success) {
         const msg = {success: false, message: 'Falha na verificação do captcha!'};
         console.log(msg);
-        
+
         return res.status(401).json(msg);
     }
 
@@ -55,6 +56,10 @@ exports.inserir = async (req, res) => {
 
     const client = await db.connect();
     try {
+
+        const sql = `SELECT bloqueado FROM dispositivo WHERE uid = $1 `;
+        const resultado = await client.query(sql, uid);
+
         await client.query(
             'INSERT INTO dispositivo ( uid, tipo ) VALUES ( $1, $2 )',
             [uid, tipo]
