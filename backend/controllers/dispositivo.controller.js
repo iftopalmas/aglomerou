@@ -57,9 +57,6 @@ exports.inserir = async (req, res) => {
     const client = await db.connect();
     try {
 
-        const sql = `SELECT bloqueado FROM dispositivo WHERE uid = $1 `;
-        const resultado = await client.query(sql, uid);
-
         await client.query(
             'INSERT INTO dispositivo ( uid, tipo ) VALUES ( $1, $2 )',
             [uid, tipo]
