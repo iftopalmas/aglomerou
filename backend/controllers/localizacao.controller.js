@@ -10,13 +10,11 @@ exports.getUltimaLocalizacao = async (req, res) => {
         const resultado = await client.query(sql, [uid]);
 
         if(resultado.rowCount > 0) {
-            console.log({message:`Dispositivo retornado no uid: ${uid}`, bloqueado: resultado.rows[0].bloqueado});
             if(!resultado.rows[0].bloqueado) {
 
                 const resultado = await client.query(
                     'SELECT id, uid, latitude, longitude, data_hora_ultima_atualizacao FROM localizacao_dispositivo WHERE uid = $1 order by id desc limit 1',
                     [uid]);
-                console.log(resultado.rows[0]);
 
                 if(resultado.rowCount > 0)
                     res.status(200).send(resultado.rows[0]);
@@ -75,7 +73,7 @@ exports.inserir = async (req, res) => {
              WHERE bloqueado = false`;
         await client.query(sql, [uid, lat, long]);
 
-        res.status(201).send({message: "Localização inserida com Sucesso!"});
+        res.status(201).send({message: 'Localização inserida com Sucesso!'});
      } catch (error) {
         if(error.message.includes('fk_localizacao_dispositivo'))
             res.status(403).send({message: "Dispositivo não cadastrado!"});
