@@ -19,10 +19,12 @@ comment on table usuario is 'Usuários que podem acessar o dashboard web para ad
 create table dispositivo (
     uid varchar(200) not null primary key,
     tipo varchar(100) not null,
+    bloqueado boolean not null default false,
     data_hora_cadastro timestamp default CURRENT_TIMESTAMP
 );
 
 comment on table dispositivo is 'Dispositivos móveis usados pelo app (representando as pessoas que o utilizam)';
+comment on column bloqueado is 'Se marcado como true ira recusar as requisições de tal dispositivo';
 
 -- Os campos latitude e longitude são representados em Graus Decimais,
 -- mas não sei se a quantidade de casas é exata.
