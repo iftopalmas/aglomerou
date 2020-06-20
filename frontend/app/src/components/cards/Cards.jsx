@@ -13,7 +13,7 @@ import {
 
 const Cards = ({ data: { confirmed, recovered, deaths, lastUpdate } }) => {
     if (!confirmed) {
-        return 'Loading...';
+        return 'Carregando...';
     }
     return (
         <div className={styles.container}>

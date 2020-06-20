@@ -12,13 +12,12 @@ const mapContainerStyle = {
 };
 const center = {
     lat: -10.184510,
-    lng: -48.334660,
+    lng: -48.334660
 };
 
 const options = {
-    styles: mapStyles,
+    styles: mapStyles
 };
-
 
 export default function App() {
     const { isLoaded, loadError } = useLoadScript({
@@ -38,5 +37,3 @@ export default function App() {
         </GoogleMap>
     </div>;
 }
-
-
