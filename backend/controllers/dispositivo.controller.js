@@ -62,10 +62,8 @@ exports.inserir = async (req, res) => {
 
     const client = await db.connect();
     try {
-        await client.query(
-            'INSERT INTO dispositivo ( uid, tipo ) VALUES ( $1, $2 )',
-            [uid, tipo]
-        );
+        const sql = 'INSERT INTO dispositivo ( uid, tipo ) VALUES ( $1, $2 )';
+        await client.query(sql, [uid, tipo]);
 
         const msg = {message: 'Dispositivo registrado com Sucesso!'};
         console.log(msg);
