@@ -5,18 +5,26 @@ exports.getUltimaLocalizacao = async (req, res) => {
     const uid = req.params.uid;
     const client = await db.connect();
     try {
-
-        const sql = `SELECT LD.id, LD.uid, LD.latitude, LD.longitude, LD.data_hora_ultima_atualizacao
-                    FROM localizacao_dispositivo as LD
-                    LEFT JOIN dispositivo as D
-                    on LD.uid = D.uid
-                    WHERE ( D.bloqueado = true AND D.uid = $1 )
-                    order by id desc limit 1`;
+        const sql = `SELECT LD.id, D.uid, D.bloqueado, LD.latitude, LD.longitude, LD.data_hora_ultima_atualizacao
+                    FROM dispositivo as D
+                    LEFT JOIN localizacao_dispositivo as LD on LD.uid = D.uid
+                    WHERE D.uid = $1
+                    order by LD.id desc limit 1`;
         const resultado = await client.query(sql, [uid]);
 
-        if(resultado.rowCount > 0) { res.status(200).send(resultado.rows[0]); }
-        else { res.status(404).send({message: 'Dispositivo não localizado ou Bloqueado!'}); }
+        if(resultado.rowCount === 0) { 
+            return res.status(404).send({message: 'Dispositivo não localizado!'});
+        }
 
+        if(resultado.rows[0].bloqueado){
+            return res.status(401).send({message: 'Dispositivo bloqueado!'});
+        }
+
+        if(resultado.rows[0].id){
+            delete resultado.rows[0].bloqueado;
+            res.status(200).send(resultado.rows[0]);             
+        }
+        else { res.status(404).send({message: 'Nenhuma localização ainda registrada para o dispositivo!'}); }
     } catch (error) {
         serverError(res, error);
     } finally{
