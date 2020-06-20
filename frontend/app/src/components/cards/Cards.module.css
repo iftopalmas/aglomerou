@@ -23,7 +23,5 @@
 }
 
 @media (max-width: 770px) {
-  .card {
-    margin: 2%;
-  }
+  .card { margin: 2%; }
 }

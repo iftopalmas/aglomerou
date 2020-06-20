@@ -64,7 +64,7 @@ export default [
     },
     {
         'featureType': 'road',
-        "'elementType'": 'geometry.stroke',
+        'elementType': 'geometry.stroke',
         'stylers': [
             {
                 'visibility': 'off'

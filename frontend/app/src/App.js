@@ -14,8 +14,8 @@ class App extends React.Component {
     async componentDidMount() {
         const fetchedData = await fetchData();
 
-        this.setState({ data: fetchedData })
-    }
+        this.setState({ data: fetchedData });
+    };
 
     render() {
         const { data } = this.state;
@@ -26,7 +26,7 @@ class App extends React.Component {
                 <Maps/>
             </div>
         );
-    };
+    }
 };
 
 export default App;

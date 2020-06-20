@@ -1,7 +1,7 @@
 import React from 'react';
 import {
-  GoogleMap,
-  useLoadScript,
+    GoogleMap,
+    useLoadScript,
 } from '@react-google-maps/api';
 import mapStyles from './mapStyles';
 
@@ -26,8 +26,8 @@ export default function App() {
         libraries
     });
 
-    if (loadError) return 'Error loading Maps';
-    if (!isLoaded) return 'Loading Maps';
+    if (loadError) { return 'Error loading Maps'; }
+    if (!isLoaded) { return 'Loading Maps'; }
 
     return <div>
         <GoogleMap
