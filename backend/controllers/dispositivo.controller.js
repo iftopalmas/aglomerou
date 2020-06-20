@@ -22,9 +22,9 @@ exports.get = async (req, res) => {
 
         if(resultado.rowCount > 0) {
             console.log({message:`Dispositivo retornado no uid: ${req.params.uid}`, bloqueado: resultado.rows[0].bloqueado});
-            if(!resultado.rows[0].bloqueado)
-                res.status(200).send(resultado.rows[0]);
-            else { res.status(404).send({message: 'Dispositivo bloqueado!'}); }
+            if(resultado.rows[0].bloqueado)
+                res.status(404).send({message: 'Dispositivo bloqueado!'});
+            else { res.status(200).send(resultado.rows[0]); }
         } else { res.status(404).send({message: 'Dispositivo não localizado!'}); }
     } catch (error) {
         serverError(res, error);
