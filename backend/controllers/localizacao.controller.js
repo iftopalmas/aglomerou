@@ -69,13 +69,11 @@ exports.inserir = async (req, res) => {
         const resultado = await client.query(sql, [uid]);
 
         if(resultado.rowCount > 0) {
-            if(!resultado.rows[0].bloqueado) {
-
+            if(resultado.rows[0].bloqueado) {res.status(404).send({message: 'Dispositivo bloqueado!'});}
+            else {
                 await client.query('INSERT INTO localizacao_dispositivo (uid, latitude, longitude) VALUES ($1, $2, $3)', [uid, lat, long]);
-
                 res.status(201).send({message: 'Localização inserida com Sucesso!'});
-
-            } else {res.status(404).send({message: 'Dispositivo bloqueado!'});}
+            }
         } else {res.status(404).send({message: 'Dispositivo não localizado!'});}
 
      } catch (error) {
