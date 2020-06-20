@@ -5,6 +5,7 @@ import Cards from './components/cards/Cards.jsx';
 import Header from './components/header/Header.jsx';
 import Maps from './maps';
 
+
 class App extends React.Component {
     state = {
         data: {},
@@ -14,21 +15,18 @@ class App extends React.Component {
         const fetchedData = await fetchData();
 
         this.setState({ data: fetchedData })
-    };
-    
+    }
+
     render() {
         const { data } = this.state;
-
         return (
-            <div container="true" className={styles.container}>
+            <div className={styles.container}>
                 <Header>{Header}</Header>
                 <Cards data={data} />
-                <Maps />;
+                <Maps/>
             </div>
         );
     };
-
 };
-
 
 export default App;

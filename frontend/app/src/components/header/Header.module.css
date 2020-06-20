@@ -1,16 +1,17 @@
 .header {
-    display: flex;
-    flex-direction: row;
-    align-self: center;
-    justify-content: center;
-    padding: 10px 20px 10px 20px;
-    border-color: 2px solid red;
-  
-  }
-  
-  .header-right { float: right; }
-  
-  .image {
-    width: 200px;
-    margin-top: 20px;
-  }
+  display: flex;
+  flex-direction: row;
+  align-self: center;
+  justify-content: center;
+  padding: 10px 20px 10px 20px;
+  border-color: 2px solid red;
+}
+
+.header-right {
+  float: right;
+}
+
+.image {
+  width: 200px;
+  margin-top: 20px;
+}

@@ -6,7 +6,6 @@ body {
   display: flex;
   flex-direction: column;
   border-color: 2px solid red;
-
 }
 
 .image {
