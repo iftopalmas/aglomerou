@@ -6,22 +6,16 @@ exports.getUltimaLocalizacao = async (req, res) => {
     const client = await db.connect();
     try {
 
-        const sql = 'SELECT bloqueado FROM dispositivo WHERE uid = $1 ';
+        const sql = `SELECT LD.id, LD.uid, LD.latitude, LD.longitude, LD.data_hora_ultima_atualizacao
+                    FROM localizacao_dispositivo as LD
+                    LEFT JOIN dispositivo as D
+                    on LD.uid = D.uid
+                    WHERE ( D.bloqueado = true AND D.uid = $1 )
+                    order by id desc limit 1`;
         const resultado = await client.query(sql, [uid]);
 
-        if(resultado.rowCount > 0) {
-            if(!resultado.rows[0].bloqueado) {
-
-                const resultado = await client.query(
-                    'SELECT id, uid, latitude, longitude, data_hora_ultima_atualizacao FROM localizacao_dispositivo WHERE uid = $1 order by id desc limit 1',
-                    [uid]);
-
-                if(resultado.rowCount > 0)
-                    res.status(200).send(resultado.rows[0]);
-                else {res.status(404).send({message: 'Dispositivo não localizado!'});}
-
-            } else {res.status(404).send({message: 'Dispositivo bloqueado!'});}
-        } else {res.status(404).send({message: 'Dispositivo não localizado!'});}
+        if(resultado.rowCount > 0) { res.status(200).send(resultado.rows[0]); }
+        else { res.status(404).send({message: 'Dispositivo não localizado ou Bloqueado!'}); }
 
     } catch (error) {
         serverError(res, error);
@@ -65,6 +59,7 @@ exports.inserir = async (req, res) => {
 
     const client = await db.connect();
     try {
+
         const sql = 'SELECT bloqueado FROM dispositivo WHERE uid = $1 ';
         const resultado = await client.query(sql, [uid]);
 
