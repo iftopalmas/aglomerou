@@ -67,18 +67,19 @@ exports.inserir = async (req, res) => {
 
     const client = await db.connect();
     try {
-
         const sql = 'SELECT bloqueado FROM dispositivo WHERE uid = $1 ';
         const resultado = await client.query(sql, [uid]);
 
-        if(resultado.rowCount > 0) {
-            if(resultado.rows[0].bloqueado) {res.status(404).send({message: 'Dispositivo bloqueado!'});}
-            else {
-                await client.query('INSERT INTO localizacao_dispositivo (uid, latitude, longitude) VALUES ($1, $2, $3)', [uid, lat, long]);
-                res.status(201).send({message: 'Localização inserida com Sucesso!'});
-            }
-        } else {res.status(404).send({message: 'Dispositivo não localizado!'});}
+        if(resultado.rowCount === 0) {
+            return res.status(404).send({message: 'Dispositivo não localizado!'});
+        }
 
+        if(resultado.rows[0].bloqueado) {
+            res.status(404).send({message: 'Dispositivo bloqueado!'});
+        } else {
+            await client.query('INSERT INTO localizacao_dispositivo (uid, latitude, longitude) VALUES ($1, $2, $3)', [uid, lat, long]);
+            res.status(201).send({message: 'Localização inserida com Sucesso!'});
+        }
      } catch (error) {
         if(error.message.includes('fk_localizacao_dispositivo'))
             res.status(403).send({message: 'Dispositivo não cadastrado!'});
