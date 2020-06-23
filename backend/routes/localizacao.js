@@ -32,6 +32,34 @@ router.get('/', controller.getUltimaLocalizacaoTodos);
 
 /**
  * @swagger
+ * /localizacao:
+ *  get:
+ *    parameters:
+ *      - name: latitude
+ *        in: path
+ *        description: latitude da localização do dispositivo
+ *        required: true
+ *        type: number
+ *        minimum: -90
+ *        maximum: 90
+ *      - name: longitude
+ *        in: path
+ *        description: longitude da localização do dispositivo
+ *        required: true
+ *        type: number
+ *        minimum: -180
+ *        maximum: 180
+ *    description: Obtém o Tempo médio de parmanência das pessoas por local
+ *    responses:
+ *      '200':
+ *        description: Tempo médio de parmanência dos dispositivos obtidas com sucesso
+ *      '422':
+ *        description: Latitude ou longitude inválida.
+ */
+router.get('/tempo-medio-permanencia/:latitude/:longitude', controller.getTempoMedioPermanencia);
+
+/**
+ * @swagger
  * /localizacao/{uid}/{lat}/{long}:
  *  post: 
  *    parameters:
