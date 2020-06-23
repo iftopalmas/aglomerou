@@ -1,11 +1,10 @@
 {
   "expo": {
-    "name": "app",
-    "slug": "app",
+    "name": "Aglomerou",
+    "slug": "Aglomerou",
     "platforms": [
       "ios",
-      "android",
-      "web"
+      "android"
     ],
     "version": "1.0.0",
     "orientation": "portrait",
@@ -22,12 +21,14 @@
       "**/*"
     ],
     "ios": {
+      "bundleIdentifier": "br.edu.ifto.aglomerou",
       "supportsTablet": true,
       "config": {
         "googleMapsApiKey": "precisa obter a chave a partir de uma variável de ambiente. No mobile foi process.env.REACT_APP_GOOGLE_MAPS_API_KEY, mas era dentro de um arquivo js"
       }
     },
     "android": {
+      "package": "br.edu.ifto.aglomerou",
       "config": {
         "googleMaps": {
           "apiKey": "precisa obter a chave a partir de uma variável de ambiente. No mobile foi process.env.REACT_APP_GOOGLE_MAPS_API_KEY, mas era dentro de um arquivo js"

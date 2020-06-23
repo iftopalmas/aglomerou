@@ -7,7 +7,7 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "build-android": "expo build:android -t app-bundle",
-    "publish": "publish"    
+    "publish": "publish"
   },
   "dependencies": {
     "axios": "^0.19.2",
