@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import IdDispositivo from './componentes/IdDispositivo'
@@ -5,10 +6,11 @@ import LocalizacaoDispositivo from './componentes/LocalizacaoDispositivo'
 import MapView from 'react-native-maps';
 import Constants from 'expo-constants'
 
-//Usando Constants
-console.log(Constants.manifest.extra.googleApiKey)
-//usando .env padrão
-console.log(process.env.REACT_NATIVE_GOOGLE_MAPS_API_KEY)
+console.log('----------------------------------------------------------------------------------------');
+console.log('Constants.manifest.name                             ', Constants.manifest.name)
+console.log('Constants.manifest.ios.config.googleMapsApiKey      ', Constants.manifest.ios.config.googleMapsApiKey)
+console.log('Constants.manifest.android.config.googleMaps.apiKey ', Constants.manifest.android.config.googleMaps.apiKey)
+console.log('----------------------------------------------------------------------------------------\n');
 
 export default function App() {
   return (
