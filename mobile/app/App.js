@@ -3,6 +3,10 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import IdDispositivo from './componentes/IdDispositivo'
 import LocalizacaoDispositivo from './componentes/LocalizacaoDispositivo'
 import MapView from 'react-native-maps';
+import Constants from 'expo-constants'
+
+console.log(Constants.manifest.extra.googleApiKey)
+console.log(process.env.REACT_NATIVE_GOOGLE_MAPS_API_KEY)
 
 export default function App() {
   return (
