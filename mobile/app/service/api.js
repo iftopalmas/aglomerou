@@ -1,7 +1,8 @@
 import axios from 'axios';
+import Constants from 'expo-constants'
 
 const api = axios.create({
-    baseURL: 'http://localhost:8080'
+    baseURL: Constants.manifest.extra.addressApiAglomerou
 });
 
 export default api;
