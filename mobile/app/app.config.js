@@ -1,4 +1,4 @@
-import { REACT_NATIVE_GOOGLE_MAPS_API_KEY } from 'react-native-dotenv'
+import { REACT_NATIVE_GOOGLE_MAPS_API_KEY, REACT_NATIVE_ADDRESS_API_AGLOMEROU } from 'react-native-dotenv'
 
 export default {
     name: "Aglomerou",
@@ -36,5 +36,8 @@ export default {
           apiKey: REACT_NATIVE_GOOGLE_MAPS_API_KEY
         }
       }
+    },
+    extra: {
+        addressApiAglomerou: REACT_NATIVE_ADDRESS_API_AGLOMEROU
     }
 }
