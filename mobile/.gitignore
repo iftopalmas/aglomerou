@@ -7,3 +7,19 @@
 .orig.
 web-build/
 web-report/
+
+*.keystore
+
+# Ignore Gradle project-specific cache directory
+.gradle/
+
+# Ignore Gradle build output directory
+build/
+
+# Ignora arquivos de projeto Gradle criados pelo VS Code
+.project
+.settings/
+
+# Ignora arquivos de projeto Gradle criados pelo VS Code
+.project
+.settings/
