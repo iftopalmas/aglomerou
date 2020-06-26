@@ -41,6 +41,11 @@ build/Release
 node_modules/
 jspm_packages/
 
+# Ignora os arquivos package-lock.json pois 
+# está sendo usando yarn em todos os projetos,
+# logo devem existir arquivos yarn.lock no lugar deste
+package-lock.json
+
 # TypeScript v1 declaration files
 typings/
 

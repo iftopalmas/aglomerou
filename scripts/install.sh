@@ -18,7 +18,7 @@ export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || pr
 
 # Instala o Node.js
 echo ""; echo "## INSTALANDO VERSÃO DO NODE DEFINIDA EM .nvmrc"; echo ""
-nvm install `cat backend/.nvmrc`
+nvm install `cat ../backend/.nvmrc`
 
 # Coloca em uso a versão instalada do node
 echo ""; echo "## USANDO VERSÃO DO NODE DEFINIDA EM .nvmrc"; echo ""
@@ -27,11 +27,14 @@ nvm use
 source ~/.bashrc
 echo ""; echo "## REABRA O TERMINAL SE NÃO CONSEGUIR USAR nvm, node ou npm"; echo ""
 
+# FERRAMENTAS PARA O BACKEND
+
+yarn global add nodemon
 
 # FERRAMENTAS PARA O APP MOBILE
 
-npm install expo-cli --global
+yarn global add expo-cli
 
 # FERRAMENTAS DO FRONT-END
 
-npm install -g create-react-app
+#yarn global add create-react-app
