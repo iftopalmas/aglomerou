@@ -10,23 +10,22 @@ export default class App extends React.Component {
   state = {
     codigoVerificacao: null,
   };
+
   onMessage = event => {
     if (event && event.nativeEvent.data) {
       if (['Cancelar', 'error', 'expired'].includes(event.nativeEvent.data)) {
         this.captchaForm.hide();
         return;
-      } else {
-        console.log('Código de verificação do Google', event.nativeEvent.data);
-        this.setState({ codigoVerificacao: event.nativeEvent.data });
-        setTimeout(() => {this.captchaForm.hide();
-          
-        }, 1500);
-      }
+      } 
+      
+      console.log('Código de verificação do Google', event.nativeEvent.data);
+      this.setState({ codigoVerificacao: event.nativeEvent.data });
+      setTimeout(() => this.captchaForm.hide(), 1500);      
     }
   };
 
   render() {
-    let { codigoVerificacao } = this.state;
+    const { codigoVerificacao } = this.state;
     return (
       <View style={styles.container}>
         <ConfirmGoogleCaptcha
@@ -38,9 +37,7 @@ export default class App extends React.Component {
         />
 
         <TouchableOpacity
-          onPress={() => {
-            this.captchaForm.show();
-          }}>
+          onPress={() => this.captchaForm.show()}>
           <Text style={styles.paragraph}>Clicar</Text>
         </TouchableOpacity>
 
