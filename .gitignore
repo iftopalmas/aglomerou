@@ -46,6 +46,10 @@ jspm_packages/
 # logo devem existir arquivos yarn.lock no lugar deste
 package-lock.json
 
+# Se existir um arquivo yarn.lock na raíz do de todos os projetos
+# então o comando yarn install foi executado no lugar errado
+./yarn.lock
+
 # TypeScript v1 declaration files
 typings/
 
