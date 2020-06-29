@@ -5,7 +5,7 @@
 
 clear
 
-#sdk use java 8.0.252-zulu      
+#sdk use java 8.0.252-zulu   
 JDK_VERSION=`javac -version`
 if [[ $? -eq 0 ]]; then
     echo $JDK_VERSION
@@ -54,8 +54,7 @@ fi;
 
 turtle setup:android
 
-#expo build:android -t apk
-#expo publish
+expo publish
 
 turtle build:android -t apk \
        --keystore-path ./Aglomerou.jks \
