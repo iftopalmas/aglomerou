@@ -1,0 +1,12 @@
+{
+    "expo": {
+     "name": "Aglomerou",
+     "icon": "./app/assets/icon.png",
+     "version": "1.0.0",
+     "slug": "Aglomerou",
+     "android": {
+       "package": "br.edu.ifto.aglomerou",
+       "versionCode": 1
+     }
+    }
+  }
