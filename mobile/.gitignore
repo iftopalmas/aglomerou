@@ -7,3 +7,8 @@
 .orig.
 web-build/
 web-report/
+
+# O arquivo foi alterado para app.config.js e usa env vars para não expor dados sigilosos.
+# No entanto, o build do apk co turtle-cli aparentemente só funciona
+# com o arquivo app.json que precisa incluir todos os dados, até estes sigilosos. 
+app.json
