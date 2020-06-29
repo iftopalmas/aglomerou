@@ -52,9 +52,12 @@ if [[ -z "$EXPO_PASSWORD" ]]; then
     exit -1
 fi;
 
-expo build:android -t apk
+turtle setup:android
+
+#expo build:android -t apk
 #expo publish
 
-turtle build:android --keystore-path ./Aglomerou.jks \
-       --keystore-alias $EXPO_KEYSTORE_ALIAS -c app.config.js \
+turtle build:android -t apk \
+       --keystore-path ./Aglomerou.jks \
+       --keystore-alias $EXPO_KEYSTORE_ALIAS -c app.json \
        -u $EXPO_USERNAME -p $EXPO_PASSWORD
