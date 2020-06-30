@@ -9,9 +9,8 @@ export default function App() {
   return (
     <View style={styles.container}>
       <IdDispositivo />
-      <LocalizacaoDispositivo/>
-
       <MapView style={styles.mapStyle} />
+      <LocalizacaoDispositivo/>
     </View>
   );
 }
