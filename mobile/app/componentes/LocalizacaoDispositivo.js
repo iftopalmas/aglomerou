@@ -6,8 +6,9 @@ import * as Location from 'expo-location';
 import api from '../service/api';
 
 export default class LocalizacaoDispositivo extends Component {
-
+    
     componentDidMount() {
+        this.localizacao();
         setInterval(() => this.localizacao(), 30000);
     }
     
@@ -17,9 +18,8 @@ export default class LocalizacaoDispositivo extends Component {
             setErrorMsg('A permissão para acessar a localização do dispositivo foi negada!');
             return;
         }
-
         const uid = Constants.installationId;
-        const location = await Location.getLastKnownPositionAsync();
+        const location = await Location.getCurrentPositionAsync();
         try {
             const {latitude, longitude} = location.coords;
             const url = `/localizacao/${uid}/${latitude}/${longitude}`;
