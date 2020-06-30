@@ -38,6 +38,6 @@ export default {
       }
     },
     extra: {
-        addressApiAglomerou: REACT_NATIVE_ADDRESS_API_AGLOMEROU
+        addressApiAglomerou: `${REACT_NATIVE_ADDRESS_API_AGLOMEROU}`
     }
 }
