@@ -3,6 +3,7 @@ import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import api from '../service/api';
 
+console.log("addressApiAglomerou: ", Constants.manifest.extra.addressApiAglomerou)
 
 export default class IdDispositivo extends Component {
 
@@ -17,7 +18,7 @@ export default class IdDispositivo extends Component {
             const response = await api.post(`/dispositivo/${uid}/${tipo}`);
             console.log(`Registrando dispositivo: UID ${uid} Tipo: ${tipo}`);
         } catch (error) {
-            console.log(`Erro eo registrar dispositivo: ${error}`);
+            console.log(`Erro ao registrar dispositivo: ${error}`);
         }
     };
 
