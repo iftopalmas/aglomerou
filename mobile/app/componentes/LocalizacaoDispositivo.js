@@ -22,10 +22,9 @@ export default class LocalizacaoDispositivo extends Component {
         const location = await Location.getLastKnownPositionAsync();
         try {
             const {latitude, longitude} = location.coords;
-            const response = await api.post(`/localizacao/${uid}/${latitude}/${longitude}`);
-            if (__DEV__) {
-                console.log(`Enviando localização: UID ${uid} Lat/Long: ${latitude}/${longitude}`);
-            }
+            const url = `/localizacao/${uid}/${latitude}/${longitude}`;
+            console.log(api.defaults.baseURL+url);
+            const response = await api.post(url);
         } catch (error) {
             console.log(`Erro ao obter localização: ${error}`);
         }

@@ -15,8 +15,9 @@ export default class IdDispositivo extends Component {
         const uid = Constants.installationId;
         const tipo = Constants.deviceName;
         try {
-            const response = await api.post(`/dispositivo/${uid}/${tipo}`);
-            console.log(`Registrando dispositivo: UID ${uid} Tipo: ${tipo}`);
+            const url = `/dispositivo/${uid}/${tipo}`;
+            console.log(api.defaults.baseURL+url);
+            const response = await api.post(url);
         } catch (error) {
             console.log(`Erro ao registrar dispositivo: ${error}`);
         }
