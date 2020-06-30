@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
+import * as Location from 'expo-location';
 import api from '../service/api';
 
 console.log("addressApiAglomerou: ", Constants.manifest.extra.addressApiAglomerou)
