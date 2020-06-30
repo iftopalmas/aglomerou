@@ -27,7 +27,7 @@ export default class LocalizacaoDispositivo extends Component {
                 console.log(`Enviando localização: UID ${uid} Lat/Long: ${latitude}/${longitude}`);
             }
         } catch (error) {
-            alert(error);
+            console.log(`Erro ao obter localização: ${error}`);
         }
     };
 
