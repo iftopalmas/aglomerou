@@ -6,7 +6,6 @@ import LocalizacaoDispositivo from './componentes/LocalizacaoDispositivo'
 import MapView from 'react-native-maps';
 
 export default function App() {
-
   return (
     <View style={styles.container}>
       <IdDispositivo />

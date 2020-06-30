@@ -9,7 +9,7 @@ export default class LocalizacaoDispositivo extends Component {
     
     componentDidMount() {
         this.localizacao();
-        setInterval(() => this.localizacao(false), 30000);
+        setInterval(() => this.localizacao(), 30000);
     }
     
     localizacao = async () => {
@@ -20,7 +20,6 @@ export default class LocalizacaoDispositivo extends Component {
         }
         const uid = Constants.installationId;
         const location = await Location.getCurrentPositionAsync();
-        const location = await Location.getLastKnownPositionAsync();
         try {
             const {latitude, longitude} = location.coords;
             const url = `/localizacao/${uid}/${latitude}/${longitude}`;
