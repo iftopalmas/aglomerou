@@ -9,7 +9,14 @@ export default function App() {
   return (
     <View style={styles.container}>
       <IdDispositivo />
-      <MapView style={styles.mapStyle}>
+      <MapView 
+        style={styles.mapStyle} 
+        initialRegion={{
+          latitude: -10.184510,
+          longitude: -48.334660,
+          latitudeDelta: 0.05,
+          longitudeDelta: 0.05
+        }}>
         <MapView.Marker
           coordinate={{
             latitude: -10.184510,
