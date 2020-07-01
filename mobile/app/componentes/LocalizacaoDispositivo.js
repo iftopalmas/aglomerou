@@ -12,15 +12,15 @@ export default class LocalizacaoDispositivo extends Component {
         setInterval(() => this.localizacao(), 30000);
     }
     
-    localizacao = async () => {
-        const { status } = await Location.requestPermissionsAsync();
-        if (status !== 'granted') {
-            setErrorMsg('A permissão para acessar a localização do dispositivo foi negada!');
-            return;
-        }
-        const uid = Constants.installationId;
-        const location = await Location.getCurrentPositionAsync();
+    localizacao = async () => {        
         try {
+            const { status } = await Location.requestPermissionsAsync();
+            if (status !== 'granted') {
+                setErrorMsg('A permissão para acessar a localização do dispositivo foi negada!');
+                return;
+            }
+            const uid = Constants.installationId;
+            const location = await Location.getCurrentPositionAsync();
             const {latitude, longitude} = location.coords;
             const url = `/localizacao/${uid}/${latitude}/${longitude}`;
             console.log(api.defaults.baseURL+url);
