@@ -8,9 +8,10 @@ WORKDIR /build
 
 # Copia os arquivos do contexto atual (parâmetro path do comando docker build)
 # para a WORKDIR no container.
-COPY package-lock.json package.json ./
+COPY yarn.lock package.json ./
 RUN npm update
-RUN npm ci
+#RUN npm ci
+RUN npm i
 RUN npm i pm2
 COPY . .
 
