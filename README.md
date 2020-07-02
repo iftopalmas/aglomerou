@@ -6,6 +6,8 @@
 
 Em busca de soluções tecnológicas para a atual pandemia do coronavírus, o presente projeto visa o desenvolvimento de um software para rastrear a localização de pessoas, sem coletar qualquer informação pessoal, incluindo aplicativo para smartphones e aplicação web para monitoramento pelas autoridades públicas. O aplicativo pode ser usado para fornecer informações em tempo real para a população decidir o melhor momento de ir a um estabelecimento. O sistema web pode ser usado para autoridades obterem informações e estatísticas sobre o isolamento social, receber denúncias e dispersar multidões.
 
+Uma reportagem sobre o aplicativo pode ser vista [aqui](https://g1.globo.com/to/tocantins/edicao/2020/07/01/videos-ja-1-edicao-desta-quarta-feira-1-de-julho.ghtml#video-8666242-id).
+
 O projeto é composto por 3 sub-projetos:
 
 - [backend](backend): aplicação servidora desenvolvida em [Node.js](http://nodejs.org), fornecendo APIs REST para integração entre os outros sub-projetos.
