@@ -49,12 +49,12 @@ if [[ $2 == "backend" ]]; then
 		# Cria uma imagem Docker para o backend com Node.js,
 		# definindo o contexto (pasta onde onde os arquivos serão copiados)
 		# como a pasta atual.
-		docker build -f ../backend/Dockerfile -t $IMAGE_NAME ../backend
+		docker build -f ../backend/Dockerfile -t $IMAGE_NAME ../backend || exit -1
 		echo ""
 		echo "Use $0 run $2 pra iniciar container criado"
 	elif [[ $1 == "run" ]]; then
 		# Executar o container em background (-d)
-		docker run --name $CONTAINER_NAME -d -p 80:$INTERNAL_PORT --env-file .env.production $IMAGE_NAME
+		docker run --name $CONTAINER_NAME -d -p 80:$INTERNAL_PORT --env-file .env.production $IMAGE_NAME || exit -1
 		echo ""
 		echo "Use $0 logs $2 pra exibir os logs do container executado"
 	fi
@@ -64,14 +64,14 @@ elif [[ $2 == "database" || $2 == "db" ]]; then
 	CONTAINER_NAME="aglomerou-postgres"
 
 	if [[ $1 == "build" ]]; then
-		docker build -f ../database/Dockerfile -t $IMAGE_NAME ../database
+		docker build -f ../database/Dockerfile -t $IMAGE_NAME ../database || exit -1
 		echo ""
 		echo "Use $0 run $2 pra iniciar container criado"
 	elif [[ $1 == "run" ]]; then	
 		# Executar o container em background (-d)
 		docker run -d --name $CONTAINER_NAME \
 				-e POSTGRES_USER=$DB_USER -e POSTGRES_PASSWORD=$DB_PASSWORD \
-				-p $DB_PORT:5432 $IMAGE_NAME
+				-p $DB_PORT:5432 $IMAGE_NAME || exit -1
 		echo ""
 		echo "Use $0 logs $2 pra exibir os logs do container executado"
 		echo "Use $0 connect $2 pra conectar ao servidor Postgres no container"
