@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
-import LocalizacaoDispositivo from './componentes/LocalizacaoDispositivo'
+import LocalizacaoDispositivo from './LocalizacaoDispositivo'
 import MapView from 'react-native-maps';
 
 export default function App() {
