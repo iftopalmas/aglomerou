@@ -56,7 +56,7 @@ router.get('/', controller.getUltimaLocalizacaoTodos);
  *      '422':
  *        description: Latitude ou longitude inválida.
  */
-router.get('/tempo-medio-permanencia/:latitude/:longitude', controller.getFrequenciaMediaVisitantas);
+router.get('/tempo-medio-permanencia/:latitude/:longitude', controller.getTempoMedioPermanencia);
 
 /**
  * @swagger
@@ -75,7 +75,7 @@ router.get('/tempo-medio-permanencia/:latitude/:longitude', controller.getFreque
  *      '422':
  *        description: Viewport inválida.
  */
-router.get('/frequencia-pessoas/:viewport', controller.getTempoMedioPermanencia);
+router.get('/frequencia-pessoas/:viewport', controller.getFrequenciaMediaVisitantas);
 
 /**
  * @swagger
