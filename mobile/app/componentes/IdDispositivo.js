@@ -13,11 +13,8 @@ export default class IdDispositivo extends Component {
     constructor(props){
         super(props);
         this.navegaPage = this.navegaPage.bind(this);
-        this.state = {
-            captchaCodigo: null,
-            
-        };
-    }    
+        this.state = { captchaCodigo: null };
+    }
 
     componentDidMount() {
         this.dispositivos();
@@ -31,26 +28,24 @@ export default class IdDispositivo extends Component {
             if (['cancel', 'error', 'expired'].includes(event.nativeEvent.data)) {
                 this.captchaForm.hide();
                 return;
-            } else {
-                console.log('Código de verificação', event.nativeEvent.data);
-                this.setState({ captchaCodigo: event.nativeEvent.data });
-                const uid = Constants.installationId;
-                const tipo = Constants.deviceName;
-                const codigoVerificacao = captchaCodigo;
-                try {
-                    const url = `/dispositivo/${uid}/${tipo}/${codigoVerificacao}`;
-                    console.log(api.defaults.baseURL+url);
-                    const response = await api.post(url);
-
-                } catch (error) {
-                    console.log(`Erro ao registrar dispositivo: ${error}`);
-                }
-                this.navegaPage();
-                setTimeout(() => {this.captchaForm.hide()}, 500);
+            } 
+            
+            console.log('Código de verificação', event.nativeEvent.data);
+            this.setState({ captchaCodigo: event.nativeEvent.data });
+            const uid = Constants.installationId;
+            const tipo = Constants.deviceName;
+            const codigoVerificacao = captchaCodigo;
+            try {
+                const url = `/dispositivo/${uid}/${tipo}/${codigoVerificacao}`;
+                console.log(api.defaults.baseURL+url);
+                const response = await api.post(url);
+            } catch (error) {
+                console.log(`Erro ao registrar dispositivo: ${error}`);
             }
+            this.navegaPage();
+            setTimeout(() => {this.captchaForm.hide()}, 500);
         }
-    };      
-        
+    };       
 
     render() {
         return (

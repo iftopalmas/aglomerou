@@ -7,9 +7,7 @@ const siteKey = '6Lf41K0UAAAAAHd3FeZbJsMbL00-Beqyk33NHqtp';
 const baseUrl = 'https://google.com';
 
 export default class App extends React.Component {
-  state = {
-    codigoVerificacao: null,
-  };
+  state = { codigoVerificacao: null };
 
   onMessage = event => {
     if (event && event.nativeEvent.data) {
