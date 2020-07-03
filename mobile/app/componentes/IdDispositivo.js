@@ -16,14 +16,10 @@ export default class IdDispositivo extends Component {
         this.state = { captchaCodigo: null };
     }
 
-    componentDidMount() {
-        this.dispositivos();
-    }
-
     navegaPage(){
         this.props.navigation.navigate('Mapa');
     }
-    onMessage = event => {
+    onMessage = async event => {
         if (event && event.nativeEvent.data) {
             if (['cancel', 'error', 'expired'].includes(event.nativeEvent.data)) {
                 this.captchaForm.hide();
