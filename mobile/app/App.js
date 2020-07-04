@@ -2,30 +2,26 @@
 import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import IdDispositivo from './componentes/IdDispositivo'
-import LocalizacaoDispositivo from './componentes/LocalizacaoDispositivo'
-import MapView from 'react-native-maps';
+import Mapa from './componentes/Mapa'
+import {NavigationContainer } from '@react-navigation/native'
+import {createStackNavigator } from '@react-navigation/stack'
+
+const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <IdDispositivo />
-      <MapView 
-        style={styles.mapStyle} 
-        initialRegion={{
-          latitude: -10.184510,
-          longitude: -48.334660,
-          latitudeDelta: 0.05,
-          longitudeDelta: 0.05
-        }}>
-        <MapView.Marker
-          coordinate={{
-            latitude: -10.184510,
-            longitude: -48.334660,
-          }}
-        />
-      </MapView>
-      <LocalizacaoDispositivo/>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="RegistrarDispositivo" component={IdDispositivo}
+        options={{
+          title: "Aglomerou"
+        }}/>
+        <Stack.Screen name="Mapa" component={Mapa} 
+        options={{
+          title: "Mapa de aglomeração"
+        }}/>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
