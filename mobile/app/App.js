@@ -8,7 +8,6 @@ import {createStackNavigator } from '@react-navigation/stack'
 
 const Stack = createStackNavigator();
 
-
 export default function App() {
   return (
     <NavigationContainer>
@@ -16,7 +15,6 @@ export default function App() {
         <Stack.Screen name="RegistrarDispositivo" component={IdDispositivo}
         options={{
           title: "Aglomerou"
-          
         }}/>
         <Stack.Screen name="Mapa" component={Mapa} 
         options={{

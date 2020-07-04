@@ -9,13 +9,12 @@ import api from '../service/api';
 
 console.log("addressApiAglomerou: ", Constants.manifest.extra.addressApiAglomerou)
 
-
 export default class IdDispositivo extends Component {
     constructor(props) {
         super(props);
         this.navegaPage = this.navegaPage.bind(this);
         this.state = { 
-            captchaCodigo: null 
+            captcha: null 
         };
     }
 
@@ -23,42 +22,40 @@ export default class IdDispositivo extends Component {
         this.mostrarCaptcha()
     }
 
-    
     navegaPage() {
         this.props.navigation.navigate('Mapa');
     }
-    onMessage = async event => {
-        if (event && event.nativeEvent.data) {
-            if (['cancel', 'error', 'expired'].includes(event.nativeEvent.data)) {
-                this.captchaForm.hide();
-                return;
-            } else {
-                console.log('Código de verificação', event.nativeEvent.data);
-                this.setState({ captchaCodigo: event.nativeEvent.data });
-                setTimeout(() => { this.captchaForm.hide() }, 1500);
-                const uid = Constants.installationId;
-                const tipo = Constants.deviceName;
-                const codigoVerificacao = this.captchaCodigo;
-                
-                try {
-                    const url = `/dispositivo/${uid}/${tipo}/${codigoVerificacao}`;
-                    console.log(api.defaults.baseURL + url);
-                    console.log(` tipo`+tipo)
-                    const response = await api.post(url);
-                } catch (error) {
-                    console.log(`Erro ao registrar dispositivo: ${error}`);
-                }
-                this.navegaPage();             
 
-            }
+    onMessage = async event => {
+        const captcha = event?.nativeEvent?.data;
+        if (!captcha) {
+            return;
         }
+
+        if (['cancel', 'error', 'expired'].includes(captcha)) {
+            this.captchaForm.hide();
+            return;
+        } 
+        
+        this.setState({ captcha });
+        setTimeout(() => this.captchaForm.hide(), 1500);
+        const uid = Constants.installationId;
+        const tipo = Constants.deviceName;
+        
+        try {
+            const url = `/dispositivo/${uid}/${tipo}`;
+            console.log(`\n${api.defaults.baseURL}${url}\n`);
+            const response = await api.post(url, { captcha });
+        } catch (error) {
+            console.log(`Erro ao registrar dispositivo: ${error}`);
+        }
+
+        this.navegaPage();             
     };
 
     
-
     mostrarCaptcha = async () => {
         this.captchaForm.show();
-
     }
 
     render() {
