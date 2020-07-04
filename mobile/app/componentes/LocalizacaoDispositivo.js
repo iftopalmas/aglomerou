@@ -11,6 +11,7 @@ export default class LocalizacaoDispositivo extends Component {
             enviarLocalizacaoParaServidor(latitude, longitude)
         }, 30000);
     }
+    
     render() {
         return (
             <View style={styles.container}>
@@ -18,7 +19,7 @@ export default class LocalizacaoDispositivo extends Component {
             </View>
         );
     }
-    };
+};
     
 const styles = StyleSheet.create({
     container: {

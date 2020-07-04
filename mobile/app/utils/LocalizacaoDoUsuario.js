@@ -15,7 +15,7 @@ async function CarregarLocalDoDispositivo(){
 
       const location = await Location.getCurrentPositionAsync();
       
-     const {latitude, longitude} = location.coords
+      const {latitude, longitude} = location.coords
 
       return {latitude, longitude}
 
@@ -37,4 +37,5 @@ async function enviarLocalizacaoParaServidor(latitude, longitude){
     return;    
   }
 }
+
 export {CarregarLocalDoDispositivo, enviarLocalizacaoParaServidor};
