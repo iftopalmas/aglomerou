@@ -33,7 +33,7 @@ export default class IdDispositivo extends Component {
         }
 
         if (['cancel', 'error', 'expired'].includes(captcha)) {
-            this.captchaForm.hide();
+            setTimeout(() => this.captchaForm.hide(), 5000);
             return;
         } 
         
