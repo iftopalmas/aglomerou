@@ -63,9 +63,9 @@ router.get('/tempo-medio-permanencia/:latitude/:longitude', controller.getTempoM
  * /localizacao:
  *  get:
  *    parameters:
- *      - name: viewport
+ *      - name: area
  *        in: path
- *        description: uma determinada área visível do mapa
+ *        description: A area representa dois pontos de um retângulo: o ponto superior esquerdo e o ponto inferior direito.
  *        required: true
  *        type: number
  *    description: Frequência (média) de pessoas que visitam o local por hora, dia, semana e mês
@@ -75,7 +75,7 @@ router.get('/tempo-medio-permanencia/:latitude/:longitude', controller.getTempoM
  *      '422':
  *        description: Viewport inválida.
  */
-router.get('/frequencia-pessoas/:viewport', controller.getFrequenciaMediaVisitantas);
+router.get('/frequencia-pessoas/:area', controller.getFrequenciaMediaVisitantas);
 
 /**
  * @swagger
