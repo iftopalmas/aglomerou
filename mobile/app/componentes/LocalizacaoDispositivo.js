@@ -6,10 +6,12 @@ import {getLocalizacaoDispositivo, enviarLocalizacaoParaServidor} from '../utils
 export default class LocalizacaoDispositivo extends Component {
     
     componentDidMount() {
-        setInterval(async () => {
-            const {latitude, longitude} = await getLocalizacaoDispositivo()
-            enviarLocalizacaoParaServidor(latitude, longitude)
-        }, 30000);
+        setInterval(this.enviarLocalizacaoParaServidor, 30000);
+    }
+
+    enviarLocalizacaoParaServidor = async () => {
+        const {latitude, longitude} = await getLocalizacaoDispositivo();
+        enviarLocalizacaoParaServidor(latitude, longitude);
     }
     
     render() {
