@@ -3,8 +3,8 @@ import { Text, View, StyleSheet } from 'react-native';
 import Constants from 'expo-constants';
 import ConfirmGoogleCaptcha from 'react-native-google-recaptcha-v2';
 
-const siteKey = '6Lf41K0UAAAAAHd3FeZbJsMbL00-Beqyk33NHqtp';
-const baseUrl = 'https://google.com';
+const siteKey = '6LfKeq0ZAAAAAN7kg0S29sdPSnM-ZCJcFr7h8E2G';
+const baseUrl = 'http://aglomerou.ifto.edu.br';
 import api from '../service/api';
 
 console.log("addressApiAglomerou: ", Constants.manifest.extra.addressApiAglomerou)
