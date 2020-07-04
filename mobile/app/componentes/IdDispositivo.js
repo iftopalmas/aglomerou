@@ -39,19 +39,22 @@ export default class IdDispositivo extends Component {
                 const uid = Constants.installationId;
                 const tipo = Constants.deviceName;
                 const codigoVerificacao = this.captchaCodigo;
+                
                 try {
-                    const url = `/dispositivo/${uid}/${tipo}`;
+                    const url = `/dispositivo/${uid}/${tipo}/${codigoVerificacao}`;
                     console.log(api.defaults.baseURL + url);
                     console.log(` tipo`+tipo)
                     const response = await api.post(url);
                 } catch (error) {
-                    console.log(`Erro ao registrar dispositivo: ${error}, ${uid}, ${tipo}`);
+                    console.log(`Erro ao registrar dispositivo: ${error}`);
                 }
                 this.navegaPage();             
 
             }
         }
-    };    
+    };
+
+    
 
     mostrarCaptcha = async () => {
         this.captchaForm.show();
