@@ -3,8 +3,8 @@ import React from 'react';
 import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import IdDispositivo from './componentes/IdDispositivo'
 import Mapa from './componentes/Mapa'
-import {NavigationContainer } from '@react-navigation/native'
-import {createStackNavigator } from '@react-navigation/stack'
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
 const Stack = createStackNavigator();
 
