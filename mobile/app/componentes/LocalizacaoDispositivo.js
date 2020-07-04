@@ -1,18 +1,16 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import {GetUserPosition, sendUserPositionToServer} from '../utils/UserLocation'
+import {CarregarLocalDoDispositivo, enviarLocalizacaoParaServidor} from '../utils/UserLocation'
 
 export default class LocalizacaoDispositivo extends Component {
     
     componentDidMount() {
         setInterval(async () => {
-            const {latitude, longitude} = await GetUserPosition()
-            sendUserPositionToServer(latitude, longitude)
+            const {latitude, longitude} = await CarregarLocalDoDispositivo()
+            enviarLocalizacaoParaServidor(latitude, longitude)
         }, 30000);
     }
-
-
     render() {
         return (
             <View style={styles.container}>
