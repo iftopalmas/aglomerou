@@ -25,7 +25,7 @@ export default class LocalizacaoDispositivo extends Component {
             const url = `/localizacao/${uid}/${latitude}/${longitude}`;
             console.log(api.defaults.baseURL+url);
             const response = await api.post(url);
-        } catch (error) {            
+        } catch (error) {
             console.log(`Erro ao obter localização: ${error}`);
         }
     };
