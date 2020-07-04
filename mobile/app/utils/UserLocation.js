@@ -5,7 +5,7 @@ const uid = Constants.installationId;
 import api from '../service/api';
 
 
-const latitude, longitude = 0
+
 
 // retorna a posição atual do dispositivo
 async function GetUserPosition(){      
@@ -18,8 +18,7 @@ async function GetUserPosition(){
 
       const location = await Location.getCurrentPositionAsync();
       
-      latitude = location.coords.latitude
-      longitude = location.coords.latitude
+     const {latitude, longitude} = location.coords
 
       return {latitude, longitude}
 
@@ -29,11 +28,13 @@ async function GetUserPosition(){
   }
 };
 
+// enviar uma posição para o servidor
 async function sendUserPositionToServer(latitude, longitude){      
   try {
     const url = `/localizacao/${uid}/${latitude}/${longitude}`;
     console.log(api.defaults.baseURL+url);
     const response = await api.post(url);
+    
   } catch (error) {
     console.log(`Erro ao enviar localização: ${error}`);
     return;    
