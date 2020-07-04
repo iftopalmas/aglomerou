@@ -4,7 +4,6 @@ import Constants from 'expo-constants';
 const uid = Constants.installationId;
 import api from '../service/api';
 
-// retorna a posição atual do dispositivo
 async function CarregarLocalDoDispositivo(){      
   try {
       const { status } = await Location.requestPermissionsAsync();
@@ -22,7 +21,6 @@ async function CarregarLocalDoDispositivo(){
   }
 };
 
-// enviar uma posição para o servidor
 async function enviarLocalizacaoParaServidor(latitude, longitude){      
   try {
     const url = `/localizacao/${uid}/${latitude}/${longitude}`;
