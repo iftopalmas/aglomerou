@@ -4,7 +4,7 @@ import Constants from 'expo-constants';
 const uid = Constants.installationId;
 import api from '../service/api';
 
-async function CarregarLocalDoDispositivo(){      
+const CarregarLocalDoDispositivo = async () => {      
   try {
       const { status } = await Location.requestPermissionsAsync();
       if (status !== 'granted') {
@@ -21,7 +21,7 @@ async function CarregarLocalDoDispositivo(){
   }
 };
 
-async function enviarLocalizacaoParaServidor(latitude, longitude){      
+const enviarLocalizacaoParaServidor = async (latitude, longitude) => {      
   try {
     const url = `/localizacao/${uid}/${latitude}/${longitude}`;
     console.log(api.defaults.baseURL+url);
