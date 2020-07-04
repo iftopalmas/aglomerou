@@ -47,8 +47,8 @@ exports.inserir = async (req, res) => {
     }
 
     const secretKey = process.env.CAPTCHA_SECRET_KEY;
-    const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${req.connection.remoteAddress}`;    
-
+    const remoteIP = req.connection.remoteAddress; 
+    const verifyURL = `https://www.google.com/recaptcha/api/siteverify?secret=${secretKey}&response=${req.body.captcha}&remoteip=${remoteIP}`;
     const response = await axios.post(verifyURL);
 
     if(!response.data.success) {
