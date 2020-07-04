@@ -19,13 +19,9 @@ const http = require('http').Server(app);
 const serverSocket = require('socket.io')(http);
 
 const porta = process.env.PORT || 8080;
-const host = process.env.HEROKU_APP_NAME ?
-                `https://${process.env.HEROKU_APP_NAME}.herokuapp.com` :
-                "http://localhost";
+const host = process.env.SERVER || "localhost"
+const address = porta === 80 ? host : `${host}:${porta}`;
 
-http.listen(porta, () => {
-    const portaStr = porta === 80 ? '' : ':' + porta;
-    if (process.env.HEROKU_APP_NAME)
-        console.log('Servidor iniciado. Abra o navegador em ' + host);
-    else console.log('Servidor iniciado. Abra o navegador em ' + host + portaStr);
+app.listen(porta, () => {
+    console.log('Servidor iniciado. Abra o navegador em http://' + address);
 });
