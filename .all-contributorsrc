@@ -76,6 +76,15 @@
       "contributions": [
         "infra"
       ]
+    },
+    {
+      "login": "radaelilucca",
+      "name": "Lucca Radaeli",
+      "avatar_url": "https://avatars2.githubusercontent.com/u/29178479?v=4",
+      "profile": "https://github.com/radaelilucca",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7,
