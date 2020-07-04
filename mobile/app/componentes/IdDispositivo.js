@@ -9,14 +9,22 @@ import api from '../service/api';
 
 console.log("addressApiAglomerou: ", Constants.manifest.extra.addressApiAglomerou)
 
+
 export default class IdDispositivo extends Component {
-    constructor(props){
+    constructor(props) {
         super(props);
         this.navegaPage = this.navegaPage.bind(this);
-        this.state = { captchaCodigo: null };
+        this.state = { 
+            captchaCodigo: null 
+        };
     }
 
-    navegaPage(){
+    componentDidMount() {
+        this.mostrarCaptcha()
+    }
+
+    
+    navegaPage() {
         this.props.navigation.navigate('Mapa');
     }
     onMessage = async event => {
@@ -24,24 +32,31 @@ export default class IdDispositivo extends Component {
             if (['cancel', 'error', 'expired'].includes(event.nativeEvent.data)) {
                 this.captchaForm.hide();
                 return;
-            } 
-            
-            console.log('Código de verificação', event.nativeEvent.data);
-            this.setState({ captchaCodigo: event.nativeEvent.data });
-            const uid = Constants.installationId;
-            const tipo = Constants.deviceName;
-            const codigoVerificacao = captchaCodigo;
-            try {
-                const url = `/dispositivo/${uid}/${tipo}/${codigoVerificacao}`;
-                console.log(api.defaults.baseURL+url);
-                const response = await api.post(url);
-            } catch (error) {
-                console.log(`Erro ao registrar dispositivo: ${error}`);
+            } else {
+                console.log('Código de verificação', event.nativeEvent.data);
+                this.setState({ captchaCodigo: event.nativeEvent.data });
+                setTimeout(() => { this.captchaForm.hide() }, 1500);
+                const uid = Constants.installationId;
+                const tipo = Constants.deviceName;
+                const codigoVerificacao = this.captchaCodigo;
+                try {
+                    const url = `/dispositivo/${uid}/${tipo}`;
+                    console.log(api.defaults.baseURL + url);
+                    console.log(` tipo`+tipo)
+                    const response = await api.post(url);
+                } catch (error) {
+                    console.log(`Erro ao registrar dispositivo: ${error}, ${uid}, ${tipo}`);
+                }
+                this.navegaPage();             
+
             }
-            this.navegaPage();
-            setTimeout(() => {this.captchaForm.hide()}, 500);
         }
-    };       
+    };    
+
+    mostrarCaptcha = async () => {
+        this.captchaForm.show();
+
+    }
 
     render() {
         return (

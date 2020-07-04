@@ -16,6 +16,7 @@ export default function App() {
         <Stack.Screen name="RegistrarDispositivo" component={IdDispositivo}
         options={{
           title: "Aglomerou"
+          
         }}/>
         <Stack.Screen name="Mapa" component={Mapa} 
         options={{
