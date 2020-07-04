@@ -26,7 +26,6 @@ const enviarLocalizacaoParaServidor = async (latitude, longitude) => {
     const url = `/localizacao/${uid}/${latitude}/${longitude}`;
     console.log(api.defaults.baseURL+url);
     const response = await api.post(url);
-
   } catch (error) {
     console.log(`Erro ao enviar localização: ${error}`);
     return;    
