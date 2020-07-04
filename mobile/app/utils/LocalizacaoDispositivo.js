@@ -17,7 +17,6 @@ const getLocalDispositivo = async () => {
       return {latitude, longitude}
   } catch (error) {
       console.log(`Erro ao obter localização: ${error}`);
-      return;            
   }
 };
 
@@ -28,7 +27,6 @@ const enviarLocalizacaoParaServidor = async (latitude, longitude) => {
     const response = await api.post(url);
   } catch (error) {
     console.log(`Erro ao enviar localização: ${error}`);
-    return;    
   }
 }
 
