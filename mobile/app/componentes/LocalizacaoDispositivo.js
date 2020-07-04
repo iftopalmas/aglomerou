@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import {CarregarLocalDoDispositivo, enviarLocalizacaoParaServidor} from '../utils/UserLocation'
+import {CarregarLocalDoDispositivo, enviarLocalizacaoParaServidor} from '../utils/LocalizacaoDoUsuario'
 
 export default class LocalizacaoDispositivo extends Component {
     
@@ -18,12 +18,8 @@ export default class LocalizacaoDispositivo extends Component {
             </View>
         );
     }
- 
     };
-
     
-
-
 const styles = StyleSheet.create({
     container: {
         backgroundColor: '#fff',
