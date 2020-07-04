@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import {carregarLocalDoDispositivo, enviarLocalizacaoParaServidor} from '../utils/LocalizacaoDoUsuario'
+import {carregarLocalDispositivo, enviarLocalizacaoParaServidor} from '../utils/LocalizacaoUsuario'
 
 export default class LocalizacaoDispositivo extends Component {
     
     componentDidMount() {
         setInterval(async () => {
-            const {latitude, longitude} = await carregarLocalDoDispositivo()
+            const {latitude, longitude} = await carregarLocalDispositivo()
             enviarLocalizacaoParaServidor(latitude, longitude)
         }, 30000);
     }
