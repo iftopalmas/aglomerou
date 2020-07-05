@@ -18,10 +18,14 @@ const http = require('http').Server(app);
 
 const serverSocket = require('socket.io')(http);
 
-const porta = process.env.PORT || 8080;
-const host = process.env.SERVER || "localhost"
-const address = porta === 80 ? host : `${host}:${porta}`;
+//Porta usada internamente para evitar rodar o node como root
+const internalPort = 8080;
 
-app.listen(porta, () => {
+//Porta usada externamente, quando o app é executado no Docker
+const externalPort = process.env.PORT || internalPort;
+const host = process.env.SERVER || "localhost"
+const address = externalPort == 80 ? host : `${host}:${externalPort}`;
+
+app.listen(internalPort, () => {
     console.log('Servidor iniciado. Abra o navegador em http://' + address);
 });

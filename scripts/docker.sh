@@ -1,13 +1,12 @@
 #!/bin/bash
 
-clear
-
 help()
 {
 	echo "Forma de uso:"
 	echo -e "\t$0 COMANDO backend|database"
 	echo -e "\t\t    build        - Criar container"
 	echo -e "\t\t    run          - Iniciar container"
+	echo -e "\t\t    rerun        - Remove o container em execução, baixa imagem atualizada e executa novamente"
 	echo -e "\t\t    logs         - Mostrar logs do container executado"
 	echo -e "\t\t    rm ou remove - Excluir container forçadamente (já inclui -f)"
 	echo -e "\t\t    push         - Enviar imagem para hub.docker.com"
@@ -42,9 +41,6 @@ if [[ $2 == "backend" ]]; then
 	env_vars
 	IMAGE_NAME="manoelcampos/aglomerou:backend"
 	CONTAINER_NAME="aglomerou-backend"
-	#Usa porta interna 8080 pra não ter que rodar o node como root no container
-	INTERNAL_PORT=8080
-
 	if [[ $1 == "build" ]]; then
 		# Cria uma imagem Docker para o backend com Node.js,
 		# definindo o contexto (pasta onde onde os arquivos serão copiados)
@@ -54,9 +50,16 @@ if [[ $2 == "backend" ]]; then
 		echo "Use $0 run $2 pra iniciar container criado"
 	elif [[ $1 == "run" ]]; then
 		# Executar o container em background (-d)
-		docker run --name $CONTAINER_NAME -d -p 80:$INTERNAL_PORT --env-file .env.production $IMAGE_NAME || exit -1
+		docker run --name $CONTAINER_NAME -d -p $PORT:8080 --env-file .env.production $IMAGE_NAME || exit -1
 		echo ""
 		echo "Use $0 logs $2 pra exibir os logs do container executado"
+	elif [[ $1 == "rerun" ]]; then
+		echo "# Removendo container $2"
+		eval "$0 rm $2"; echo ""
+		echo "# Baixando imagem $2 do Docker Hub"
+		eval "$0 pull $2"; echo ""
+		echo "# Iniciando novo container $2"
+		eval "$0 run $2"
 	fi
 elif [[ $2 == "database" || $2 == "db" ]]; then
 	env_vars
