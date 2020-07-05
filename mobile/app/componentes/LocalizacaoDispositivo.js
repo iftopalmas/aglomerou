@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
-import { Text, View, StyleSheet } from 'react-native';
+import { View, StyleSheet } from 'react-native';
+import LottieView from "lottie-react-native";
+
+import * as locationAnimation from "../animations/send-location.json";
 
 import { startLocationBackgroundUpdate } from '../utils/LocalizacaoDispositivo'
 
@@ -12,16 +15,26 @@ export default class LocalizacaoDispositivo extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Obtendo a localização do dispositivo</Text>
+                <LottieView
+                    style={{
+                    width: 48,
+                    height: 48,
+                    }}
+                    source={locationAnimation}
+                    autoPlay={true}
+                    speed={.3}
+                />
             </View>
         );
     }
-};
-    
+};    
 const styles = StyleSheet.create({
     container: {
-        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        zIndex: 5,
+        position: "absolute",
+        bottom: 20,
+        right: 20,
     },
 });
