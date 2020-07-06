@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
-import {getLocalizacaoDispositivo, enviarLocalizacaoParaServidor} from '../utils/LocalizacaoDispositivo'
+import { getLocalizacaoDispositivo, enviarLocalizacaoParaServidor } from '../utils/LocalizacaoDispositivo'
 
 export default class LocalizacaoDispositivo extends Component {
     

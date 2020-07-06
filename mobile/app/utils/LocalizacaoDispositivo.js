@@ -43,4 +43,4 @@ const enviarLocalizacaoBackground = async () => {
 
 TaskManager.defineTask(LOCATION_TASK_NAME, enviarLocalizacaoBackground());
 
-export { getLocalizacaoDispositivo, enviarLocalizacaoParaServidor, enviarLocalizacaoBackground};
+export { getLocalizacaoDispositivo, enviarLocalizacaoParaServidor, enviarLocalizacaoBackground };
