@@ -1,22 +1,46 @@
 import * as Location from 'expo-location';
 import Constants from 'expo-constants';
 import * as TaskManager from 'expo-task-manager';
+import { LOCATION_TASK_NAME } from '../Constants.js'; 
 
-const LOCATION_TASK_NAME = 'background-location-task';
 const uid = Constants.installationId;
 import api from '../service/api';
 
+const locationPermissionGranted = async () => {
+  const { status } = await Location.requestPermissionsAsync();
+  return status === 'granted';
+}
+
+const startLocationBackgroundUpdate = async () => {
+  if(await locationPermissionGranted()){
+    //Deixa uma notificação ativa o tempo todo, mas consome mais recursos
+    const foregroundService = { 
+      notificationTitle: "Aglomerou",
+      notificationBody: "Obtém localização anonimamente pra combate à COVID19."};
+
+    Location.startLocationUpdatesAsync(
+        LOCATION_TASK_NAME, 
+        { accuracy: Location.Accuracy.BestForNavigation, //Balanced
+          timeInterval: 30000,
+          showsBackgroundLocationIndicator: true,
+          foregroundService }); 
+    console.log('Iniciando atualização de localização em background');
+    return;
+  } 
+
+  console.log('Não foi dada permissão para obter localização em background.');
+}
+
 const getLocalizacaoDispositivo = async () => {
   try {
-    const { status } = await Location.requestPermissionsAsync();
-    if (status !== 'granted') {
+    if (!locationPermissionGranted()) {
       setErrorMsg('A permissão para acessar a localização do dispositivo foi negada!');
       return;
     }
 
     const location = await Location.getCurrentPositionAsync();
-    const { latitude, longitude } = location.coords
-    return { latitude, longitude }
+    const { latitude, longitude } = location.coords;
+    return { latitude, longitude };
   } catch (error) {
     console.log(`Erro ao obter localização: ${error}`);
   }
@@ -32,15 +56,21 @@ const enviarLocalizacaoParaServidor = async (latitude, longitude) => {
   }
 }
 
-const enviarLocalizacaoBackground = async () => {
-  const { status } = await Location.requestPermissionsAsync();
-  if (status === 'granted') {
-    await Location.startLocationUpdatesAsync(LOCATION_TASK_NAME, {
-      accuracy: Location.Accuracy.Balanced,
-    });
+const enviarLocalizacaoBackground = async ({ data: { locations }, error }) => {
+  if(error){
+    console.log(`Erro ao obter localização em background: ${error}`);
+    return;
+  }
+
+  if(locations.length > 0){
+    const { latitude, longitude }= locations[0].coords;
+    console.log('Obtendo localização em background');
+    enviarLocalizacaoParaServidor(latitude, longitude);
   }
 }
 
-TaskManager.defineTask(LOCATION_TASK_NAME, enviarLocalizacaoBackground());
+TaskManager.defineTask(LOCATION_TASK_NAME, enviarLocalizacaoBackground);
 
-export { getLocalizacaoDispositivo, enviarLocalizacaoParaServidor, enviarLocalizacaoBackground };
+export { getLocalizacaoDispositivo, enviarLocalizacaoParaServidor, 
+         enviarLocalizacaoBackground, locationPermissionGranted, 
+         startLocationBackgroundUpdate };
