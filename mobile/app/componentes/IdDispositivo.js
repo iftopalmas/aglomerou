@@ -27,8 +27,8 @@ export default class IdDispositivo extends Component {
 
     verificarExisteCodigoCaptcha = async () => {
         try {
-            const value = await AsyncStorage.getItem(CAPTCHA_STORAGE_ITEM)
-            if (value && value.length > 0) {
+            const captcha = await AsyncStorage.getItem(CAPTCHA_STORAGE_ITEM)
+            if (captcha && captcha.length > 0) {
                 this.navegaPage()
             } else {
                 this.mostrarCaptcha()
