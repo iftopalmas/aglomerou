@@ -3,10 +3,12 @@ import { Text, View, StyleSheet, TouchableOpacity } from 'react-native';
 import Constants from 'expo-constants';
 import ConfirmGoogleCaptcha from 'react-native-google-recaptcha-v2';
 import AsyncStorage from '@react-native-community/async-storage';
+import api from '../service/api';
+import { CAPTCHA_STORAGE_ITEM } from '../Constants';
 
 const siteKey = '6LfKeq0ZAAAAAN7kg0S29sdPSnM-ZCJcFr7h8E2G';
 const baseUrl = 'http://aglomerou.ifto.edu.br';
-import api from '../service/api';
+
 
 console.log("addressApiAglomerou: ", Constants.manifest.extra.addressApiAglomerou)
 
@@ -25,7 +27,7 @@ export default class IdDispositivo extends Component {
 
     verificarExisteCodigoCaptcha = async () => {
         try {
-            const value = await AsyncStorage.getItem('captcha')
+            const value = await AsyncStorage.getItem(CAPTCHA_STORAGE_ITEM)
             if (value && value.length > 0) {
                 this.navegaPage()
             } else {
@@ -38,7 +40,7 @@ export default class IdDispositivo extends Component {
 
     salvarCodigoCaptchaLocalmente = async (captcha) => {
         try {
-            await AsyncStorage.setItem('captcha', captcha)
+            await AsyncStorage.setItem(CAPTCHA_STORAGE_ITEM, captcha)
         } catch (e) {
             console.log(`Erro ao salvar código captcha: ${error}`);
         }
