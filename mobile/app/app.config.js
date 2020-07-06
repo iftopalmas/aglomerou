@@ -35,7 +35,11 @@ export default {
         googleMaps: {
           apiKey: REACT_NATIVE_GOOGLE_MAPS_API_KEY
         }
-      }
+      },
+      permissions: [
+        "ACCESS_COARSE_LOCATION",
+        "ACCESS_FINE_LOCATION"        
+      ]
     },
     extra: {
         addressApiAglomerou: `${REACT_NATIVE_ADDRESS_API_AGLOMEROU}`
