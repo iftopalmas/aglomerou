@@ -35,8 +35,8 @@ comment on column bloqueado is 'Se marcado como true ira recusar as requisiçõe
 create table localizacao_dispositivo (
     id bigserial not null primary key, 
     uid varchar(200) not null, 
-    latitude varchar(20) not null, 
-    longitude varchar(20) not null,
+    latitude numeric(9,6) not null, 
+    longitude numeric(9,6) not null,
     data_hora_ultima_atualizacao timestamp default CURRENT_TIMESTAMP,
 
     constraint fk_localizacao_dispositivo foreign key (uid) references dispositivo(uid) on delete cascade
