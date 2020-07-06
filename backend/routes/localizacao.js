@@ -35,37 +35,9 @@ router.get('/', controller.getUltimaLocalizacaoTodos);
  * /localizacao:
  *  get:
  *    parameters:
- *      - name: latitude
- *        in: path
- *        description: latitude da localização do dispositivo
- *        required: true
- *        type: number
- *        minimum: -90
- *        maximum: 90
- *      - name: longitude
- *        in: path
- *        description: longitude da localização do dispositivo
- *        required: true
- *        type: number
- *        minimum: -180
- *        maximum: 180
- *    description: Obtém o Tempo médio de parmanência das pessoas por local
- *    responses:
- *      '200':
- *        description: Tempo médio de parmanência dos dispositivos obtidas com sucesso
- *      '422':
- *        description: Latitude ou longitude inválida.
- */
-router.get('/tempo-medio-permanencia/:latitude/:longitude', controller.getTempoMedioPermanencia);
-
-/**
- * @swagger
- * /localizacao:
- *  get:
- *    parameters:
  *      - name: area
  *        in: path
- *        description: A area representa dois pontos de um retângulo: o ponto superior esquerdo e o ponto inferior direito.
+ *        description: A area representa dois pontos de um retângulo o ponto superior esquerdo e o ponto inferior direito.
  *        required: true
  *        type: number
  *    description: Frequência (média) de pessoas que visitam o local por hora, dia, semana e mês
@@ -73,7 +45,7 @@ router.get('/tempo-medio-permanencia/:latitude/:longitude', controller.getTempoM
  *      '200':
  *        description: Objeto contendo todas essas estatísticas
  *      '422':
- *        description: Viewport inválida.
+ *        description: Area inválida.
  */
 router.get('/frequencia-pessoas/:area', controller.getFrequenciaMediaVisitantas);
 
