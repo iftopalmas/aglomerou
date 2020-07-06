@@ -12,28 +12,28 @@ const locationPermissionGranted = async () => {
 }
 
 const startLocationBackgroundUpdate = async () => {
-  if(await locationPermissionGranted()){
-    /*
-    Deixa uma notificação ativa o tempo todo, mas consome mais recursos.
-    A notificação deve ser deixada apenas no ambiente de desenvolvimento.
-    O showsBackgroundLocationIndicator já deixa uma notificação menos
-    personalizada que a localização está sendo obtida pelo app.
-    */
-    const foregroundService = { 
-      notificationTitle: "Aglomerou",
-      notificationBody: "Obtém localização anonimamente pra combate à COVID19."};
-
-    Location.startLocationUpdatesAsync(
-        LOCATION_TASK_NAME, 
-        { accuracy: Location.Accuracy.BestForNavigation, //Balanced
-          timeInterval: 30000,
-          showsBackgroundLocationIndicator: true,
-          foregroundService }); 
-    console.log('Iniciando atualização de localização em background');
+  if(!await locationPermissionGranted()){
+    console.log('Não foi dada permissão para obter localização em background.');
     return;
-  } 
+  }
 
-  console.log('Não foi dada permissão para obter localização em background.');
+  /*
+  Deixa uma notificação ativa o tempo todo, mas consome mais recursos.
+  A notificação deve ser deixada apenas no ambiente de desenvolvimento.
+  O showsBackgroundLocationIndicator já deixa uma notificação menos
+  personalizada que a localização está sendo obtida pelo app.
+  */
+  const foregroundService = { 
+    notificationTitle: "Aglomerou",
+    notificationBody: "Obtém localização anonimamente pra combate à COVID19."};
+
+  Location.startLocationUpdatesAsync(
+      LOCATION_TASK_NAME, 
+      { accuracy: Location.Accuracy.BestForNavigation, //Balanced
+        timeInterval: 30000,
+        showsBackgroundLocationIndicator: true,
+        foregroundService }); 
+  console.log('Iniciando atualização de localização em background');
 }
 
 const getLocalizacaoDispositivo = async () => {
