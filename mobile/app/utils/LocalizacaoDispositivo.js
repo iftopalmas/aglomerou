@@ -7,8 +7,14 @@ const uid = Constants.installationId;
 import api from '../service/api';
 
 const locationPermissionGranted = async () => {
-  const { status } = await Location.requestPermissionsAsync();
-  return status === 'granted';
+  try{
+    const { status } = await Location.requestPermissionsAsync();
+    return status === 'granted';
+  } catch(error){
+    console.log(`Erro ao tentar obter permissão de localização: ${error}`);
+  }
+
+  return false;
 }
 
 const startLocationBackgroundUpdate = async () => {
@@ -38,7 +44,7 @@ const startLocationBackgroundUpdate = async () => {
 
 const getLocalizacaoDispositivo = async () => {
   try {
-    if (!locationPermissionGranted()) {
+    if (!await locationPermissionGranted()) {
       setErrorMsg('A permissão para acessar a localização do dispositivo foi negada!');
       return;
     }
