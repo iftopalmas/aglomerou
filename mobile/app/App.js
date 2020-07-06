@@ -12,14 +12,27 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="RegistrarDispositivo" component={IdDispositivo}
-        options={{
-          title: "Aglomerou"
-        }}/>
-        <Stack.Screen name="Mapa" component={Mapa} 
-        options={{
-          title: "Mapa de aglomeração"
-        }}/>
+        <Stack.Screen
+          name="RegistrarDispositivo"
+          component={IdDispositivo}
+          options={{
+            title: "Aglomerou", 
+            headerStyle:{              
+              backgroundColor: '#E0FFFF'
+            }
+          }} 
+        />
+
+        <Stack.Screen
+          name="Mapa"
+          component={Mapa}
+          options={{
+            title: "Mapa de aglomeração",
+            headerStyle:{
+              backgroundColor: '#E0FFFF'
+            }
+          }} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -32,6 +45,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  
   mapStyle: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
