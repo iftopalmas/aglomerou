@@ -17,8 +17,8 @@ export default class LocalizacaoDispositivo extends Component {
             <View style={styles.container}>
                 <LottieView
                     style={{
-                    width: 48,
-                    height: 48,
+                        width: 48,
+                        height: 48,
                     }}
                     source={locationAnimation}
                     autoPlay={true}
@@ -28,6 +28,7 @@ export default class LocalizacaoDispositivo extends Component {
         );
     }
 };    
+
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
