@@ -92,7 +92,7 @@ export default class IdDispositivo extends Component {
                 />
                 <Text style={styles.text}>Projeto Aglomerou</Text>
                 
-                <Text>{this.state.captcha}</Text>
+                
                 <TouchableOpacity
                     style={styles.button}
                     onPress={this.verificarExisteCodigoCaptcha}
