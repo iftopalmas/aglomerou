@@ -50,6 +50,10 @@ export default class IdDispositivo extends Component {
         this.props.navigation.navigate('Mapa');
     }
 
+    mostrarCaptcha = async () => {
+        this.captchaForm.show();
+    }    
+
     onMessage = async event => {
         const captcha = event?.nativeEvent?.data;
         if (!captcha) {
@@ -77,11 +81,6 @@ export default class IdDispositivo extends Component {
         this.salvarCodigoCaptchaLocalmente(captcha);
         this.navegaPage();
     };
-
-
-    mostrarCaptcha = async () => {
-        this.captchaForm.show();
-    }
 
     render() {
         return (
