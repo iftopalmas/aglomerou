@@ -16,7 +16,7 @@ const CarregandoLocalizacao = () => {
               source={locationAnimation}
               autoPlay={true}
               speed={1}
-            />
+      />
     </View>
   )
 }
