@@ -5,12 +5,12 @@
 
 clear
 
-# sdk use java 8.0.252-zulu   
+sdk use java 8.0.252-zulu
 JDK_VERSION=`javac -version`
 if [[ $? -eq 0 ]]; then
     echo $JDK_VERSION
 else
-    echo "É preciso o JDK 8 instalado" >&2
+    echo "É preciso o JDK 8 instalado e nenhum JDK foi encontrado" >&2
     exit -1
 fi
 
