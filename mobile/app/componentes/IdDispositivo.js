@@ -26,7 +26,7 @@ export default class IdDispositivo extends Component {
     verificarExisteCodigoCaptcha = async () => {
         try {
             const value = await AsyncStorage.getItem('captcha')
-            if (value !== null && value.length > 0) {
+            if (value && value.length > 0) {
                 this.navegaPage()
             } else {
                 this.mostrarCaptcha()
@@ -36,9 +36,9 @@ export default class IdDispositivo extends Component {
         }
     }
 
-    salvarCodigoCaptchaLocalmente = async (value) => {
+    salvarCodigoCaptchaLocalmente = async (captcha) => {
         try {
-            await AsyncStorage.setItem('captcha', value)
+            await AsyncStorage.setItem('captcha', captcha)
         } catch (e) {
             console.log(`Erro ao salvar código captcha: ${error}`);
         }
@@ -71,7 +71,8 @@ export default class IdDispositivo extends Component {
         } catch (error) {
             console.log(`Erro ao registrar dispositivo: ${error}`);
         }
-        this.salvarCodigoCaptchaLocalmente(captcha)
+
+        this.salvarCodigoCaptchaLocalmente(captcha);
         this.navegaPage();
     };
 
@@ -92,13 +93,11 @@ export default class IdDispositivo extends Component {
                 />
                 <Text style={styles.text}>Projeto Aglomerou</Text>
                 
-                
                 <TouchableOpacity
                     style={styles.button}
                     onPress={this.verificarExisteCodigoCaptcha}
                 >
                     <Text>Ir para o mapa</Text>
-                    
                 </TouchableOpacity>
             </View>
         );
@@ -112,17 +111,18 @@ const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+
     text: {
         fontSize: 20,
         color: '#524123'
     }, 
+
     button: {
         alignItems: "center",
         backgroundColor: "#800000",
         padding: 10,
         fontSize: 20,
         borderRadius: 10
-      }
-
+    }
 });
 

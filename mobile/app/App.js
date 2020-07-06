@@ -20,7 +20,8 @@ export default function App() {
             headerStyle:{              
               backgroundColor: '#E0FFFF'
             }
-          }} />
+          }} 
+        />
 
         <Stack.Screen
           name="Mapa"
@@ -30,7 +31,8 @@ export default function App() {
             headerStyle:{
               backgroundColor: '#E0FFFF'
             }
-          }} />
+          }} 
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -43,6 +45,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  
   mapStyle: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
