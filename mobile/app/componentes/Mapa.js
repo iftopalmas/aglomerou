@@ -16,18 +16,19 @@ export default function App() {
   useEffect(() => {
     const getLocalizaoInicial = async () => {          
       try {
-        const {latitude, longitude} = await getLocalizacaoDispositivo()
-        setLatitudeInicial(latitude);
-        setLongitudeInicial(longitude);
-        setLoading(false);
-        } catch (error) {
-        console.log(`Erro ao obter localização inicial: ${error}`)
-        // define a localização inicial como Praça dos Girassóis.
-        setLatitudeInicial(-10.184510);
-        setLongitudeInicial(-48.334660);
-        setLoading(false)
-        }        
+          const {latitude, longitude} = await getLocalizacaoDispositivo()
+          setLatitudeInicial(latitude);
+          setLongitudeInicial(longitude);
+          setLoading(false);
+      } catch (error) {
+          console.log(`Erro ao obter localização inicial: ${error}`)
+          // Define a localização inicial como Praça dos Girassóis.
+          setLatitudeInicial(-10.184510);
+          setLongitudeInicial(-48.334660);
+          setLoading(false)
+      }        
     }
+
     getLocalizaoInicial()    
   }, [])
 
@@ -42,6 +43,7 @@ export default function App() {
           latitudeDelta: 0.05,
           longitudeDelta: 0.05
         }}>
+          
         <MapView.Marker
           coordinate={{
             latitude: latitudeInicial,
@@ -56,6 +58,7 @@ export default function App() {
     </View>
   );
 }
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -63,6 +66,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+
   mapStyle: {
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
