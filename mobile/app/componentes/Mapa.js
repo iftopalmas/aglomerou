@@ -1,18 +1,18 @@
 
 import React, {useState, useEffect} from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
+import { StyleSheet, View, Dimensions, Text } from 'react-native';
 import { FontAwesome5 as Fa } from '@expo/vector-icons';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-map-clustering'
 
 import LocalizacaoDispositivo from './LocalizacaoDispositivo'
-import CarregandoLocalizacao from './CarregandoLocalizacao'
+
 import { getLocalizacaoDispositivo, getLocalizacoesRecentes } from '../utils/LocalizacaoDispositivo'
 
 export default function App() {
   const [localizacoes, setLocalizacoes] = useState([])
-  const [latitudeInicial, setLatitudeInicial] = useState(0)
-  const [longitudeInicial, setLongitudeInicial] = useState(0)
+  const [latitudeInicial, setLatitudeInicial] = useState()
+  const [longitudeInicial, setLongitudeInicial] = useState()
   const [loading, setLoading] = useState(true)
   
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {loading ? <CarregandoLocalizacao/> : (
+      {loading ? <Text>Carregando Mapa</Text> : (
         <MapView 
         style={styles.mapStyle} 
         initialRegion={{
