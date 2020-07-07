@@ -7,7 +7,9 @@
     "web": "expo start --web",
     "eject": "expo eject",
     "build-android": "expo build:android -t app-bundle",
-    "publish": "publish"
+    "publish": "publish",
+    "list-emulator": "$ANDROID_SDK/tools/emulator -list-avds",
+    "emulator": "$ANDROID_SDK/tools/emulator -avd ${npm_config_avdname}"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",

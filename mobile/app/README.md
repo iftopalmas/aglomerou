@@ -5,8 +5,28 @@ das ferramentas pelo script [install.sh](../install.sh).
 
 Para testar o app em smartphones Android, é preciso baixar o [Expo App](https://play.google.com/store/apps/details?id=host.exp.exponent).
 
+## Iniciar Emulador Android
+
+Se tiver o Android SDK instalado e a variável de ambiente `$ANDROID_SDK`
+definida no seu sistema operacional para apontar para a pasta raiz do SDK,
+pode iniciar o emulador pela linha de comando.
+Mas para isso, você deve ter criado uma imagem de algum dispositivo Android (Android Virtual Device - AVD).
+Pode fazer isso pelo Android Studio, por exemplo.
+
+Depois de ter criado ao menos um AVD, você pode listar os AVDs disponíveis com:
+
+```bash
+yarn run list-emulator 
+```
+
+Para rodar uma das imagens pode executar:
+
+```bash
+yarn run emulator NOME_DA_IMAGEM
+```
+
 ## Iniciar o projeto no ambiente de desenvolvimento
 
 ```bash
-npm start
+expo start
 ````
