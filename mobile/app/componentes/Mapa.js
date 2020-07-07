@@ -7,7 +7,7 @@ import MapView from 'react-native-map-clustering'
 
 import LocalizacaoDispositivo from './LocalizacaoDispositivo'
 import CarregandoLocalizacao from './CarregandoLocalizacao'
-import { getLocalizacaoDispositivo, getLocalizacoes} from '../utils/LocalizacaoDispositivo'
+import { getLocalizacaoDispositivo, getLocalizacoes } from '../utils/LocalizacaoDispositivo'
 
 export default function App() {
   const [localizacoes, setLocalizacoes] = useState([])
