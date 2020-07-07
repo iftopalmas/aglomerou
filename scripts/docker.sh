@@ -37,6 +37,19 @@ env_vars()
 	source .env.production
 }
 
+# Re-executa um container, baixando a imagem do Docker Hub
+# $0 nome do script
+# $1 backend|database
+rerun()
+{
+	echo "# Removendo container $2"
+	eval "$1 rm $2"; echo ""
+	echo "# Baixando imagem $1 do Docker Hub"
+	eval "$1 pull $2"; echo ""
+	echo "# Iniciando novo container $2"
+	eval "$1 run $2"
+}
+
 if [[ $2 == "backend" ]]; then
 	env_vars
 	IMAGE_NAME="manoelcampos/aglomerou:backend"
@@ -54,12 +67,7 @@ if [[ $2 == "backend" ]]; then
 		echo ""
 		echo "Use $0 logs $2 pra exibir os logs do container executado"
 	elif [[ $1 == "rerun" ]]; then
-		echo "# Removendo container $2"
-		eval "$0 rm $2"; echo ""
-		echo "# Baixando imagem $2 do Docker Hub"
-		eval "$0 pull $2"; echo ""
-		echo "# Iniciando novo container $2"
-		eval "$0 run $2"
+		rerun $0 $2
 	fi
 elif [[ $2 == "database" || $2 == "db" ]]; then
 	env_vars
@@ -78,6 +86,8 @@ elif [[ $2 == "database" || $2 == "db" ]]; then
 		echo ""
 		echo "Use $0 logs $2 pra exibir os logs do container executado"
 		echo "Use $0 connect $2 pra conectar ao servidor Postgres no container"
+	elif [[ $1 == "rerun" ]]; then
+		rerun $0 $2
 	elif [[ $1 == "connect" ]]; then
 		#https://www.postgresql.org/docs/9.1/libpq-envars.html
 		PGPASSWORD=$DB_PASSWORD psql -h $DB_HOST -p $DB_PORT -U $DB_USER $DB_DATABASE 
