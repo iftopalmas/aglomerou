@@ -7,8 +7,8 @@ const uid = Constants.installationId;
 import api from '../service/api';
 
 const locationPermissionGranted = async () => {
-  const { status } = await Location.requestPermissionsAsync();
-  return status === 'granted';
+    const { status } = await Location.requestPermissionsAsync();
+    return status === 'granted';
 }
 
 const startLocationBackgroundUpdate = async () => {
@@ -25,7 +25,8 @@ const startLocationBackgroundUpdate = async () => {
   */
   const foregroundService = { 
     notificationTitle: "Aglomerou",
-    notificationBody: "Obtém localização anonimamente pra combate à COVID19."};
+    notificationBody: "Obtém localização anonimamente pra combate à COVID19."
+  };
 
   Location.startLocationUpdatesAsync(
       LOCATION_TASK_NAME, 
@@ -37,13 +38,12 @@ const startLocationBackgroundUpdate = async () => {
 }
 
 const getLocalizacaoDispositivo = async () => {
-  try {
-    if (!locationPermissionGranted()) {
-      setErrorMsg('A permissão para acessar a localização do dispositivo foi negada!');
-      return;
-    }
+  if (!await locationPermissionGranted()) {
+    throw new Error('A permissão para acessar a localização do dispositivo foi negada!');
+  }
 
-    const location = await Location.getCurrentPositionAsync();
+  try {
+    const location = await Location.getCurrentPositionAsync({});
     const { latitude, longitude } = location.coords;
     return { latitude, longitude };
   } catch (error) {
