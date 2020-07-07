@@ -12,7 +12,7 @@ export default class LocalizacaoDispositivo extends Component {
     render() {
         return (
             <View style={styles.container}>
-                <Text>Carregando localização do dispositivo.</Text>
+                <Text>Carregando localização do dispositivo...</Text>
             </View>
         );
     }

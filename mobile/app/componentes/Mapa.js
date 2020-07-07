@@ -38,7 +38,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {loading ? <Text>Carregando Mapa</Text> : (
+      {loading ? <Text>Carregando Mapa...</Text> : (
         <MapView 
         style={styles.mapStyle} 
         initialRegion={{
