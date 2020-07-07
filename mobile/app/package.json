@@ -6,7 +6,6 @@
     "ios": "expo start --ios",
     "web": "expo start --web",
     "eject": "expo eject",
-    "lint": "eslint --fix .",
     "build-android": "expo build:android -t app-bundle",
     "publish": "publish",
     "list-emulator": "$ANDROID_SDK/tools/emulator -list-avds",
