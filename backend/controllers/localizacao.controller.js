@@ -53,8 +53,8 @@ exports.getUltimaLocalizacaoTodos = async (req, res) => {
 };
 
 exports.getFrequenciaMediaVisitantas = async (req, res) => {
-    const v = (req.params.area).split(',');
-    const area = {latitude1: v[0], longitude1: v[1], latitude2: v[2], longitude2: v[3]};
+    const area = (req.params.area).split(',');
+    const lat1 = area[0], lng1 = area[1], lat2 = area[2], lng2 = area[3];
 
     const frequenciaMedia = {hora:null, dia:null, semana:null, mes:null};
 
@@ -65,7 +65,7 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
                     WHERE 
                         (latitude BETWEEN $1 AND $2) 
                         AND (longitude BETWEEN $3 AND $4) `;
-        const resultado = await client.query(sql, [area.latitude1, area.latitude2, area.longitude1, area.longitude2]);
+        const resultado = await client.query(sql, [lat1, lat2, lng1, lng2]);
 
         if(resultado.rowCount === 0) {
             return res.status(422).send({message: 'Nenhum dado localizado, area invalida!'});
