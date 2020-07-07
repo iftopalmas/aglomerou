@@ -2,9 +2,9 @@
 
 ## 1. Antes de enviar sua Pull Request (PR)
 
-Como você deve ter criado um novo branch a partir de `dev` para enviar o seu PR,
-neste meio tempo o branch `dev` pode ter sido atualizado.
-Assim, é exigido que você execute os comandos abaixo para atualizar o seu branch `dev` 
+Como você deve ter criado um novo branch a partir de `master` para enviar o seu PR,
+neste meio tempo o branch `master` pode ter sido atualizado.
+Assim, é exigido que você execute os comandos abaixo para atualizar o seu branch `master` 
 e incluir suas alterações no topo de tal branch:
    
 ```
@@ -40,7 +40,7 @@ git push -f
 
 O `push` forçado vai substituir as alterações existentes no seu branch anteriormente enviado ao GitHub
 pelas alterações locais realizadas pelo rebase. Por isso, é um comando perigoso de ser feito
-em um branch compartilhado como `master` ou `dev`.
+em um branch compartilhado como `master` ou `master`.
 
 Caso você não tenha enviado o seu branch pro GitHub, basta fazer um `push` normal.
 
