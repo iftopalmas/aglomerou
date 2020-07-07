@@ -13,7 +13,7 @@ const locationPermissionGranted = async () => {
 
 const startLocationBackgroundUpdate = async () => {
   if(!await locationPermissionGranted()){
-    console.log('Não foi dada permissão para obter localização em background.');
+    console.error('Não foi dada permissão para obter localização em background.');
     return;
   }
 
@@ -42,13 +42,9 @@ const getLocalizacaoDispositivo = async () => {
     throw new Error('A permissão para acessar a localização do dispositivo foi negada!');
   }
 
-  try {
-    const location = await Location.getCurrentPositionAsync({});
-    const { latitude, longitude } = location.coords;
-    return { latitude, longitude };
-  } catch (error) {
-    console.log(`Erro ao obter localização: ${error}`);
-  }
+  const location = await Location.getCurrentPositionAsync({});
+  const { latitude, longitude } = location.coords;
+  return { latitude, longitude };
 };
 
 const enviarLocalizacaoParaServidor = async (latitude, longitude) => {
@@ -57,13 +53,13 @@ const enviarLocalizacaoParaServidor = async (latitude, longitude) => {
     console.log(api.defaults.baseURL + url);
     const response = await api.post(url);
   } catch (error) {
-    console.log(`Erro ao enviar localização: ${error}`);
+    console.error(`Erro ao enviar localização: ${error}`);
   }
 }
 
 const enviarLocalizacaoBackground = async ({ data: { locations }, error }) => {
   if(error){
-    console.log(`Erro ao obter localização em background: ${error}`);
+    console.error(`Erro ao obter localização em background: ${error}`);
     return;
   }
 
@@ -74,8 +70,18 @@ const enviarLocalizacaoBackground = async ({ data: { locations }, error }) => {
   }
 }
 
+const getLocalizacoesRecentes = async () => {
+  try {
+    const { data } = await api.get('/localizacao/')
+    console.log(`Obtido última localização de ${data.length} dispositivos ativos atualmente.`)
+    return data
+  } catch (error) {
+    console.error(`Erro ao obter última localização dos dispositivos ativos: ${error}`)
+  }
+}
+
 TaskManager.defineTask(LOCATION_TASK_NAME, enviarLocalizacaoBackground);
 
 export { getLocalizacaoDispositivo, enviarLocalizacaoParaServidor, 
          enviarLocalizacaoBackground, locationPermissionGranted, 
-         startLocationBackgroundUpdate };
+         startLocationBackgroundUpdate, getLocalizacoesRecentes };

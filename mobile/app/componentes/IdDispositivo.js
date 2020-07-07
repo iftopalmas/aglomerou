@@ -34,7 +34,7 @@ export default class IdDispositivo extends Component {
                 this.mostrarCaptcha()
             }
         } catch (error) {
-            console.log(`Erro ao buscar código captcha: ${error}`);
+            console.error(`Erro ao buscar código captcha: ${error}`);
         }
     }
 
@@ -42,7 +42,7 @@ export default class IdDispositivo extends Component {
         try {
             await AsyncStorage.setItem(CAPTCHA_STORAGE_ITEM, captcha)
         } catch (e) {
-            console.log(`Erro ao salvar código captcha: ${error}`);
+            console.error(`Erro ao salvar código captcha: ${error}`);
         }
     }
 
@@ -75,7 +75,7 @@ export default class IdDispositivo extends Component {
             console.log(`\n${api.defaults.baseURL}${url}\n`);
             const response = await api.post(url, { captcha });
         } catch (error) {
-            console.log(`Erro ao registrar dispositivo: ${error}`);
+            console.error(`Erro ao registrar dispositivo: ${error}`);
         }
 
         this.salvarCodigoCaptchaLocalmente(captcha);

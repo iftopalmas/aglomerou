@@ -1,14 +1,16 @@
 
 import React, {useState, useEffect} from 'react';
 import { StyleSheet, View, Dimensions } from 'react-native';
-import MapView from 'react-native-maps';
 import { FontAwesome5 as Fa } from '@expo/vector-icons';
+import { Marker } from 'react-native-maps';
+import MapView from 'react-native-map-clustering'
 
 import LocalizacaoDispositivo from './LocalizacaoDispositivo'
 import CarregandoLocalizacao from './CarregandoLocalizacao'
-import {getLocalizacaoDispositivo} from '../utils/LocalizacaoDispositivo'
+import { getLocalizacaoDispositivo, getLocalizacoesRecentes } from '../utils/LocalizacaoDispositivo'
 
 export default function App() {
+  const [localizacoes, setLocalizacoes] = useState([])
   const [latitudeInicial, setLatitudeInicial] = useState(0)
   const [longitudeInicial, setLongitudeInicial] = useState(0)
   const [loading, setLoading] = useState(true)
@@ -20,8 +22,10 @@ export default function App() {
           setLatitudeInicial(latitude);
           setLongitudeInicial(longitude);
           setLoading(false);
+          
+          setLocalizacoes(await getLocalizacoesRecentes())
       } catch (error) {
-          console.log(`Erro ao obter localização inicial: ${error}`)
+          console.error(`Erro ao obter localização inicial: ${error}`)
           // Define a localização inicial como Praça dos Girassóis.
           setLatitudeInicial(-10.184510);
           setLongitudeInicial(-48.334660);
@@ -44,14 +48,23 @@ export default function App() {
           longitudeDelta: 0.05
         }}>
           
-        <MapView.Marker
+        <Marker
           coordinate={{
             latitude: latitudeInicial,
             longitude: longitudeInicial,
           }}
         >
           <Fa name="map-marker-alt" size={32} color="#e02041" />         
-        </MapView.Marker>
+        </Marker>
+
+        {localizacoes.map((item, index) => (
+           <Marker key={index}
+            coordinate={{
+              latitude: parseFloat(item.latitude),
+              longitude: parseFloat(item.longitude),
+            }}
+           /> 
+          ))}
       </MapView>
       )}
     <LocalizacaoDispositivo/>
