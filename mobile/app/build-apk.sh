@@ -5,7 +5,7 @@
 
 clear
 
-#sdk use java 8.0.252-zulu
+echo "sdk use java 8.0.252-zulu"
 JDK_VERSION=`javac -version`
 if [[ $? -eq 0 ]]; then
     echo $JDK_VERSION
