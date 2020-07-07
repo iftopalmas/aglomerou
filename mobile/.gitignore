@@ -1,3 +1,8 @@
+# O arquivo contém variáveis a serem usadas
+# para rodar comandos na seção scripts do package.json.
+# Cada desenvolvedor pode definir suas próprias configurações.
+.npmrc
+
 .expo/
 *.jks
 *.p8

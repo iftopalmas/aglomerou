@@ -9,7 +9,7 @@
     "build-android": "expo build:android -t app-bundle",
     "publish": "publish",
     "list-emulator": "$ANDROID_SDK/tools/emulator -list-avds",
-    "emulator": "$ANDROID_SDK/tools/emulator -avd ${npm_config_avdname}"
+    "emulator": "$ANDROID_SDK/tools/emulator -avd ${npm_config_AVDNAME} &"
   },
   "dependencies": {
     "@react-native-community/async-storage": "^1.11.0",

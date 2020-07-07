@@ -25,6 +25,14 @@ Para rodar uma das imagens pode executar:
 yarn run emulator NOME_DA_IMAGEM
 ```
 
+Você pode criar um arquivo `mobile/app/.npmrc` para definir a imagem padrão ser executada,
+pois depende das imagens e nome que utilizou ao criá-las no seu computador.
+O `.npmrc` pode ter o conteúdo como: 
+
+```bash
+AVDNAME=NOME_DA_IMAGEM_DO_DISPOSITIVO_ANDROID_QUE_DESEJA_RODAR_NO_SEU_PC
+```
+
 ## Iniciar o projeto no ambiente de desenvolvimento
 
 ```bash
