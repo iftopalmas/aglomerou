@@ -14,6 +14,7 @@ help()
 	echo ""
 	echo -e "\t$0 COMANDO database"
 	echo -e "\t\t    connect      - Conectar ao servidor Postgres no container (requer o psql na máquina host)"
+	echo -e "\t$0 rerun all       - Remove os containers em execução, baixa imagem atualizada e executa novamente"
 	echo ""
 
 	exit -1
@@ -91,6 +92,12 @@ elif [[ $2 == "database" || $2 == "db" ]]; then
 	elif [[ $1 == "connect" ]]; then
 		#https://www.postgresql.org/docs/9.1/libpq-envars.html
 		PGPASSWORD=$DB_PASSWORD psql -h $DB_HOST -p $DB_PORT -U $DB_USER $DB_DATABASE 
+	fi
+elif [[ $2 == "all" ]]; then	
+	if [[ $1 == "rerun" ]]; then
+		rerun $0 "backend"
+		echo "----------------------------------------------------------------------------"
+		rerun $0 "database"
 	fi
 else
 	help
