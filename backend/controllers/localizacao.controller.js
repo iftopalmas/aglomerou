@@ -60,7 +60,7 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
 
     const client = await db.connect();
     try {
-        const sql = `SELECT uid,latitude, longitude,EXTRACT(HOUR from data_hora_ultima_atualizacao)
+        const sql = `SELECT uid, latitude, longitude, EXTRACT(HOUR from data_hora_ultima_atualizacao) as horas
                     FROM localizacao_dispositivo 
                     WHERE 
                         (latitude BETWEEN $1 AND $2) 
@@ -75,11 +75,11 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
 
         const reducedArr = result.reduce((acc, current, index, result) => {
             if (acc.some(item => current.longitude === item.longitude && current.latitude === item.latitude)) {
-                const indexOfItem = acc.findIndex(item => current.longitude === item.longitude && current.latitude === item.latitude);
-                acc[indexOfItem].position.push(index);
-                acc[indexOfItem].horas.push(current.date_part);                
+                const itemIndex = acc.findIndex(item => current.longitude === item.longitude && current.latitude === item.latitude);
+                acc[itemIndex].position.push(index);
+                acc[itemIndex].horas.push(current.date_part);                
             } else {
-                acc.push({...current, position: [index], horas:[current.date_part]});
+                acc.push({...current, position: [index], horas:[current.horas]});
             }
 
             return acc;
