@@ -24,7 +24,7 @@ create table dispositivo (
 );
 
 comment on table dispositivo is 'Dispositivos móveis usados pelo app (representando as pessoas que o utilizam)';
-comment on column bloqueado is 'Se marcado como true ira recusar as requisições de tal dispositivo';
+comment on column dispositivo.bloqueado is 'Se marcado como true ira recusar as requisições de tal dispositivo';
 
 -- Os campos latitude e longitude são representados em Graus Decimais,
 -- mas não sei se a quantidade de casas é exata.
