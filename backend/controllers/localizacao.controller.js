@@ -52,6 +52,48 @@ exports.getUltimaLocalizacaoTodos = async (req, res) => {
     }
 };
 
+exports.getFrequenciaMediaVisitantas = async (req, res) => {
+    const v = (req.params.area).split(',');
+    const area = {latitude1: v[0], longitude1: v[1], latitude2: v[2], longitude2: v[3]};
+
+    const frequenciaMedia = {hora:null, dia:null, semana:null, mes:null};
+
+    const client = await db.connect();
+    try {
+        const sql = `SELECT uid,latitude, longitude,EXTRACT(HOUR from data_hora_ultima_atualizacao)
+                    FROM localizacao_dispositivo 
+                    WHERE 
+                        (latitude BETWEEN $1 AND $2) 
+                        AND (longitude BETWEEN $3 AND $4) `;
+        const resultado = await client.query(sql, [area.latitude1, area.latitude2, area.longitude1, area.longitude2]);
+
+        if(resultado.rowCount === 0) {
+            return res.status(422).send({message: 'Nenhum dado localizado, area invalida!'});
+        }
+
+let result = resultado.rows;
+
+        const reducedArr = result.reduce((acc, item, index, result) => {
+            if (!acc.some((i) => (item.longitude === i.longitude && item.latitude === i.latitude) )) {
+                acc.push({...item, position: [index]});
+            } else {
+                const indexOfItem = acc.findIndex((i) => (item.longitude === i.longitude && item.latitude === i.latitude) );
+                acc[indexOfItem].position.push(index);
+            }
+            return acc;
+        }, []);
+
+        console.log(result);
+
+        return res.status(200).json(reducedArr);
+     } catch (error) {
+        serverError(res, error);
+    } finally{
+        client.end();
+     }
+
+}
+
 exports.inserir = async (req, res) => {
     const { uid, lat, long } = req.params;
 
