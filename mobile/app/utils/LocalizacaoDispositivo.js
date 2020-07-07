@@ -13,7 +13,7 @@ const locationPermissionGranted = async () => {
 
 const startLocationBackgroundUpdate = async () => {
   if(!await locationPermissionGranted()){
-    console.log('Não foi dada permissão para obter localização em background.');
+    console.error('Não foi dada permissão para obter localização em background.');
     return;
   }
 
@@ -47,7 +47,7 @@ const getLocalizacaoDispositivo = async () => {
     const { latitude, longitude } = location.coords;
     return { latitude, longitude };
   } catch (error) {
-    console.log(`Erro ao obter localização: ${error}`);
+    console.error(`Erro ao obter localização: ${error}`);
   }
 };
 
@@ -57,13 +57,13 @@ const enviarLocalizacaoParaServidor = async (latitude, longitude) => {
     console.log(api.defaults.baseURL + url);
     const response = await api.post(url);
   } catch (error) {
-    console.log(`Erro ao enviar localização: ${error}`);
+    console.error(`Erro ao enviar localização: ${error}`);
   }
 }
 
 const enviarLocalizacaoBackground = async ({ data: { locations }, error }) => {
   if(error){
-    console.log(`Erro ao obter localização em background: ${error}`);
+    console.error(`Erro ao obter localização em background: ${error}`);
     return;
   }
 
@@ -80,7 +80,7 @@ const getLocalizacoes = async () => {
     console.log(`Obtido última localização de ${data.length} dispositivos ativos atualmente.`)
     return data
   } catch (error) {
-    console.log(`Erro ao obter última localização dos dispositivos ativos: ${error}`)
+    console.error(`Erro ao obter última localização dos dispositivos ativos: ${error}`)
   }
 }
 

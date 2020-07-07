@@ -25,7 +25,7 @@ export default function App() {
           
           setLocalizacoes(await getLocalizacoes())
       } catch (error) {
-          console.log(`Erro ao obter localização inicial: ${error}`)
+          console.error(`Erro ao obter localização inicial: ${error}`)
           // Define a localização inicial como Praça dos Girassóis.
           setLatitudeInicial(-10.184510);
           setLongitudeInicial(-48.334660);
