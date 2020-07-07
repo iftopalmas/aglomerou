@@ -19,7 +19,7 @@ fi
 (echo -e "expo-cli \c" && expo --version)  || yarn global add expo-cli
 echo ""
 
-ENV_FILE=".env"
+ENV_FILE=".env.production"
 # Criar variáveis de ambiente
 source $ENV_FILE
 
