@@ -70,7 +70,7 @@ const enviarLocalizacaoBackground = async ({ data: { locations }, error }) => {
   }
 }
 
-const getLocalizacoes = async () => {
+const getLocalizacoesRecentes = async () => {
   try {
     const { data } = await api.get('/localizacao/')
     console.log(`Obtido última localização de ${data.length} dispositivos ativos atualmente.`)
@@ -84,4 +84,4 @@ TaskManager.defineTask(LOCATION_TASK_NAME, enviarLocalizacaoBackground);
 
 export { getLocalizacaoDispositivo, enviarLocalizacaoParaServidor, 
          enviarLocalizacaoBackground, locationPermissionGranted, 
-         startLocationBackgroundUpdate, getLocalizacoes };
+         startLocationBackgroundUpdate, getLocalizacoesRecentes };

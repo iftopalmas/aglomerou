@@ -7,7 +7,7 @@ import MapView from 'react-native-map-clustering'
 
 import LocalizacaoDispositivo from './LocalizacaoDispositivo'
 import CarregandoLocalizacao from './CarregandoLocalizacao'
-import { getLocalizacaoDispositivo, getLocalizacoes } from '../utils/LocalizacaoDispositivo'
+import { getLocalizacaoDispositivo, getLocalizacoesRecentes } from '../utils/LocalizacaoDispositivo'
 
 export default function App() {
   const [localizacoes, setLocalizacoes] = useState([])
@@ -23,7 +23,7 @@ export default function App() {
           setLongitudeInicial(longitude);
           setLoading(false);
           
-          setLocalizacoes(await getLocalizacoes())
+          setLocalizacoes(await getLocalizacoesRecentes())
       } catch (error) {
           console.error(`Erro ao obter localização inicial: ${error}`)
           // Define a localização inicial como Praça dos Girassóis.
@@ -57,7 +57,7 @@ export default function App() {
           <Fa name="map-marker-alt" size={32} color="#e02041" />         
         </Marker>
 
-        {this.state.localizacoes.map((item, index) => (
+        {localizacoes.map((item, index) => (
            <Marker key={index}
             coordinate={{
               latitude: parseFloat(item.latitude),
