@@ -42,13 +42,9 @@ const getLocalizacaoDispositivo = async () => {
     throw new Error('A permissão para acessar a localização do dispositivo foi negada!');
   }
 
-  try {
-    const location = await Location.getCurrentPositionAsync({});
-    const { latitude, longitude } = location.coords;
-    return { latitude, longitude };
-  } catch (error) {
-    console.error(`Erro ao obter localização: ${error}`);
-  }
+  const location = await Location.getCurrentPositionAsync({});
+  const { latitude, longitude } = location.coords;
+  return { latitude, longitude };
 };
 
 const enviarLocalizacaoParaServidor = async (latitude, longitude) => {
