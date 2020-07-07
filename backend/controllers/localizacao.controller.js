@@ -71,7 +71,7 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
             return res.status(422).send({message: 'Nenhum dado localizado, area invalida!'});
         }
 
-let result = resultado.rows;
+        let result = resultado.rows;
 
         const reducedArr = result.reduce((acc, item, index, result) => {
             if (!acc.some((i) => (item.longitude === i.longitude && item.latitude === i.latitude) )) {
