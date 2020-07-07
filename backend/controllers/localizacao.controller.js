@@ -74,14 +74,14 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
         let result = resultado.rows;
 
         const reducedArr = result.reduce((acc, item, index, result) => {
-            if (acc.some((i) => (item.longitude === i.longitude && item.latitude === i.latitude) )) {
+            if (acc.some(i => (item.longitude === i.longitude && item.latitude === i.latitude))) {
                 const indexOfItem = acc.findIndex((i) => (item.longitude === i.longitude && item.latitude === i.latitude) );
                 acc[indexOfItem].position.push(index);
                 acc[indexOfItem].horas.push(item.date_part);                
             } else {
                 acc.push({...item, position: [index], horas:[item.date_part]});
             }
-            
+
             return acc;
         }, []);
 
