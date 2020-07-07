@@ -4,7 +4,7 @@ const controller = require('../controllers/localizacao.controller');
 /**
  * @swagger
  * /localizacao/{uid}:
- *  get: 
+ *  get:
  *    parameters:
  *      - name: uid
  *        in: path
@@ -13,27 +13,26 @@ const controller = require('../controllers/localizacao.controller');
  *        type: string
  *    description: Obtém a última localização de um dispositivo com um determinado UID
  *    responses:
- *      '200': 
- *        description: Localização do dispositivo obtido com sucesso 
+ *      '200':
+ *        description: Localização do dispositivo obtido com sucesso
  */
 router.get('/:uid', controller.getUltimaLocalizacao);
-
 
 /**
  * @swagger
  * /localizacao:
- *  get: 
+ *  get:
  *    description: Obtém a última localização de todos os dispositivos registrados
  *    responses:
- *      '200': 
- *        description: Localização dos dispositivos obtidas com sucesso 
+ *      '200':
+ *        description: Localização dos dispositivos obtidas com sucesso
  */
 router.get('/', controller.getUltimaLocalizacaoTodos);
 
 /**
  * @swagger
  * /localizacao/{uid}/{lat}/{long}:
- *  post: 
+ *  post:
  *    parameters:
  *      - name: uid
  *        in: path
@@ -56,14 +55,13 @@ router.get('/', controller.getUltimaLocalizacaoTodos);
  *        maximum: 180
  *    description: Insere a localização de um dispositivo com um determinado id
  *    responses:
- *      '201': 
- *        description: Localização do dispositivo inserida com sucesso 
- *      '403': 
+ *      '201':
+ *        description: Localização do dispositivo inserida com sucesso
+ *      '403':
  *        description: Dispositivo não cadastrado, não sendo autorizado a enviar localização.
- *      '422': 
+ *      '422':
  *        description: Latitude ou longitude inválida.
  */
 router.post('/:uid/:lat/:long', controller.inserir);
 
 module.exports = router;
-

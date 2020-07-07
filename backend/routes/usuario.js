@@ -4,7 +4,7 @@ const controller = require('../controllers/usuario.controller');
 /**
  * @swagger
  * /usuario:
- *  post: 
+ *  post:
  *    parameters:
  *      - name: usuario
  *        in: body
@@ -13,11 +13,11 @@ const controller = require('../controllers/usuario.controller');
  *        type: object
  *    description: Cadastra um usuário para acesso à aplicação web
  *    responses:
- *      '201': 
+ *      '201':
  *        description: Usuário cadastrado com sucesso
- *      '409': 
+ *      '409':
  *        description: Usuário com o email informado já foi cadastrado
- *      '422': 
+ *      '422':
  *        description: Email inválido
  */
 router.post('/', controller.inserir);
@@ -25,7 +25,7 @@ router.post('/', controller.inserir);
 /**
  * @swagger
  * /usuario:
- *  put: 
+ *  put:
  *    parameters:
  *      - name: usuario
  *        in: body
@@ -34,13 +34,13 @@ router.post('/', controller.inserir);
  *        type: object
  *    description: Atualiza um usuário da aplicação web
  *    responses:
- *      '204': 
+ *      '204':
  *        description: Usuário atualizado com sucesso
- *      '404': 
+ *      '404':
  *        description: Usuário com o id informado não foi encontrado
- *      '409': 
+ *      '409':
  *        description: Usuário com o email informado já foi cadastrado
- *      '422': 
+ *      '422':
  *        description: Email inválido
  */
 router.put('/', controller.atualizar);
@@ -48,7 +48,7 @@ router.put('/', controller.atualizar);
 /**
  * @swagger
  * /usuario/{id}:
- *  delete: 
+ *  delete:
  *    parameters:
  *      - name: id
  *        in: path
@@ -57,9 +57,9 @@ router.put('/', controller.atualizar);
  *        type: integer
  *    description: Exclui um usuário da aplicação web
  *    responses:
- *      '200': 
+ *      '200':
  *        description: Usuário excluído com sucesso
- *      '404': 
+ *      '404':
  *        description: Usuário com o id informado não foi encontrado
  */
 router.delete('/:id', controller.deletar);
