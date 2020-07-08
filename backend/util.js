@@ -7,6 +7,14 @@
 exports.inRange = (number, min, max) => ( number - min ) * ( number - max ) <= 0;
 
 /**
+ * Verifica se um valor é menor que outro
+ * Retornando true caso o valor 'number1' for menor que 'number2'
+ * @param number1 número a ser verificado (menor)
+ * @param number2 número a ser verificado (maior)
+ */
+exports.isValid = (number1, number2) => ( number1 - number2 ) < 0;
+
+/**
  * Retorna um HTTP status code 500 para exceções
  * desconhecidas capturadas em um bloco catch.
  * @param response Objeto Response para devolver uma resposta à requisição HTTP
