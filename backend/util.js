@@ -7,10 +7,11 @@
 exports.inRange = (number, min, max) => ( number - min ) * ( number - max ) <= 0;
 
 /**
- * Verifica se um valor é menor que outro
+ * Verifica se uma latitude ou longitude é menor que outra latitude ou longitude.
+ * Os valores devem ser ambos latitudes ou ambos longitude.
  * Retornando true caso o valor 'number1' for menor que 'number2'
- * @param number1 número a ser verificado (menor)
- * @param number2 número a ser verificado (maior)
+ * @param number1 uma latitude ou longitude
+ * @param number2 outra latitude ou longitude
  */
 exports.isAreaCoordinatesValid = (number1, number2) => number1 < number2;
 
