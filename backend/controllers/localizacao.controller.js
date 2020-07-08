@@ -77,7 +77,7 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
         const resultado = await client.query(sql2, [lat1, lat2, lng1, lng2]);
 
         const horasArray = resultado.rows.map(row => row.horas);
-        var horasSet = new Set(horasArray);
+        const horasSet = new Set(horasArray);
         frequenciaMedia.hora = resultado.rowCount / horasSet.size;
 
         return res.status(200).json(frequenciaMedia);
