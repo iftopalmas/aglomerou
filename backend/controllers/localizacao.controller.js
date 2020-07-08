@@ -70,11 +70,11 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
 
     const client = await db.connect();
     try {
-        const sql2 = `SELECT uid, EXTRACT(HOUR from data_hora_ultima_atualizacao) as horas, count(*) as ocorrencias
-                      FROM localizacao_dispositivo
-                      WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4) 
-                      group by 1, 2; `;
-        const resultado = await client.query(sql2, [lat1, lat2, lng1, lng2]);
+        const sql = `SELECT uid, EXTRACT(HOUR from data_hora_ultima_atualizacao) as horas
+                     FROM localizacao_dispositivo
+                     WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4) 
+                     group by 1, 2;`;
+        const resultado = await client.query(sql, [lat1, lat2, lng1, lng2]);
 
         const horasArray = resultado.rows.map(row => row.horas);
         const horasSet = new Set(horasArray);
