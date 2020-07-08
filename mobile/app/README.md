@@ -37,4 +37,8 @@ AVDNAME=NOME_DA_IMAGEM_DO_DISPOSITIVO_ANDROID_QUE_DESEJA_RODAR_NO_SEU_PC
 
 ```bash
 expo start
-````
+```
+
+## Gerenciamento dos serviços Google
+
+A chave de API do Google Maps é gerenciada pelo [Google Cloud Platform (GCP)](https://console.cloud.google.com) e a chave do [reCAPTCHA tem um console de administração próprio](https://www.google.com/recaptcha/admin). Todas os serviços são gerenciados usando a conta de email do projeto.
