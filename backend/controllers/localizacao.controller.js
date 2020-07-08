@@ -65,7 +65,7 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
         return;
     }
 
-    const frequenciaMedia = {hora:null, dia:null, semana:null, mes:null};
+    const frequenciaMedia = {hora: null, dia: null, semana: null, mes: null};
 
     const client = await db.connect();
     try {
