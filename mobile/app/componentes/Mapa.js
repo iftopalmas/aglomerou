@@ -5,6 +5,7 @@ import { Marker } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 
 import LocalizacaoDispositivo from './LocalizacaoDispositivo';
+import BarraPesquisa from './BarraPesquisaLocal';
 
 import {
   getLocalizacaoDispositivo,
@@ -53,37 +54,40 @@ export default function App() {
       {loading ? (
         <Text>Carregando Mapa...</Text>
       ) : (
-        <MapView
-          style={styles.mapStyle}
-          initialRegion={{
-            latitude: latitudeInicial,
-            longitude: longitudeInicial,
-            latitudeDelta: 0.05,
-            longitudeDelta: 0.05,
-          }}
-        >
-          <Marker
-            coordinate={{
+        <>
+          <MapView
+            style={styles.mapStyle}
+            initialRegion={{
               latitude: latitudeInicial,
               longitude: longitudeInicial,
+              latitudeDelta: 0.05,
+              longitudeDelta: 0.05,
             }}
           >
-            <Fa name="map-marker-alt" size={32} color="#e02041" />
-          </Marker>
-          {localizacoes.length > 0 ? (
-            localizacoes.map((local) => (
-              <Marker
-                key={local + Math.random()}
-                coordinate={{
-                  latitude: parseFloat(local.latitude),
-                  longitude: parseFloat(local.longitude),
-                }}
-              />
-            ))
-          ) : (
-            <View />
-          )}
-        </MapView>
+            <Marker
+              coordinate={{
+                latitude: latitudeInicial,
+                longitude: longitudeInicial,
+              }}
+            >
+              <Fa name="map-marker-alt" size={32} color="#e02041" />
+            </Marker>
+            {localizacoes.length > 0 ? (
+              localizacoes.map((local) => (
+                <Marker
+                  key={local + Math.random()}
+                  coordinate={{
+                    latitude: parseFloat(local.latitude),
+                    longitude: parseFloat(local.longitude),
+                  }}
+                />
+              ))
+            ) : (
+              <View />
+            )}
+          </MapView>
+          <BarraPesquisa />
+        </>
       )}
       <LocalizacaoDispositivo />
     </View>
