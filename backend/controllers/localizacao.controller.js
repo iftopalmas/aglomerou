@@ -1,5 +1,5 @@
 const db = require("../config/db");
-const { inRange, serverError, isValid } = require("../util");
+const { inRange, serverError, isAreaCoordinatesValid } = require("../util");
 
 exports.getUltimaLocalizacao = async (req, res) => {
     const uid = req.params.uid;
@@ -56,12 +56,12 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
     const area = (req.params.area).split(',');
     const lat1 = area[0], lng1 = area[1], lat2 = area[2], lng2 = area[3];
 
-    if(!isValid( lat1, lat2 )){
+    if(!isAreaCoordinatesValid( lat1, lat2 )){
         res.status(422).send({message: 'Valor de Latitude1 deve ser menor que valor de Latitude2!'});
         return;
     }
 
-    if(!isValid( lng1, lng2 )){
+    if(!isAreaCoordinatesValid( lng1, lng2 )){
         res.status(422).send({message: 'Valor de Longitude1 deve ser menor que valor de Longitude2!'});
         return;
     }
@@ -76,12 +76,11 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
         group by 1, 2; `;
         const resultado = await client.query(sql2, [lat1, lat2, lng1, lng2]);
 
-        const row= [];
-        resultado.rows.forEach(element => { row.push(element.horas); });
+        const horasArray = resultado.rows.map(row => row.horas);
 
-        var unique = new Set(row);
+        var horaSet = new Set(horasArray);
 
-        frequenciaMedia.hora = resultado.rowCount / unique.size;
+        frequenciaMedia.hora = resultado.rowCount / horaSet.size;
 
         return res.status(200).json(frequenciaMedia);
      } catch (error) {
