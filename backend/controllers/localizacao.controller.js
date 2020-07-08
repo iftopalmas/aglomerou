@@ -53,16 +53,15 @@ exports.getUltimaLocalizacaoTodos = async (req, res) => {
 };
 
 exports.getFrequenciaMediaVisitantas = async (req, res) => {
-    const area = (req.params.area).split(',');
-    const lat1 = area[0], lng1 = area[1], lat2 = area[2], lng2 = area[3];
+    const { lat1, lng1, lat2, lng2 } = req.params;
 
     if(!isAreaCoordinatesValid( lat1, lat2 )){
-        res.status(422).send({message: 'Valor de Latitude1 deve ser menor que valor de Latitude2!'});
+        res.status(422).send({message: 'Valor de Latitude 1 deve ser menor que valor de Latitude 2!'});
         return;
     }
 
     if(!isAreaCoordinatesValid( lng1, lng2 )){
-        res.status(422).send({message: 'Valor de Longitude1 deve ser menor que valor de Longitude2!'});
+        res.status(422).send({message: 'Valor de Longitude 1 deve ser menor que valor de Longitude 2!'});
         return;
     }
 
@@ -74,11 +73,10 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
                      FROM localizacao_dispositivo
                      WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4) 
                      group by 1, 2;`;
-        const resultado = await client.query(sql, [lat1, lat2, lng1, lng2]);
+        const { rows } = await client.query(sql, [lat1, lat2, lng1, lng2]);
 
-        const horasArray = resultado.rows.map(row => row.horas);
-        const horasSet = new Set(horasArray);
-        frequenciaMedia.hora = resultado.rowCount / horasSet.size;
+        const horasSet = new Set(rows.map(row => row.horas));
+        frequenciaMedia.hora = rows.length / horasSet.size;
 
         return res.status(200).json(frequenciaMedia);
     } catch (error) {
