@@ -12,7 +12,7 @@ exports.inRange = (number, min, max) => ( number - min ) * ( number - max ) <= 0
  * @param number1 número a ser verificado (menor)
  * @param number2 número a ser verificado (maior)
  */
-exports.isValid = (number1, number2) => ( number1 - number2 ) < 0;
+exports.isAreaCoordinatesValid = (number1, number2) => number1 < number2;
 
 /**
  * Retorna um HTTP status code 500 para exceções
