@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Dimensions, Text } from 'react-native';
 import { FontAwesome5 as Fa } from '@expo/vector-icons';
 import { Marker } from 'react-native-maps';
@@ -16,25 +16,66 @@ export default function App() {
   const [localizacoes, setLocalizacoes] = useState([]);
   const [latitudeInicial, setLatitudeInicial] = useState();
   const [longitudeInicial, setLongitudeInicial] = useState();
+  const [localBuscado, setLocalBuscado] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const getLocaisRecentesMarkers = async () => {
-      try {
-        const locaisMarkers = await getLocalizacoesRecentes();
-        setLocalizacoes(locaisMarkers);
-      } catch (error) {
-        console.log(
-          'Não foi possível buscar as localizações para os markers: ',
-          error
-        );
-      }
+  const mapRef = useRef();
+
+  const animateToRegion = (novoLocal) => {
+    const region = {
+      latitude: novoLocal.lat,
+      longitude: novoLocal.lng,
+      latitudeDelta: 0.009,
+      longitudeDelta: 0.009,
     };
+
+    setLocalBuscado({
+      latitude: novoLocal.lat,
+      longitude: novoLocal.lng,
+    });
+
+    mapRef.current.animateToRegion(region, 1200);
+  };
+
+  const moverMapa = async (novoLocal) => {
+    console.log('endereco recebido ->', novoLocal);
+
+    animateToRegion(novoLocal);
+  };
+
+  // atualiza os markers no mapa
+  const getLocaisRecentesMarkers = async () => {
+    try {
+      const locaisMarkers = await getLocalizacoesRecentes();
+      setLocalizacoes(locaisMarkers);
+    } catch (error) {
+      console.log(
+        'Não foi possível buscar as localizações para os markers: ',
+        error
+      );
+    }
+  };
+
+  // monitora buscas por local e atualiza locais no mapa
+  useEffect(() => {
+    const atualizarMarkers = async () => {
+      await getLocaisRecentesMarkers();
+    };
+
+    console.log('Atualiando markers. Novo local ->', localBuscado);
+    atualizarMarkers();
+  }, [localBuscado]);
+
+  useEffect(() => {
     const getLocalizaoInicial = async () => {
       try {
         const { latitude, longitude } = await getLocalizacaoDispositivo();
         setLatitudeInicial(latitude);
         setLongitudeInicial(longitude);
+
         setLoading(false);
       } catch (error) {
         console.error(`Erro ao obter localização inicial: ${error}`);
@@ -56,6 +97,7 @@ export default function App() {
       ) : (
         <>
           <MapView
+            ref={mapRef}
             style={styles.mapStyle}
             initialRegion={{
               latitude: latitudeInicial,
@@ -86,7 +128,7 @@ export default function App() {
               <View />
             )}
           </MapView>
-          <BarraPesquisa />
+          <BarraPesquisa moverMapa={moverMapa} />
         </>
       )}
       <LocalizacaoDispositivo />
