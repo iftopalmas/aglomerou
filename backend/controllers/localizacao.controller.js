@@ -1,5 +1,5 @@
 const db = require("../config/db");
-const { inRange, serverError } = require("../util");
+const { inRange, serverError, isValid } = require("../util");
 
 exports.getUltimaLocalizacao = async (req, res) => {
     const uid = req.params.uid;
@@ -56,38 +56,34 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
     const area = (req.params.area).split(',');
     const lat1 = area[0], lng1 = area[1], lat2 = area[2], lng2 = area[3];
 
+    if(!isValid( lat1, lat2 )){
+        res.status(422).send({message: 'Valor de Latitude1 deve ser menor que valor de Latitude2!'});
+        return;
+    }
+
+    if(!isValid( lng1, lng2 )){
+        res.status(422).send({message: 'Valor de Longitude1 deve ser menor que valor de Longitude2!'});
+        return;
+    }
+
     const frequenciaMedia = {hora:null, dia:null, semana:null, mes:null};
 
     const client = await db.connect();
     try {
-        const sql = `SELECT uid, latitude, longitude, EXTRACT(HOUR from data_hora_ultima_atualizacao) as horas
-                    FROM localizacao_dispositivo 
-                    WHERE 
-                        (latitude BETWEEN $1 AND $2) 
-                        AND (longitude BETWEEN $3 AND $4) `;
-        const resultado = await client.query(sql, [lat1, lat2, lng1, lng2]);
+        const sql2 = `SELECT uid, EXTRACT(HOUR from data_hora_ultima_atualizacao) as horas, count(*) as ocorrencias
+        FROM localizacao_dispositivo
+        WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4) 
+        group by 1, 2; `;
+        const resultado = await client.query(sql2, [lat1, lat2, lng1, lng2]);
 
-        if(resultado.rowCount === 0) {
-            return res.status(422).send({message: 'Nenhum dado localizado, area invalida!'});
-        }
+        const row= [];
+        resultado.rows.forEach(element => { row.push(element.horas); });
 
-        const result = resultado.rows;
+        var unique = new Set(row);
 
-        const reducedArr = result.reduce((acc, current, index, result) => {
-            if (acc.some(item => current.longitude === item.longitude && current.latitude === item.latitude)) {
-                const itemIndex = acc.findIndex(item => current.longitude === item.longitude && current.latitude === item.latitude);
-                acc[itemIndex].position.push(index);
-                acc[itemIndex].horas.push(current.date_part);                
-            } else {
-                acc.push({...current, position: [index], horas:[current.horas]});
-            }
+        frequenciaMedia.hora = resultado.rowCount / unique.size;
 
-            return acc;
-        }, []);
-
-        console.log(result);
-
-        return res.status(200).json(reducedArr);
+        return res.status(200).json(frequenciaMedia);
      } catch (error) {
         serverError(res, error);
     } finally{
