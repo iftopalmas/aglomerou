@@ -7,7 +7,7 @@ export default function BarraPesquisa({ moverMapa }) {
 
   return (
     <GooglePlacesAutocomplete
-      placeholder="Aglomerou onde?"
+      placeholder="Pesquise aqui"
       placeholderTextColor="#326002"
       onPress={(data, details) => {
         moverMapa(details.geometry.location);
@@ -57,7 +57,7 @@ const styles = {
     borderRadius: 8,
 
     fontSize: 16,
-    color: '#326002',
+    color: '#41414d',
   },
   listView: {
     backgroundColor: '#fff',
@@ -73,6 +73,7 @@ const styles = {
     paddingHorizontal: 8,
     height: 48,
     marginBottom: 4,
+    alignItems: 'center',
   },
   separator: {
     height: 1,

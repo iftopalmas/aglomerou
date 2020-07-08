@@ -24,7 +24,9 @@ export default function App() {
 
   const mapRef = useRef();
 
-  const animateToRegion = (novoLocal) => {
+  const moverMapa = (novoLocal) => {
+    console.log('movendo para o endereco recebido ->', novoLocal);
+
     const region = {
       latitude: novoLocal.lat,
       longitude: novoLocal.lng,
@@ -40,12 +42,6 @@ export default function App() {
     mapRef.current.animateToRegion(region, 1200);
   };
 
-  const moverMapa = async (novoLocal) => {
-    console.log('endereco recebido ->', novoLocal);
-
-    animateToRegion(novoLocal);
-  };
-
   // atualiza os markers no mapa
   const getLocaisRecentesMarkers = async () => {
     try {
@@ -59,7 +55,7 @@ export default function App() {
     }
   };
 
-  // monitora buscas por local e atualiza locais no mapa
+  // monitora buscas por local e atualiza markers no mapa
   useEffect(() => {
     const atualizarMarkers = async () => {
       await getLocaisRecentesMarkers();
@@ -79,6 +75,7 @@ export default function App() {
         setLoading(false);
       } catch (error) {
         console.error(`Erro ao obter localização inicial: ${error}`);
+
         // Define a localização inicial como Praça dos Girassóis.
         setLatitudeInicial(-10.18451);
         setLongitudeInicial(-48.33466);
@@ -122,7 +119,9 @@ export default function App() {
                     latitude: parseFloat(local.latitude),
                     longitude: parseFloat(local.longitude),
                   }}
-                />
+                >
+                  <Fa name="map-marker-alt" size={32} color="#e02041" />
+                </Marker>
               ))
             ) : (
               <View />
