@@ -1,5 +1,5 @@
 const db = require("../config/db");
-const { inRange, serverError } = require("../util");
+const { inRange, serverError, isAreaCoordinatesValid } = require("../util");
 
 exports.getUltimaLocalizacao = async (req, res) => {
     const uid = req.params.uid;
@@ -51,6 +51,40 @@ exports.getUltimaLocalizacaoTodos = async (req, res) => {
         client.end();
     }
 };
+
+exports.getFrequenciaMediaVisitantas = async (req, res) => {
+    const { lat1, lng1, lat2, lng2 } = req.params;
+
+    if(!isAreaCoordinatesValid( lat1, lat2 )){
+        res.status(422).send({message: 'Valor de Latitude 1 deve ser menor que valor de Latitude 2!'});
+        return;
+    }
+
+    if(!isAreaCoordinatesValid( lng1, lng2 )){
+        res.status(422).send({message: 'Valor de Longitude 1 deve ser menor que valor de Longitude 2!'});
+        return;
+    }
+
+    const frequenciaMedia = {hora: null, dia: null, semana: null, mes: null};
+
+    const client = await db.connect();
+    try {
+        const sql = `SELECT uid, EXTRACT(HOUR from data_hora_ultima_atualizacao) as horas
+                     FROM localizacao_dispositivo
+                     WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4) 
+                     group by 1, 2;`;
+        const { rows } = await client.query(sql, [lat1, lat2, lng1, lng2]);
+
+        const horasSet = new Set(rows.map(row => row.horas));
+        frequenciaMedia.hora = rows.length / horasSet.size;
+
+        return res.status(200).json(frequenciaMedia);
+    } catch (error) {
+        serverError(res, error);
+    } finally{
+        client.end();
+    }
+}
 
 exports.inserir = async (req, res) => {
     const { uid, lat, long } = req.params;

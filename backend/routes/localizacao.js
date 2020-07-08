@@ -32,6 +32,40 @@ router.get('/', controller.getUltimaLocalizacaoTodos);
 
 /**
  * @swagger
+ * /localizacao/frequencia-pessoas/{lat1}/{lng1}/{lat2}/{lng2}:
+ *  get:
+ *    parameters:
+ *      - name: lat1
+ *        in: path
+ *        description: Latitude do ponto superior esquerdo da área.
+ *        required: true
+ *        type: number
+ *      - name: lng1
+ *        in: path
+ *        description: Longitude do ponto superior esquerdo da área.
+ *        required: true
+ *        type: number
+ *      - name: lat2
+ *        in: path
+ *        description: Latitude do ponto inferior direito da área.
+ *        required: true
+ *        type: number
+ *      - name: lng2
+ *        in: path
+ *        description: Longitude do ponto inferior direito da área.
+ *        required: true
+ *        type: number
+ *    description: Frequência (média) de pessoas que visitam o local por hora, dia, semana e mês em uma determinada área representada por 2 pontos.
+ *    responses:
+ *      '200':
+ *        description: Objeto contendo todas essas estatísticas
+ *      '422':
+ *        description: Area inválida. A latitude e longitude do primeiro ponto deve ser menor que a do segundo.
+ */
+router.get('/frequencia-pessoas/:lat1/:lng1/:lat2/:lng2', controller.getFrequenciaMediaVisitantas);
+
+/**
+ * @swagger
  * /localizacao/{uid}/{lat}/{long}:
  *  post: 
  *    parameters:
