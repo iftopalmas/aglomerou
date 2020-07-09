@@ -3,7 +3,7 @@ const controller = require('../controllers/localizacao.controller');
 
 /**
  * @swagger
- * /localizacao/{uid}:
+ * /api/localizacao/{uid}:
  *  get: 
  *    parameters:
  *      - name: uid
@@ -21,7 +21,7 @@ router.get('/:uid', controller.getUltimaLocalizacao);
 
 /**
  * @swagger
- * /localizacao:
+ * /api/localizacao:
  *  get: 
  *    description: Obtém a última localização de todos os dispositivos registrados
  *    responses:
@@ -32,7 +32,7 @@ router.get('/', controller.getUltimaLocalizacaoTodos);
 
 /**
  * @swagger
- * /localizacao/frequencia-pessoas/{lat1}/{lng1}/{lat2}/{lng2}:
+ * /api/localizacao/frequencia-pessoas/{lat1}/{lng1}/{lat2}/{lng2}:
  *  get:
  *    parameters:
  *      - name: lat1
@@ -66,7 +66,7 @@ router.get('/frequencia-pessoas/:lat1/:lng1/:lat2/:lng2', controller.getFrequenc
 
 /**
  * @swagger
- * /localizacao/{uid}/{lat}/{long}:
+ * /api/localizacao/{uid}/{lat}/{long}:
  *  post: 
  *    parameters:
  *      - name: uid

@@ -3,7 +3,7 @@ const controller = require('../controllers/dispositivo.controller');
 
 /**
  * @swagger
- * /dispositivo/total:
+ * /api/dispositivo/total:
  *  get: 
  *    description: Obtém o total de dispositivos cadastrados
  *    responses:
@@ -14,7 +14,7 @@ router.get('/total', controller.total);
 
 /**
  * @swagger
- * /dispositivo/{uid}:
+ * /api/dispositivo/{uid}:
  *  get: 
  *    parameters:
  *      - name: uid
@@ -31,7 +31,7 @@ router.get('/:uid', controller.get);
 
 /**
  * @swagger
- * /dispositivo/{uid}/{tipo}:
+ * /api/dispositivo/{uid}/{tipo}:
  *  post: 
  *    parameters:
  *      - name: uid
