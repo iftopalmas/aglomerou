@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { REACT_NATIVE_GOOGLE_MAPS_API_KEY } from 'react-native-dotenv';
 import { GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 
-export default function BarraPesquisa({ moverMapa }) {
+export default function BarraPesquisa({ moverMapa, localizacaoInicial }) {
   const [searchFocused, setSearchfocused] = useState(false);
 
   return (
@@ -16,6 +16,9 @@ export default function BarraPesquisa({ moverMapa }) {
         key: REACT_NATIVE_GOOGLE_MAPS_API_KEY,
         language: 'pt-BR',
         components: 'country:br',
+        location: `${localizacaoInicial.latitude}, ${localizacaoInicial.longitude}`,
+        radius: 20000,
+        types: 'establishment',
       }}
       textInputProps={{
         onFocus: () => {

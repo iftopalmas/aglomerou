@@ -14,8 +14,10 @@ import {
 
 export default function App() {
   const [localizacoes, setLocalizacoes] = useState([]);
-  const [latitudeInicial, setLatitudeInicial] = useState();
-  const [longitudeInicial, setLongitudeInicial] = useState();
+  const [localInicial, setLocalInicial] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
   const [localBuscado, setLocalBuscado] = useState({
     latitude: 0,
     longitude: 0,
@@ -69,16 +71,21 @@ export default function App() {
     const getLocalizaoInicial = async () => {
       try {
         const { latitude, longitude } = await getLocalizacaoDispositivo();
-        setLatitudeInicial(latitude);
-        setLongitudeInicial(longitude);
+        setLocalInicial({
+          latitude,
+          longitude,
+        });
 
         setLoading(false);
       } catch (error) {
         console.error(`Erro ao obter localização inicial: ${error}`);
 
         // Define a localização inicial como Praça dos Girassóis.
-        setLatitudeInicial(-10.18451);
-        setLongitudeInicial(-48.33466);
+        setLocalInicial({
+          latitude: -10.18451,
+          longitude: -48.33466,
+        });
+
         setLoading(false);
       }
     };
@@ -97,16 +104,16 @@ export default function App() {
             ref={mapRef}
             style={styles.mapStyle}
             initialRegion={{
-              latitude: latitudeInicial,
-              longitude: longitudeInicial,
+              latitude: localInicial.latitude,
+              longitude: localInicial.longitude,
               latitudeDelta: 0.05,
               longitudeDelta: 0.05,
             }}
           >
             <Marker
               coordinate={{
-                latitude: latitudeInicial,
-                longitude: longitudeInicial,
+                latitude: localInicial.latitude,
+                longitude: localInicial.longitude,
               }}
             >
               <Fa name="map-marker-alt" size={32} color="#e02041" />
@@ -127,7 +134,10 @@ export default function App() {
               <View />
             )}
           </MapView>
-          <BarraPesquisa moverMapa={moverMapa} />
+          <BarraPesquisa
+            moverMapa={moverMapa}
+            localizacaoInicial={localInicial}
+          />
         </>
       )}
       <LocalizacaoDispositivo />
