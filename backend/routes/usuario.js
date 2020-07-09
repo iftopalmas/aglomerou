@@ -3,7 +3,7 @@ const controller = require('../controllers/usuario.controller');
 
 /**
  * @swagger
- * /usuario:
+ * /api/usuario:
  *  post: 
  *    parameters:
  *      - name: usuario
@@ -24,7 +24,7 @@ router.post('/', controller.inserir);
 
 /**
  * @swagger
- * /usuario:
+ * /api/usuario:
  *  put: 
  *    parameters:
  *      - name: usuario
@@ -47,7 +47,7 @@ router.put('/', controller.atualizar);
 
 /**
  * @swagger
- * /usuario/{id}:
+ * /api/usuario/{id}:
  *  delete: 
  *    parameters:
  *      - name: id

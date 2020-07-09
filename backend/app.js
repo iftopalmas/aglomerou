@@ -10,7 +10,10 @@ app.use(express.json());
 app.use(cors());
 
 const rotas = require('./routes');
-app.use('/', rotas);
+
+//app.get('/', (req, res) => res.sendFile('/index.html'));
+app.get('/', (req, res) => res.writeHead(302, {'Location': 'https://ifto-palmas.github.io/aglomerou/'}).end());
+app.use('/api', rotas);
 
 require('./config/swagger')(app);
 
