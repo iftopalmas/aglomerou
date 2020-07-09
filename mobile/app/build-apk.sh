@@ -5,10 +5,16 @@
 
 clear
 
-echo "sdk use java 8.0.252-zulu"
-JDK_VERSION=`javac -version`
+#O javac manda o número da versão para a saída de erro
+JDK_VERSION=`javac -version 2>&1 | cut -d' ' -f2`
 if [[ $? -eq 0 ]]; then
-    echo $JDK_VERSION
+    if echo $JDK_VERSION | grep "1.8" > /dev/null; then
+        echo "javac $JDK_VERSION"
+    else
+        echo "É preciso o JDK 8 instalado mas foi encontrado o $JDK_VERSION" >&2
+        echo -e "Se você tem o sdkman, tente um comando como:\n\tsdk use java 8.0.252-zulu"
+        exit -1
+    fi
 else
     echo "É preciso o JDK 8 instalado e nenhum JDK foi encontrado" >&2
     exit -1
