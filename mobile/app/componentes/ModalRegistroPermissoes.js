@@ -14,7 +14,7 @@ import { FontAwesome5 as Fa } from '@expo/vector-icons';
 import { locationPermissionGranted } from '../utils/LocalizacaoDispositivo';
 
 import registroSplash from '../mobileAssets/registroSplash.png';
-import pronto from '../mobileAssets/pronto.png';
+import prontoSplash from '../mobileAssets/prontoSplash.png';
 
 import IdDispositivo from './IdDispositivo';
 
@@ -39,8 +39,8 @@ const ModalRegistroPermissoes = ({ modalVisible, fecharModal }) => {
         <Text style={styles.title}> Permissões Necessárias!</Text>
         <View style={styles.infoBoxContainer}>
           <Text style={styles.infoBoxText}>
-            Para ajudar no combate à COVID19, é preciso conceder ao "Aglomerou?" o
-            acesso a sua localização. Nenhuma informação pessoal como nome ou
+            Para ajudar no combate à COVID19, é preciso conceder ao "Aglomerou?"
+            o acesso a sua localização. Nenhuma informação pessoal como nome ou
             número de telefone será coletada, apenas sua localização. Os dados
             não são identificados e serão utilizados única e exclusivamente para
             fornecer um serviço de utilidade pública.
@@ -49,7 +49,7 @@ const ModalRegistroPermissoes = ({ modalVisible, fecharModal }) => {
         {permissoes && <Text style={styles.title}>Tudo pronto!</Text>}
         <View style={styles.imageContainer}>
           {permissoes ? (
-            <Image style={styles.prontoSplash} source={pronto} />
+            <Image style={styles.splashPronto} source={prontoSplash} />
           ) : (
             <Image style={styles.registroSplash} source={registroSplash} />
           )}
