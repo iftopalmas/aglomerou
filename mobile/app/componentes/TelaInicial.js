@@ -61,7 +61,7 @@ const TelaInicial = ({ navigation }) => {
         <Image
           style={styles.splash}
           source={inicialSplash}
-          resizeMethod="resize"
+          resizeMode="contain"
         />
         <TouchableOpacity
           style={styles.button}
@@ -112,13 +112,13 @@ const styles = StyleSheet.create({
     fontSize: hp('3%'),
     fontWeight: '500',
     color: '#41414D',
-    marginTop: 16,
-    marginBottom: 16,
+    marginTop: hp('2%'),
+    marginBottom: hp('1%'),
   },
 
   infoBoxContainer: {
     width: 301,
-    height: hp('24%'),
+    height: hp('23%'),
     backgroundColor: '#94D451',
     borderRadius: 16,
     justifyContent: 'center',
@@ -130,7 +130,7 @@ const styles = StyleSheet.create({
   },
 
   infoBoxText: {
-    fontSize: 22,
+    fontSize: hp('2.6'),
     lineHeight: 24,
     textAlign: 'center',
     color: '#FEFDFD',
@@ -141,15 +141,16 @@ const styles = StyleSheet.create({
   },
 
   splash: {
-    height: hp('24%'),
+    height: hp('22%'),
+    marginTop: hp('2%'),
   },
 
   buttonContainer: {
     width: 160,
     height: 40,
 
-    marginTop: hp('4%'),
-    marginBottom: hp('3%'),
+    marginTop: hp('6%'),
+    marginBottom: hp('4%'),
 
     borderRadius: 8,
     flexDirection: 'row',
@@ -191,6 +192,7 @@ const styles = StyleSheet.create({
     color: '#41414d',
     textAlign: 'center',
     opacity: 0.6,
+    marginBottom: hp('2%'),
   },
 });
 

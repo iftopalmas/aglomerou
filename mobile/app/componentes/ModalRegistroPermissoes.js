@@ -182,25 +182,24 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: wp('3%'),
   },
 
   title: {
-    fontSize: hp('3.6%'),
+    fontSize: hp('3.4%'),
     fontWeight: '600',
     color: '#41414d',
     textAlign: 'center',
     opacity: 0.7,
   },
   infoBoxContainer: {
-    padding: 5,
+    padding: wp('2%'),
     marginTop: hp('1.5%'),
     marginBottom: 26,
   },
 
   infoBoxText: {
-    fontSize: 20,
+    fontSize: hp('2.4%'),
     lineHeight: 24,
     textAlign: 'center',
     color: '#41414D',
@@ -209,8 +208,8 @@ const styles = StyleSheet.create({
   imageContainer: {
     height: hp('25%'),
     justifyContent: 'center',
-    marginTop: hp('1.5%'),
-    marginBottom: hp('2.5%'),
+    marginTop: hp('1.1%'),
+    marginBottom: hp('2.1%'),
   },
   registroSplash: {},
   prontoSplash: {
