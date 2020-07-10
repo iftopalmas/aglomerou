@@ -36,7 +36,7 @@ Este projeto só foi possível graças aos colaboradores listados abaixo ([emoji
     <td align="center"><a href="https://github.com/ccmmonteiro"><img src="https://avatars2.githubusercontent.com/u/8394675?v=4" width="100px;" alt=""/><br /><sub><b>ccmmonteiro</b></sub></a><br /><a href="#infra-ccmmonteiro" title="Infrastructure (Hosting, Build-Tools, etc)">🚇</a></td>
   </tr>
   <tr>
-    <td align="center"><a href="https://github.com/radaelilucca"><img src="https://avatars2.githubusercontent.com/u/29178479?v=4" width="100px;" alt=""/><br /><sub><b>Lucca Radaeli</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=radaelilucca" title="Code">💻</a> <a href="#design-radaelilucca" title="Design">🎨</a></td>
+    <td align="center"><a href="https://github.com/radaelilucca"><img src="https://avatars2.githubusercontent.com/u/29178479?v=4" width="100px;" alt=""/><br /><sub><b>Lucca Radaeli</b></sub></a><br /><a href="https://github.com/ifto-palmas/aglomerou/commits?author=radaelilucca" title="Code">💻</a> <a href="#design-radaelilucca" title="Design">🎨</a> <a href="#ideas-radaelilucca" title="Ideas, Planning, & Feedback">🤔</a></td>
   </tr>
 </table>
 
