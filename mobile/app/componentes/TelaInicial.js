@@ -72,7 +72,7 @@ const TelaInicial = ({ navigation }) => {
           </View>
         </TouchableOpacity>
         <Text style={styles.infoText}>
-          O Aglomerou? se preocupa com a sua privacidade. Nenhum dado pessoal
+          O "Aglomerou?" se preocupa com a sua privacidade. Nenhum dado pessoal
           será coletado durante o uso do app!
         </Text>
       </View>

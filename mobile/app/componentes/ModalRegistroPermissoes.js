@@ -39,7 +39,7 @@ const ModalRegistroPermissoes = ({ modalVisible, fecharModal }) => {
         <Text style={styles.title}> Permissões Necessárias!</Text>
         <View style={styles.infoBoxContainer}>
           <Text style={styles.infoBoxText}>
-            Para ajudar no combate à COVID19, é preciso conceder ao Alogmerou? o
+            Para ajudar no combate à COVID19, é preciso conceder ao "Aglomerou?" o
             acesso a sua localização. Nenhuma informação pessoal como nome ou
             número de telefone será coletada, apenas sua localização. Os dados
             não são identificados e serão utilizados única e exclusivamente para
