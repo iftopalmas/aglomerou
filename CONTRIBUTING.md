@@ -1,7 +1,7 @@
 # Guia de Contribuição
 
 Contribuições são sempre bem vindas. Você pode contribuir de diferentes formas como descrito a seguir.
-No entanto, para manter a qualidade do projeto existem algumas diretrizes que precisamos que os colaboradores siga.
+No entanto, para manter a qualidade do projeto existem algumas diretrizes que precisamos que os colaboradores sigam.
 Desta forma, podemos manter o controle das coisas.
 Estas diretrizes são principalmente relevantes quando você está planejando contribuir com o código fonte do projeto,
 de forma que a qualidade do código é preservada e o [aprodecimento de código](https://en.wikipedia.org/wiki/Software_rot) é evitado.
@@ -33,8 +33,8 @@ seguindo mandatoriamente os passos abaixo:
 
 ### 1. Crie um branch específico para trabalhar na issue
 
-* Cria um novo branch a partir do branch `dev` para incluir suas alterações. O nome de tal branch deve ter o formato `issue-XX`
-* Para criar um novo branch a partir de `dev`, execute: `git checkout dev -b issue-XX`. 
+* Crie um novo branch a partir do branch `master` para incluir suas alterações. O nome de tal branch deve ter o formato `issue-XYZ`
+* Para criar um novo branch a partir de `master`, execute: `git checkout master -b issue-XYZ`. 
   Por favor, evite fazer alterações diretamente no branch `master`.
 
 ### 2. Diretrizes de qualidade de código
@@ -56,29 +56,33 @@ Gaste algum tempo escrevendo mensagens de commit estruturadas, informativas e qu
 
 ### 4. Envie suas alterações
 
-* Atualize o branch `dev` do seu fork para obter a última versão do projeto:  
+* Atualize o branch `master` do seu fork para obter a última versão do projeto:  
 
 ```bash
 #Adicionar o endereço do repositório original (se ainda não fez)
 git remote add upstream https://github.com/ifto-palmas/aglomerou.git
+
 #Obter os branches remotos
 git fetch upstream
-#Entrar no seu branch dev local
-git checkout dev
-#Atualizar o seu branch dev com tal branch no repositório original
-git merge upstream/dev
+
+#Entrar no seu branch master local
+git checkout master
+
+#Atualizar o seu branch master com tal branch no repositório original
+git merge upstream/master
 ```
 
-* Execute um `rebase` para incluir suas alterações no topo do branch `dev`, de forma que suas alterações serão baseadas na versão mais recente do código, antes de enviar sua contribuição. Para isto execute:
+* Execute um `rebase` para incluir suas alterações no topo do branch `master`, de forma que suas alterações serão baseadas na versão mais recente do código, antes de enviar sua contribuição. Para isto execute:
 
 ```bash
 #Entrar no branch referente a issue em que estava trabalhando
-git checkout issue-XX
-#Incluir as alterações realizadas no topo da última versão no branch dev
-git rebase dev
+git checkout issue-XYZ
+
+#Incluir as suas alterações no topo da última versão no branch master
+git rebase master
 ```
 
-* Faça um último commit se necessário, incluindo na primeira linha da mensagem `Close #XX` para indicar o número da issue que está finalizando.
+* Faça um último commit se necessário, incluindo na primeira linha a mensagem `Close #XYZ` para indicar o número da issue que está finalizando.
 * Execute `git push` para enviar seu branch para o GitHub.
-* Abra uma Pull Request no repositório oficial em https://github.com/ifto-palmas/aglomerou
-* Aguarde suas contribuições serem avaliadas e obrigado antecipadamente.
+* A partir do seu fork no GitHub, abra uma Pull Request.
+* Aguarde suas contribuições serem avaliadas e obrigado antecipadamente pela contribuição 👏.
