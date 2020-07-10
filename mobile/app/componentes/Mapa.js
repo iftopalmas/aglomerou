@@ -4,13 +4,13 @@ import { FontAwesome5 as Fa } from '@expo/vector-icons';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 
-import LocalizacaoDispositivo from './LocalizacaoDispositivo';
-import BarraPesquisa from './BarraPesquisaLocal';
-
 import {
+  startLocationBackgroundUpdate,
   getLocalizacaoDispositivo,
   getLocalizacoesRecentes,
 } from '../utils/LocalizacaoDispositivo';
+
+import BarraPesquisa from './BarraPesquisaLocal';
 
 export default function App() {
   const [localizacoes, setLocalizacoes] = useState([]);
@@ -67,7 +67,9 @@ export default function App() {
     atualizarMarkers();
   }, [localBuscado]);
 
+  // carrega localização inicial e inicia serviço de localizacao em backdround
   useEffect(() => {
+    startLocationBackgroundUpdate();
     const getLocalizaoInicial = async () => {
       try {
         const { latitude, longitude } = await getLocalizacaoDispositivo();
@@ -140,7 +142,6 @@ export default function App() {
           />
         </>
       )}
-      <LocalizacaoDispositivo />
     </View>
   );
 }
