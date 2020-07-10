@@ -69,14 +69,17 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
 
     const client = await db.connect();
     try {
-        const sql = `SELECT uid, EXTRACT(HOUR from data_hora_ultima_atualizacao) as horas
-                     FROM localizacao_dispositivo
-                     WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4) 
-                     group by 1, 2;`;
+        const sql = `SELECT uid, EXTRACT(HOUR from data_hora_ultima_atualizacao) as horas,
+                    EXTRACT(DAY from data_hora_ultima_atualizacao) as dias
+                    FROM localizacao_dispositivo
+                    WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4) ;`;
         const { rows } = await client.query(sql, [lat1, lat2, lng1, lng2]);
 
         const horasSet = new Set(rows.map(row => row.horas));
+        const diasSet = new Set(rows.map(row => row.dias));
+
         frequenciaMedia.hora = rows.length / horasSet.size;
+        frequenciaMedia.dia = rows.length / diasSet.size;
 
         return res.status(200).json(frequenciaMedia);
     } catch (error) {
