@@ -29,6 +29,8 @@ ENV_FILE=".env.production"
 # Criar variáveis de ambiente
 source $ENV_FILE
 
+echo "$REACT_NATIVE_ADDRESS_API_AGLOMEROU"
+
 if [[ -z "$EXPO_ANDROID_KEYSTORE_PASSWORD" ]]; then
     echo "Variável EXPO_ANDROID_KEYSTORE_PASSWORD não encontrada no arquivo $ENV_FILE" >&2
     exit -1
