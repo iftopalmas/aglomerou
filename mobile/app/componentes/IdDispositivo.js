@@ -81,6 +81,7 @@ export default class IdDispositivo extends Component {
     } catch (error) {
       console.error(`Erro ao registrar dispositivo: ${error}`);
       alert('Não foi possível acessar o servidor para registrar o dispositivo. Vefique sua conexão de internet ou tente mais tarde.');
+      return;
     }
 
     this.salvarCodigoCaptchaLocalmente(captcha);
