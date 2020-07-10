@@ -31,7 +31,7 @@ export default class IdDispositivo extends Component {
     try {
       const captcha = await AsyncStorage.getItem(CAPTCHA_STORAGE_ITEM);
       if (captcha && captcha.length > 0) {
-        this.definirPermissoes();
+        this.props.definirPermissoes();
       } else {
         this.mostrarCaptcha();
       }
