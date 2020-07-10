@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
   },
   infoBoxContainer: {
     padding: 5,
-    marginTop: 26,
+    marginTop: hp('1.5%'),
     marginBottom: 26,
   },
 
@@ -210,6 +210,7 @@ const styles = StyleSheet.create({
     height: hp('25%'),
     justifyContent: 'center',
     marginTop: hp('1.5%'),
+    marginBottom: hp('2.5%'),
   },
   registroSplash: {},
   prontoSplash: {
@@ -222,7 +223,7 @@ const styles = StyleSheet.create({
     color: '#41414d',
     textAlign: 'center',
     opacity: 0.6,
-    marginTop: hp('1.5%'),
+    marginTop: hp('1%'),
   },
 });
 
