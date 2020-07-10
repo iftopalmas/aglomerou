@@ -1,5 +1,5 @@
 const db = require("../config/db");
-const { inRange, serverError, isAreaCoordinatesValid, selectSQLHourDayMonth } = require("../util");
+const { inRange, serverError, isAreaCoordinatesValid, selectFrequenciaMediaVisitantas } = require("../util");
 
 exports.getUltimaLocalizacao = async (req, res) => {
     const uid = req.params.uid;
@@ -68,14 +68,14 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
     const frequenciaMedia = { hora: null, dia: null, semana: null, mes: null };
     const client = await db.connect();
     try {
-        const hour = await selectSQLHourDayMonth(client, 'HOUR', lat1, lat2, lng1, lng2);
-        const day = await selectSQLHourDayMonth(client, 'DAY', lat1, lat2, lng1, lng2);
+        const hourArray = await selectFrequenciaMediaVisitantas(client, 'HOUR', lat1, lat2, lng1, lng2);
+        const dayArray = await selectFrequenciaMediaVisitantas(client, 'DAY', lat1, lat2, lng1, lng2);
 
-        const setHour = new Set(hour.map(row => row.horas));
-        const setDay = new Set(day.map(row => row.dias));
+        const hourSet = new Set(hourArray.map(row => row.horas));
+        const daySet = new Set(dayArray.map(row => row.dias));
 
-        frequenciaMedia.hora = hour.length / setHour.size;
-        frequenciaMedia.dia = day.length / setDay.size;
+        frequenciaMedia.hora = hourArray.length / hourSet.size;
+        frequenciaMedia.dia = dayArray.length / daySet.size;
 
         return res.status(200).json(frequenciaMedia);
     } catch (error) {

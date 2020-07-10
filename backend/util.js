@@ -17,8 +17,10 @@ exports.inRange = (number, min, max) => (number - min) * (number - max) <= 0;
 exports.isAreaCoordinatesValid = (number1, number2) => number1 < number2;
 
 /**
- * Retorna as linhas da tabela de acordo com o parametro de busca e
- * seguindo a restriçao da area passada atraves da latitude e longitude
+ * Obtém os registros de frequência de visitantes em uma determinada área
+ * (definida por 2 pontos de coordenadas),
+ * agrupados por hora (HOUR), dia (DAY) ou mês (MONTH),
+ * de acordo com o valor passado no parâmetro option.
  * @param client instancia do cliente conectado ao banco
  * @param option Opção escolhida para cada chamada da funçao(HOUR, DAY, MONTH)
  * @param lat1 Parametro da latitude(canto superior esquerdo)
@@ -27,7 +29,7 @@ exports.isAreaCoordinatesValid = (number1, number2) => number1 < number2;
  * @param lng2 Parametro da longitude(canto inferior direito)
  * @returns Linhas da tabela agrupadas
  */
-exports.selectSQLHourDayMonth = async (client, option, lat1, lat2, lng1, lng2) => {
+exports.selectFrequenciaMediaVisitantas = async (client, option, lat1, lat2, lng1, lng2) => {
   try {
     let sql;
     switch (option) {
@@ -51,7 +53,6 @@ exports.selectSQLHourDayMonth = async (client, option, lat1, lat2, lng1, lng2) =
   } catch (error) {
     this.serverError(error);
   }
-
 };
 
 /**
