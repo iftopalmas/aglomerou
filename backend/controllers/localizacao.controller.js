@@ -71,8 +71,8 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
         const hourArray = await selectFrequenciaMediaVisitantas(client, 'HOUR', lat1, lat2, lng1, lng2);
         const dayArray = await selectFrequenciaMediaVisitantas(client, 'DAY', lat1, lat2, lng1, lng2);
 
-        const hourSet = new Set(hourArray.map(row => row.horas));
-        const daySet = new Set(dayArray.map(row => row.dias));
+        const hourSet = new Set(hourArray.map(row => row.hour));
+        const daySet = new Set(dayArray.map(row => row.day));
 
         frequenciaMedia.hora = hourArray.length / hourSet.size;
         frequenciaMedia.dia = dayArray.length / daySet.size;

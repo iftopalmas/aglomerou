@@ -22,32 +22,26 @@ exports.isAreaCoordinatesValid = (number1, number2) => number1 < number2;
  * agrupados por hora (HOUR), dia (DAY) ou mês (MONTH),
  * de acordo com o valor passado no parâmetro option.
  * @param client instancia do cliente conectado ao banco
- * @param option Opção escolhida para cada chamada da funçao(HOUR, DAY, MONTH)
- * @param lat1 Parametro da latitude(canto superior esquerdo)
- * @param lat2 Parametro da latitude(canto inferior direito)
- * @param lng1 Parametro da longitude(canto superior esquerdo)
- * @param lng2 Parametro da longitude(canto inferior direito)
+ * @param agrupamento frequência com que os dados serão agrupados, podendo ser HOUR, DAY ou MONTH.
+ *                    O nome do campo contendo o total de visitantes para a frequência solicitada
+ *                    será o nome em minúsculas fornecido para este parâmetro.
+ * @param lat1 latitude do canto superior esquerdo da área
+ * @param lat2 latitude docanto inferior direito da área
+ * @param lng1 longitude do canto superior esquerdo da área
+ * @param lng2 longitude do canto inferior direito da área
  * @returns Linhas da tabela agrupadas
  */
-exports.selectFrequenciaMediaVisitantas = async (client, option, lat1, lat2, lng1, lng2) => {
+exports.selectFrequenciaMediaVisitantas = async (client, agrupamento, lat1, lat2, lng1, lng2) => {
   try {
-    let sql;
-    switch (option) {
-      case 'HOUR':
-        sql = `SELECT uid, EXTRACT(HOUR from data_hora_ultima_atualizacao) as horas
-                FROM localizacao_dispositivo
-                WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4)
-                GROUP BY 1, 2;`;
-        break;
-      case 'DAY':
-        sql = `SELECT uid, EXTRACT(DAY from data_hora_ultima_atualizacao) as dias
-                FROM localizacao_dispositivo
-                WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4)
-                GROUP BY 1, 2;`;
-        break;
-      default:
-        break;
+    if(agrupamento !== 'HOUR' && agrupamento !== 'DAY' & agrupamento !== 'MONTH'){
+      throw new Error(`Parâmetro de agrupamento inválido: ${agrupamento}. Informe HOUR, DAY ou MONTH.`)
     }
+
+    const fieldName = agrupamento.toLowerCase();
+    const sql = `SELECT uid, EXTRACT(${agrupamento} from data_hora_ultima_atualizacao) as ${fieldName}
+                FROM localizacao_dispositivo
+                WHERE (latitude BETWEEN $1 AND $2) AND (longitude BETWEEN $3 AND $4)
+                GROUP BY 1, 2;`;
     const { rows } = await client.query(sql, [lat1, lat2, lng1, lng2]);
     return rows;
   } catch (error) {
