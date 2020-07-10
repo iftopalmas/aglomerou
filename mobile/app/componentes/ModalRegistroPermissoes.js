@@ -8,6 +8,10 @@ import {
   Modal,
   StyleSheet,
 } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 import { FontAwesome5 as Fa } from '@expo/vector-icons';
 
@@ -49,7 +53,11 @@ const ModalRegistroPermissoes = ({ modalVisible, fecharModal }) => {
         {permissoes && <Text style={styles.title}>Tudo pronto!</Text>}
         <View style={styles.imageContainer}>
           {permissoes ? (
-            <Image style={styles.splashPronto} source={prontoSplash} />
+            <Image
+              style={styles.prontoSplash}
+              source={prontoSplash}
+              resizeMode="contain"
+            />
           ) : (
             <Image style={styles.registroSplash} source={registroSplash} />
           )}
@@ -87,7 +95,7 @@ const ModalRegistroPermissoes = ({ modalVisible, fecharModal }) => {
           </TouchableOpacity>
         )}
 
-        <Text style={styles.MinfoText}>
+        <Text style={styles.infoText}>
           Não se preocupe, seus dados pessoais não serão coletados. Nos
           preocupamos com a sua privacidade!
         </Text>
@@ -179,7 +187,7 @@ const styles = StyleSheet.create({
   },
 
   title: {
-    fontSize: 26,
+    fontSize: hp('3.6%'),
     fontWeight: '600',
     color: '#41414d',
     textAlign: 'center',
@@ -199,14 +207,14 @@ const styles = StyleSheet.create({
   },
 
   imageContainer: {
-    height: 220,
+    height: hp('25%'),
     justifyContent: 'center',
-    marginTop: 10,
+    marginTop: hp('1.5%'),
   },
   registroSplash: {},
   prontoSplash: {
-    width: 160,
-    height: 160,
+    height: hp('22%'),
+    width: wp('48%'),
   },
   infoText: {
     fontSize: 11,
@@ -214,66 +222,7 @@ const styles = StyleSheet.create({
     color: '#41414d',
     textAlign: 'center',
     opacity: 0.6,
-  },
-
-  MinfoBoxContainer: {
-    borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 5,
-    marginTop: 40,
-    marginBottom: 40,
-  },
-
-  MinfoBoxText: {
-    fontSize: 20,
-    lineHeight: 26,
-    textAlign: 'center',
-    color: '#41414D',
-  },
-
-  MboldText: {
-    fontWeight: 'bold',
-  },
-
-  Msplash: {},
-
-  MinfoText: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: '#41414d',
-    textAlign: 'center',
-    opacity: 0.6,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'red',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
+    marginTop: hp('1.5%'),
   },
 });
 
