@@ -31,6 +31,15 @@ source $ENV_FILE
 
 echo "$REACT_NATIVE_ADDRESS_API_AGLOMEROU"
 
+# O react-native-dotenv tem um bug.
+# Quando o arquivo .env é atualizado,
+# é preciso editar algum arquivo que importa o módulo
+# para que o .env seja lido novamente 
+# (isto é mostrado na página inicial do projeto no GitHub).
+# O touch aqui é uma tentativa de evitar tal problema
+# ao gerar o APK 🙏
+touch app.config.js
+
 if [[ -z "$EXPO_ANDROID_KEYSTORE_PASSWORD" ]]; then
     echo "Variável EXPO_ANDROID_KEYSTORE_PASSWORD não encontrada no arquivo $ENV_FILE" >&2
     exit -1
