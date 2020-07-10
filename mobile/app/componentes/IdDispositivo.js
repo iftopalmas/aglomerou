@@ -6,8 +6,8 @@ import AsyncStorage from '@react-native-community/async-storage';
 import api from '../service/api';
 import { CAPTCHA_STORAGE_ITEM } from '../Constants';
 
-const siteKey = '6LfKeq0ZAAAAAN7kg0S29sdPSnM-ZCJcFr7h8E2G';
-const baseUrl = 'http://aglomerou.ifto.edu.br';
+const captchaSiteKey = '6LfKeq0ZAAAAAN7kg0S29sdPSnM-ZCJcFr7h8E2G';
+const captchaBaseUrl = 'http://aglomerou.ifto.edu.br';
 
 console.log(
   'addressApiAglomerou: ',
@@ -90,8 +90,8 @@ export default class IdDispositivo extends Component {
     return (
       <ConfirmGoogleCaptcha
         ref={(_ref) => (this.captchaForm = _ref)}
-        siteKey={siteKey}
-        baseUrl={baseUrl}
+        siteKey={captchaSiteKey}
+        baseUrl={captchaBaseUrl}
         languageCode="pt-BR"
         onMessage={this.onMessage}
       />
