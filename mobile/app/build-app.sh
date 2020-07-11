@@ -25,7 +25,7 @@ fi
 (echo -e "expo-cli \c" && expo --version)  || yarn global add expo-cli
 echo ""
 
-if [[ $# == 1 || $1 == "android" ]]; THEN
+if [[ $# == 1 || $1 == "android" ]]; then
     echo "Building Android package"
 else 
     echo "Building iOS package"
@@ -74,7 +74,7 @@ fi;
 if [[ -z "$EXPO_PASSWORD" ]]; then
     echo "Variável EXPO_PASSWORD com a senha da sua conta no http://expo.io não foi encontrada no arquivo $ENV_FILE." >&2
     exit -1
-fi;
+fi
 
 if [[ $# == 1 || $1 == "android" ]]; then
     turtle setup:android
