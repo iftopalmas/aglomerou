@@ -42,7 +42,14 @@ const TelaInicial = ({ navigation }) => {
 
   // verifica se o dispositivo já está registrado
   useEffect(() => {
-    verificaRegistrado();
+    let mounted = true;
+
+    if (mounted) {
+      verificaRegistrado();
+    }
+    return () => {
+      mounted = false;
+    };
   }, []);
 
   return (
