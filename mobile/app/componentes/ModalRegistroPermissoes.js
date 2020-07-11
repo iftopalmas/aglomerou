@@ -8,13 +8,17 @@ import {
   Modal,
   StyleSheet,
 } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
 
 import { FontAwesome5 as Fa } from '@expo/vector-icons';
 
 import { locationPermissionGranted } from '../utils/LocalizacaoDispositivo';
 
 import registroSplash from '../mobileAssets/registroSplash.png';
-import pronto from '../mobileAssets/pronto.png';
+import prontoSplash from '../mobileAssets/prontoSplash.png';
 
 import IdDispositivo from './IdDispositivo';
 
@@ -39,8 +43,8 @@ const ModalRegistroPermissoes = ({ modalVisible, fecharModal }) => {
         <Text style={styles.title}> Permissões Necessárias!</Text>
         <View style={styles.infoBoxContainer}>
           <Text style={styles.infoBoxText}>
-            Para ajudar no combate à COVID19, é preciso conceder ao "Aglomerou?" o
-            acesso a sua localização. Nenhuma informação pessoal como nome ou
+            Para ajudar no combate à COVID19, é preciso conceder ao "Aglomerou?"
+            o acesso a sua localização. Nenhuma informação pessoal como nome ou
             número de telefone será coletada, apenas sua localização. Os dados
             não são identificados e serão utilizados única e exclusivamente para
             fornecer um serviço de utilidade pública.
@@ -49,7 +53,11 @@ const ModalRegistroPermissoes = ({ modalVisible, fecharModal }) => {
         {permissoes && <Text style={styles.title}>Tudo pronto!</Text>}
         <View style={styles.imageContainer}>
           {permissoes ? (
-            <Image style={styles.prontoSplash} source={pronto} />
+            <Image
+              style={styles.prontoSplash}
+              source={prontoSplash}
+              resizeMode="contain"
+            />
           ) : (
             <Image style={styles.registroSplash} source={registroSplash} />
           )}
@@ -87,7 +95,7 @@ const ModalRegistroPermissoes = ({ modalVisible, fecharModal }) => {
           </TouchableOpacity>
         )}
 
-        <Text style={styles.MinfoText}>
+        <Text style={styles.infoText}>
           Não se preocupe, seus dados pessoais não serão coletados. Nos
           preocupamos com a sua privacidade!
         </Text>
@@ -174,39 +182,39 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 10,
+    paddingHorizontal: wp('3%'),
   },
 
   title: {
-    fontSize: 26,
+    fontSize: hp('3.4%'),
     fontWeight: '600',
     color: '#41414d',
     textAlign: 'center',
     opacity: 0.7,
   },
   infoBoxContainer: {
-    padding: 5,
-    marginTop: 26,
+    padding: wp('2%'),
+    marginTop: hp('1.5%'),
     marginBottom: 26,
   },
 
   infoBoxText: {
-    fontSize: 20,
+    fontSize: hp('2.4%'),
     lineHeight: 24,
     textAlign: 'center',
     color: '#41414D',
   },
 
   imageContainer: {
-    height: 220,
+    height: hp('25%'),
     justifyContent: 'center',
-    marginTop: 10,
+    marginTop: hp('1.1%'),
+    marginBottom: hp('2.1%'),
   },
   registroSplash: {},
   prontoSplash: {
-    width: 160,
-    height: 160,
+    height: hp('22%'),
+    width: wp('48%'),
   },
   infoText: {
     fontSize: 11,
@@ -214,66 +222,7 @@ const styles = StyleSheet.create({
     color: '#41414d',
     textAlign: 'center',
     opacity: 0.6,
-  },
-
-  MinfoBoxContainer: {
-    borderRadius: 16,
-    justifyContent: 'center',
-    alignItems: 'center',
-    padding: 5,
-    marginTop: 40,
-    marginBottom: 40,
-  },
-
-  MinfoBoxText: {
-    fontSize: 20,
-    lineHeight: 26,
-    textAlign: 'center',
-    color: '#41414D',
-  },
-
-  MboldText: {
-    fontWeight: 'bold',
-  },
-
-  Msplash: {},
-
-  MinfoText: {
-    fontSize: 11,
-    fontWeight: '700',
-    color: '#41414d',
-    textAlign: 'center',
-    opacity: 0.6,
-  },
-  modalView: {
-    margin: 20,
-    backgroundColor: 'red',
-    borderRadius: 20,
-    padding: 35,
-    alignItems: 'center',
-    shadowColor: '#000',
-    shadowOffset: {
-      width: 0,
-      height: 2,
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 3.84,
-    elevation: 5,
-  },
-  openButton: {
-    backgroundColor: '#F194FF',
-    borderRadius: 20,
-    padding: 10,
-    elevation: 2,
-  },
-  textStyle: {
-    color: 'white',
-    fontWeight: 'bold',
-    textAlign: 'center',
-  },
-  modalText: {
-    marginBottom: 15,
-    textAlign: 'center',
+    marginTop: hp('1%'),
   },
 });
 

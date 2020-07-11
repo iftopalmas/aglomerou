@@ -1,6 +1,11 @@
 /* eslint-disable no-unused-expressions */
 import React, { useState, useEffect } from 'react';
 import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from 'react-native-responsive-screen';
+
 import { FontAwesome5 as Fa } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
 import { CAPTCHA_STORAGE_ITEM } from '../Constants';
@@ -53,7 +58,11 @@ const TelaInicial = ({ navigation }) => {
             pra você em tempo real pontos de aglomeração espalhados pela cidade.
           </Text>
         </View>
-        <Image style={styles.splash} source={inicialSplash} />
+        <Image
+          style={styles.splash}
+          source={inicialSplash}
+          resizeMode="contain"
+        />
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
@@ -89,39 +98,40 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     alignItems: 'center',
-    paddingVertical: 20,
-    paddingHorizontal: 20,
+    paddingVertical: hp('4%'),
+    paddingHorizontal: wp('2%'),
   },
 
   logo: {
     width: 305,
     height: 74,
-    marginTop: 26,
+    marginTop: hp('2%'),
   },
 
   welcomeText: {
-    fontSize: 26,
+    fontSize: hp('3%'),
     fontWeight: '500',
     color: '#41414D',
-    marginTop: 16,
-    marginBottom: 16,
+    marginTop: hp('2%'),
+    marginBottom: hp('1%'),
   },
 
   infoBoxContainer: {
     width: 301,
-    height: 207,
+    height: hp('23%'),
     backgroundColor: '#94D451',
     borderRadius: 16,
     justifyContent: 'center',
     alignItems: 'center',
     padding: 5,
-    marginTop: 26,
-    marginBottom: 36,
+    marginTop: hp('3%'),
+    marginBottom: hp('4%'),
+    overflow: 'hidden',
   },
 
   infoBoxText: {
-    fontSize: 22,
-    lineHeight: 26,
+    fontSize: hp('2.6'),
+    lineHeight: 24,
     textAlign: 'center',
     color: '#FEFDFD',
   },
@@ -130,14 +140,17 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
 
-  splash: {},
-  button: {},
+  splash: {
+    height: hp('22%'),
+    marginTop: hp('2%'),
+  },
+
   buttonContainer: {
     width: 160,
     height: 40,
 
-    marginTop: 36,
-    marginBottom: 26,
+    marginTop: hp('6%'),
+    marginBottom: hp('4%'),
 
     borderRadius: 8,
     flexDirection: 'row',
@@ -179,6 +192,7 @@ const styles = StyleSheet.create({
     color: '#41414d',
     textAlign: 'center',
     opacity: 0.6,
+    marginBottom: hp('2%'),
   },
 });
 
