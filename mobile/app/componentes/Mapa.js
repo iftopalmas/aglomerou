@@ -18,15 +18,12 @@ export default function App() {
     latitude: 0,
     longitude: 0,
   });
-  const [localBuscado, setLocalBuscado] = useState({
-    latitude: 0,
-    longitude: 0,
-  });
+  const [localBuscado, setLocalBuscado] = useState({});
   const [loading, setLoading] = useState(true);
 
   const mapRef = useRef();
 
-  const moverMapa = (novoLocal) => {
+  const moverMapa = async (novoLocal) => {
     console.log('movendo para o endereco recebido ->', novoLocal);
 
     const region = {
@@ -35,65 +32,86 @@ export default function App() {
       latitudeDelta: 0.009,
       longitudeDelta: 0.009,
     };
-
-    setLocalBuscado({
-      latitude: novoLocal.lat,
-      longitude: novoLocal.lng,
-    });
+    console.log('Atualiando markers. Novo local ->', novoLocal);
 
     mapRef.current.animateToRegion(region, 1200);
+
+    const atualizaMarkers = await getMarkersRecentes();
+
+    setLocalizacoes(atualizaMarkers);
   };
 
-  // atualiza os markers no mapa
-  const getLocaisRecentesMarkers = async () => {
+  const getMarkersRecentes = async () => {
     try {
       const locaisMarkers = await getLocalizacoesRecentes();
-      setLocalizacoes(locaisMarkers);
+      return locaisMarkers;
     } catch (error) {
       console.log(
         'Não foi possível buscar as localizações para os markers: ',
         error
       );
+      return error;
     }
   };
 
-  // monitora buscas por local e atualiza markers no mapa
+  // carrega localização e markers iniciais;
   useEffect(() => {
-    const atualizarMarkers = async () => {
-      await getLocaisRecentesMarkers();
-    };
+    let mounted = true;
 
-    console.log('Atualiando markers. Novo local ->', localBuscado);
-    atualizarMarkers();
-  }, [localBuscado]);
-
-  // carrega localização inicial e inicia serviço de localizacao em backdround
-  useEffect(() => {
-    startLocationBackgroundUpdate();
     const getLocalizaoInicial = async () => {
       try {
         const { latitude, longitude } = await getLocalizacaoDispositivo();
-        setLocalInicial({
-          latitude,
-          longitude,
-        });
 
-        setLoading(false);
+        if (mounted) {
+          setLocalInicial({
+            latitude,
+            longitude,
+          });
+          setLoading(false);
+        }
       } catch (error) {
         console.error(`Erro ao obter localização inicial: ${error}`);
 
         // Define a localização inicial como Praça dos Girassóis.
-        setLocalInicial({
-          latitude: -10.18451,
-          longitude: -48.33466,
-        });
+        if (mounted) {
+          setLocalInicial({
+            latitude: -10.18451,
+            longitude: -48.33466,
+          });
 
-        setLoading(false);
+          setLoading(false);
+        }
+      }
+    };
+
+    const getMarkersIniciais = async () => {
+      const markers = await getMarkersRecentes();
+
+      if (mounted) {
+        setLocalizacoes(markers);
       }
     };
 
     getLocalizaoInicial();
-    getLocaisRecentesMarkers();
+    getMarkersIniciais();
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // carrega markers
+  useEffect(() => {
+    let mounted = true;
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  // inicia serviço de local em background
+  useEffect(() => {
+    startLocationBackgroundUpdate();
   }, []);
 
   return (

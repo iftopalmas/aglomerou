@@ -80,6 +80,7 @@ const getLocalizacoesRecentes = async () => {
     console.log(
       `Obtido última localização de ${data.length} dispositivos ativos atualmente.`
     );
+
     return data;
   } catch (error) {
     console.error(
