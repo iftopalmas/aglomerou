@@ -25,7 +25,7 @@ fi
 (echo -e "expo-cli \c" && expo --version)  || yarn global add expo-cli
 echo ""
 
-if [[ $# == 1 || $1 == "android" ]]; then
+if [[ $# == 0 || $1 == "android" ]]; then
     echo "Building Android package"
 else 
     echo "Building iOS package"
@@ -76,13 +76,13 @@ if [[ -z "$EXPO_PASSWORD" ]]; then
     exit -1
 fi
 
-if [[ $# == 1 || $1 == "android" ]]; then
+if [[ $# == 0 || $1 == "android" ]]; then
     turtle setup:android
 fi
 
 expo publish
 
-if [[ $# == 1 || $1 == "android" ]]; then
+if [[ $# == 0 || $1 == "android" ]]; then
     turtle build:android -t apk \
         --keystore-path ./Aglomerou.jks \
         --keystore-alias $EXPO_KEYSTORE_ALIAS -c app.config.js \
