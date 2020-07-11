@@ -25,6 +25,13 @@ fi
 (echo -e "expo-cli \c" && expo --version)  || yarn global add expo-cli
 echo ""
 
+if [[ $# == 1 || $1 == "android" ]]; THEN
+    echo "Building Android package"
+else 
+    echo "Building iOS package"
+fi
+
+
 ENV_FILE=".env.production"
 # Criar variáveis de ambiente
 source $ENV_FILE
@@ -69,11 +76,21 @@ if [[ -z "$EXPO_PASSWORD" ]]; then
     exit -1
 fi;
 
-turtle setup:android
+if [[ $# == 1 || $1 == "android" ]]; THEN
+    turtle setup:android
+fi
 
 expo publish
 
-turtle build:android -t apk \
-       --keystore-path ./Aglomerou.jks \
-       --keystore-alias $EXPO_KEYSTORE_ALIAS -c app.config.js \
-       -u $EXPO_USERNAME -p $EXPO_PASSWORD
+if [[ $# == 1 || $1 == "android" ]]; THEN
+    turtle build:android -t apk \
+        --keystore-path ./Aglomerou.jks \
+        --keystore-alias $EXPO_KEYSTORE_ALIAS -c app.config.js \
+        -u $EXPO_USERNAME -p $EXPO_PASSWORD
+else
+    #https://github.com/expo/turtle-cli-example
+    # O build local para iOS requer o XCode, que são 9GB.
+    # Assim, é mais prático fazer o build remoto no expo.io
+    expo build:ios
+fi
+
