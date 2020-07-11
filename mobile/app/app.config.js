@@ -9,7 +9,6 @@ export default {
   platforms: ['ios', 'android', 'web'],
   version: '1.0.0',
   orientation: 'portrait',
-  icon: './assets/icon.png',
   splash: {
     image: './assets/splash.png',
     resizeMode: 'contain',
@@ -20,6 +19,7 @@ export default {
   },
   assetBundlePatterns: ['**/*'],
   ios: {
+    icon: './assets/ios-icon.png',
     bundleIdentifier: 'br.edu.ifto.aglomerou',
     supportsTablet: true,
     config: {
@@ -27,6 +27,7 @@ export default {
     },
   },
   android: {
+    icon: './assets/android-icon.png',
     package: 'br.edu.ifto.aglomerou',
     config: {
       googleMaps: {
