@@ -32,7 +32,7 @@ const TelaInicial = ({ navigation }) => {
   const verificaRegistrado = async () => {
     try {
       const captcha = await AsyncStorage.getItem(CAPTCHA_STORAGE_ITEM);
-      if (captcha && captcha.length > 0) {
+      if (captcha) {
         setRegistrado(true);
       }
     } catch (error) {
