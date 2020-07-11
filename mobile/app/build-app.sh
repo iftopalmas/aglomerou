@@ -76,13 +76,13 @@ if [[ -z "$EXPO_PASSWORD" ]]; then
     exit -1
 fi;
 
-if [[ $# == 1 || $1 == "android" ]]; THEN
+if [[ $# == 1 || $1 == "android" ]]; then
     turtle setup:android
 fi
 
 expo publish
 
-if [[ $# == 1 || $1 == "android" ]]; THEN
+if [[ $# == 1 || $1 == "android" ]]; then
     turtle build:android -t apk \
         --keystore-path ./Aglomerou.jks \
         --keystore-alias $EXPO_KEYSTORE_ALIAS -c app.config.js \
