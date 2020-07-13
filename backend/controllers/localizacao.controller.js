@@ -70,12 +70,15 @@ exports.getFrequenciaMediaVisitantas = async (req, res) => {
     try {
         const hourArray = await selectFrequenciaMediaVisitantas(client, 'HOUR', lat1, lat2, lng1, lng2);
         const dayArray = await selectFrequenciaMediaVisitantas(client, 'DAY', lat1, lat2, lng1, lng2);
+        const monthArray = await selectFrequenciaMediaVisitantas(client, 'MONTH', lat1, lat2, lng1, lng2);
 
         const hourSet = new Set(hourArray.map(row => row.hour));
         const daySet = new Set(dayArray.map(row => row.day));
+        const monthSet = new Set(monthArray.map(row => row.month));
 
         frequenciaMedia.hora = hourArray.length / hourSet.size;
         frequenciaMedia.dia = dayArray.length / daySet.size;
+        frequenciaMedia.mes = monthArray.length / monthSet.size;
 
         return res.status(200).json(frequenciaMedia);
     } catch (error) {
