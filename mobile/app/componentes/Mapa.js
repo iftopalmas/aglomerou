@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Dimensions, Text } from 'react-native';
-import { FontAwesome5 as Fa } from '@expo/vector-icons';
+import { FontAwesome5 as Fa, MaterialCommunityIcons as Mc } from '@expo/vector-icons';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 
@@ -136,7 +136,7 @@ export default function App() {
                 longitude: localInicial.longitude,
               }}
             >
-              <Fa name="map-marker-alt" size={32} color="#e02041" />
+              <Mc name="circle-slice-8" size={24} color="#0000FF" />
             </Marker>
             {localizacoes.length > 0 ? (
               localizacoes.map((local) => (
