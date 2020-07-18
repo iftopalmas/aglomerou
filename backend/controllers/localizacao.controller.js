@@ -35,14 +35,8 @@ exports.getUltimaLocalizacao = async (req, res) => {
 exports.getUltimaLocalizacaoTodos = async (req, res) => {
     const client = await db.connect();
     try {
-        const seconds = 60 * 5;
-        const sql =
-            `select latitude, longitude 
-             from localizacao_dispositivo l where l.id = 
-             (select max(l2.id) from localizacao_dispositivo as l2 
-              where l2.uid = l.uid and 
-              extract(epoch from (current_timestamp - l2.data_hora_ultima_atualizacao)) <= $1)`;
-        const resultado = await client.query(sql, [seconds]);
+        const sql = 'select latitude, longitude from vwUltimaLocalizacaoTodos';
+        const resultado = await client.query(sql);
 
         res.status(200).send(resultado.rows);
     } catch (error) {

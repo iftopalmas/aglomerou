@@ -44,3 +44,18 @@ create table localizacao_dispositivo (
 
 comment on column localizacao_dispositivo.latitude is 'Latitude em Graus Decimais';
 comment on column localizacao_dispositivo.longitude is 'Longitude em Graus Decimais';
+
+
+create view vwUltimosDispositivosAtivos as 
+select uid, max(id) as id_localizacao from localizacao_dispositivo l 
+where extract(epoch from (current_timestamp - data_hora_ultima_atualizacao)) <= 300 
+group by uid;
+
+comment on view vwUltimosDispositivosAtivos is 'Obtém os dispositivos que estiveram ativos nos últimos 5 minutos';
+
+create view vwUltimaLocalizacaoTodos as 
+select latitude, longitude
+from localizacao_dispositivo l
+inner join vwUltimosDispositivosAtivos v on l.uid = v.uid and l.id = v.id_localizacao;
+
+comment on view vwUltimaLocalizacaoTodos is 'Obtém a localização dos dispositivos que estiveram ativos nos últimos 5 minutos';
