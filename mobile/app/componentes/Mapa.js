@@ -8,6 +8,7 @@ import {
   startLocationBackgroundUpdate,
   getLocalizacaoDispositivo,
   getLocalizacoesRecentes,
+  getGeocodingLocalizacao,
 } from '../utils/LocalizacaoDispositivo';
 
 import BarraPesquisa from './BarraPesquisaLocal';
@@ -20,6 +21,7 @@ export default function App() {
   });
   const [localBuscado, setLocalBuscado] = useState({});
   const [loading, setLoading] = useState(true);
+  const [longName, setLongName] = useState("Você está aqui");
 
   const mapRef = useRef();
 
@@ -94,6 +96,7 @@ export default function App() {
 
     getLocalizaoInicial();
     getMarkersIniciais();
+    //getLongNameNaLocalizacaoAtual();
 
     return () => {
       mounted = false;
@@ -114,6 +117,17 @@ export default function App() {
     startLocationBackgroundUpdate();
   }, []);
 
+  useEffect(() => {
+    async function getLongNameNaLocalizacaoAtual() {
+      try { 
+        setLongName(await getGeocodingLocalizacao());
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getLongNameNaLocalizacaoAtual()
+  }, [])
   return (
     <View style={styles.container}>
       {loading ? (
@@ -131,6 +145,8 @@ export default function App() {
             }}
           >
             <Marker
+              key="minha_localizacao"
+              title={longName}
               coordinate={{
                 latitude: localInicial.latitude,
                 longitude: localInicial.longitude,
