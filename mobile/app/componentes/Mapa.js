@@ -96,14 +96,13 @@ export default function App() {
 
     getLocalizaoInicial();
     getMarkersIniciais();
-    //getLongNameNaLocalizacaoAtual();
 
     return () => {
       mounted = false;
     };
   }, []);
 
-  // carrega markers
+  // Carrega markers
   useEffect(() => {
     let mounted = true;
 
@@ -112,10 +111,8 @@ export default function App() {
     };
   }, []);
 
-  // inicia serviço de local em background
-  useEffect(() => {
-    startLocationBackgroundUpdate();
-  }, []);
+  // Inicia serviço de localização em background
+  useEffect(() => startLocationBackgroundUpdate(), []);
 
   useEffect(() => {
     async function getLongNameNaLocalizacaoAtual() {
