@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Dimensions, Text } from 'react-native';
-import { FontAwesome5 as Fa, MaterialCommunityIcons as Mc } from '@expo/vector-icons';
+import {
+  FontAwesome5 as Fa,
+  MaterialCommunityIcons as Mc,
+} from '@expo/vector-icons';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 
@@ -12,6 +15,7 @@ import {
 } from '../utils/LocalizacaoDispositivo';
 
 import BarraPesquisa from './BarraPesquisaLocal';
+import ModalMensagemMapa from './ModalMensagemMapa';
 
 export default function App() {
   const [localizacoes, setLocalizacoes] = useState([]);
@@ -174,6 +178,7 @@ export default function App() {
             moverMapa={moverMapa}
             localizacaoInicial={localInicial}
           />
+          <ModalMensagemMapa />
         </>
       )}
     </View>

@@ -5,6 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 import IdDispositivo from './componentes/IdDispositivo';
 import Mapa from './componentes/Mapa';
 import TelaInicial from './componentes/TelaInicial';
+import MessageMaps from './componentes/ModalMensagemMapa';
 
 const Stack = createStackNavigator();
 
