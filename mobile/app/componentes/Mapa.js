@@ -1,17 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-<<<<<<< HEAD
 import { StyleSheet, View, Dimensions, Text } from 'react-native';
-import { FontAwesome5 as Fa, MaterialCommunityIcons as Mc } from '@expo/vector-icons';
-=======
 import {
-  StyleSheet,
-  View,
-  Dimensions,
-  Text,
-  TouchableHighlight,
-} from 'react-native';
-import { FontAwesome5 as Fa } from '@expo/vector-icons';
->>>>>>> Modal para exibir mensagem sobre o mapa.
+  FontAwesome5 as Fa,
+  MaterialCommunityIcons as Mc,
+} from '@expo/vector-icons';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 
