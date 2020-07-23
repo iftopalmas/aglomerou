@@ -93,9 +93,9 @@ const getLocalizacoesRecentes = async () => {
 
 const getGeocodingLocalizacao = async () => {
   try {
-    let localizacao = await getLocalizacaoDispositivo();
+    const { latitude, longitude } = await getLocalizacaoDispositivo();
     let long_name = ''
-    const data = await axios.get('https://maps.googleapis.com/maps/api/geocode/json?latlng='+localizacao.latitude+','+localizacao.longitude+'&key='+REACT_NATIVE_GOOGLE_MAPS_API_KEY)
+    const data = await axios.get(`https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${REACT_NATIVE_GOOGLE_MAPS_API_KEY}`)
     .then(function (response){
       long_name = response.data.results[1].address_components[1].long_name;
     });
