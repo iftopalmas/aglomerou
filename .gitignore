@@ -1,3 +1,6 @@
+#Script para conectar à maquina servidora
+**/servidor.sh
+
 # Logs
 logs
 *.log
