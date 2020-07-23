@@ -112,7 +112,10 @@ export default function App() {
   }, []);
 
   // Inicia serviço de localização em background
-  useEffect(() => startLocationBackgroundUpdate(), []);
+  useEffect(() => {
+    const start = async () => startLocationBackgroundUpdate();
+    start();
+  }, []);
 
   useEffect(() => {
     async function getLongNameNaLocalizacaoAtual() {
