@@ -3,6 +3,8 @@ import Constants from 'expo-constants';
 import * as TaskManager from 'expo-task-manager';
 import { LOCATION_TASK_NAME } from '../Constants.js';
 import api from '../service/api';
+import axios from 'axios';
+import { REACT_NATIVE_GOOGLE_MAPS_API_KEY} from 'react-native-dotenv'
 
 const uid = Constants.installationId;
 
@@ -89,6 +91,14 @@ const getLocalizacoesRecentes = async () => {
   }
 };
 
+const getGeocodingLocalizacao = async () => {
+  const { latitude, longitude } = await getLocalizacaoDispositivo();
+  const { data } = await axios.get(
+    `https://maps.googleapis.com/maps/api/geocode/json?latlng=${latitude},${longitude}&key=${REACT_NATIVE_GOOGLE_MAPS_API_KEY}`
+  );
+  return data.results[1].address_components[1].long_name;
+};
+
 TaskManager.defineTask(LOCATION_TASK_NAME, enviarLocalizacaoBackground);
 
 export {
@@ -98,4 +108,5 @@ export {
   locationPermissionGranted,
   startLocationBackgroundUpdate,
   getLocalizacoesRecentes,
+  getGeocodingLocalizacao,
 };

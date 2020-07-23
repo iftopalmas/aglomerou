@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { StyleSheet, View, Dimensions, Text } from 'react-native';
-import { FontAwesome5 as Fa } from '@expo/vector-icons';
+import { FontAwesome5 as Fa, MaterialCommunityIcons as Mc } from '@expo/vector-icons';
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 
@@ -8,6 +8,7 @@ import {
   startLocationBackgroundUpdate,
   getLocalizacaoDispositivo,
   getLocalizacoesRecentes,
+  getGeocodingLocalizacao,
 } from '../utils/LocalizacaoDispositivo';
 
 import BarraPesquisa from './BarraPesquisaLocal';
@@ -20,6 +21,7 @@ export default function App() {
   });
   const [localBuscado, setLocalBuscado] = useState({});
   const [loading, setLoading] = useState(true);
+  const [longName, setLongName] = useState("Você está aqui");
 
   const mapRef = useRef();
 
@@ -100,7 +102,7 @@ export default function App() {
     };
   }, []);
 
-  // carrega markers
+  // Carrega markers
   useEffect(() => {
     let mounted = true;
 
@@ -109,11 +111,23 @@ export default function App() {
     };
   }, []);
 
-  // inicia serviço de local em background
+  // Inicia serviço de localização em background
   useEffect(() => {
-    startLocationBackgroundUpdate();
+    const start = async () => startLocationBackgroundUpdate();
+    start();
   }, []);
 
+  useEffect(() => {
+    async function getLongNameNaLocalizacaoAtual() {
+      try { 
+        setLongName(await getGeocodingLocalizacao());
+      } catch (error) {
+        console.log(error)
+      }
+    }
+
+    getLongNameNaLocalizacaoAtual()
+  }, [])
   return (
     <View style={styles.container}>
       {loading ? (
@@ -131,12 +145,14 @@ export default function App() {
             }}
           >
             <Marker
+              key="minha_localizacao"
+              title={longName}
               coordinate={{
                 latitude: localInicial.latitude,
                 longitude: localInicial.longitude,
               }}
             >
-              <Fa name="map-marker-alt" size={32} color="#e02041" />
+              <Mc name="circle-slice-8" size={24} color="#0000FF" />
             </Marker>
             {localizacoes.length > 0 ? (
               localizacoes.map((local) => (
