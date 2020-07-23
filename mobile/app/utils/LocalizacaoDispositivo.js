@@ -1,10 +1,10 @@
 import * as Location from 'expo-location';
 import Constants from 'expo-constants';
 import * as TaskManager from 'expo-task-manager';
+import axios from 'axios';
+import { REACT_NATIVE_GOOGLE_MAPS_API_KEY } from 'react-native-dotenv';
 import { LOCATION_TASK_NAME } from '../Constants.js';
 import api from '../service/api';
-import axios from 'axios';
-import { REACT_NATIVE_GOOGLE_MAPS_API_KEY} from 'react-native-dotenv'
 
 const uid = Constants.installationId;
 

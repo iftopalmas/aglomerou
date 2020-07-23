@@ -25,7 +25,7 @@ export default function App() {
   });
   const [localBuscado, setLocalBuscado] = useState({});
   const [loading, setLoading] = useState(true);
-  const [longName, setLongName] = useState("Você está aqui");
+  const [longName, setLongName] = useState('Você está aqui');
 
   const mapRef = useRef();
 
@@ -123,15 +123,15 @@ export default function App() {
 
   useEffect(() => {
     async function getLongNameNaLocalizacaoAtual() {
-      try { 
+      try {
         setLongName(await getGeocodingLocalizacao());
       } catch (error) {
-        console.log(error)
+        console.log(error);
       }
     }
 
-    getLongNameNaLocalizacaoAtual()
-  }, [])
+    getLongNameNaLocalizacaoAtual();
+  }, []);
   return (
     <View style={styles.container}>
       {loading ? (

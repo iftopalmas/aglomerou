@@ -1,11 +1,10 @@
 import React from 'react';
-import { StyleSheet, View, Dimensions } from 'react-native';
-import { NavigationContainer, StackActions } from '@react-navigation/native';
+import { StyleSheet, Dimensions } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import IdDispositivo from './componentes/IdDispositivo';
 import Mapa from './componentes/Mapa';
 import TelaInicial from './componentes/TelaInicial';
-import MessageMaps from './componentes/ModalMensagemMapa';
 
 const Stack = createStackNavigator();
 

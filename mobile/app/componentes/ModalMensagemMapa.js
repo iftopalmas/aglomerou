@@ -14,7 +14,7 @@ const ModalMensagemMapa = () => {
     <View style={styles.centeredView}>
       <Modal
         animationType="slide"
-        transparent={true}
+        transparent
         visible={modalVisible}
         onRequestClose={() => {
           setModalVisible(!modalVisible);
