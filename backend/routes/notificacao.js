@@ -4,12 +4,12 @@ const controller = require('../controllers/localizacao.controller');
 /**
  * @swagger
  * paths:
- *  /notificacao
- *  post:
- *    summary: Registrar aglomeração notificada por usuário em um determinado local.
- *    consumes:
+ *  /notificacao:
+ *    post:
+ *      summary: Registrar aglomeração notificada por usuário em um determinado local.
+ *      consumes:
  *        - application/json
- *    parameters:
+ *      parameters:
  *        - in: body
  *          name: notificacao
  *          description: Objeto com os dados da notificação a ser criada
