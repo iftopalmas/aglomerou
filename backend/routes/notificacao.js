@@ -36,4 +36,4 @@ const controller = require('../controllers/localizacao.controller');
  *      '422':
  *        description: Todos os valores devem ser preenchidos
  */
-router.post('/notificacao', controller.setNotificacao);
+router.post('/notificacao', controller.inserir);
