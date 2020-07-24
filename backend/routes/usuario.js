@@ -41,7 +41,21 @@ router.post('/', controller.inserir);
  *        in: body
  *        description: Usuário a ser atualizado
  *        required: true
- *        type: object
+ *        schema:
+ *            type: object
+ *            required:
+ *                - id
+ *                - email
+ *                - senha
+ *            properties:
+ *                id:
+ *                    type: number
+ *                email:
+ *                    type: string
+ *                senha:
+ *                    type: string
+ *                ativo:
+ *                    type: boolean
  *    responses:
  *      '204': 
  *        description: Usuário atualizado com sucesso
