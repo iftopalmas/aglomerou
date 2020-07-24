@@ -27,7 +27,7 @@ const controller = require('../controllers/localizacao.controller');
  *                      type: number
  *                  longitude:
  *                      type: number
- *                  estimativa_total_pessoas
+ *                  estimativa_total_pessoas:
  *                      type: number
  *    responses:
  *      '201':
