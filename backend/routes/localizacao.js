@@ -5,25 +5,24 @@ const controller = require('../controllers/localizacao.controller');
  * @swagger
  * /api/localizacao/{uid}:
  *  get: 
+ *    summary: Obtém a última localização de um dispositivo com um determinado UID
  *    parameters:
  *      - name: uid
  *        in: path
  *        description: Identificador único do dispositivo
  *        required: true
  *        type: string
- *    description: Obtém a última localização de um dispositivo com um determinado UID
  *    responses:
  *      '200': 
  *        description: Localização do dispositivo obtido com sucesso 
  */
 router.get('/:uid', controller.getUltimaLocalizacao);
 
-
 /**
  * @swagger
  * /api/localizacao:
  *  get: 
- *    description: Obtém a última localização de todos os dispositivos registrados
+ *    summary: Obtém a última localização de todos os dispositivos registrados
  *    responses:
  *      '200': 
  *        description: Localização dos dispositivos obtidas com sucesso 
@@ -34,6 +33,8 @@ router.get('/', controller.getUltimaLocalizacaoTodos);
  * @swagger
  * /api/localizacao/frequencia-pessoas/{lat1}/{lng1}/{lat2}/{lng2}:
  *  get:
+ *    summary: Frequência (média) de pessoas que visitam o local em uma determinada área.
+ *    description: Frequência (média) de pessoas que visitam o local por hora, dia, semana e mês em uma determinada área representada por 2 pontos.
  *    parameters:
  *      - name: lat1
  *        in: path
@@ -55,7 +56,6 @@ router.get('/', controller.getUltimaLocalizacaoTodos);
  *        description: Longitude do ponto inferior direito da área.
  *        required: true
  *        type: number
- *    description: Frequência (média) de pessoas que visitam o local por hora, dia, semana e mês em uma determinada área representada por 2 pontos.
  *    responses:
  *      '200':
  *        description: Objeto contendo todas essas estatísticas
@@ -68,6 +68,7 @@ router.get('/frequencia-pessoas/:lat1/:lng1/:lat2/:lng2', controller.getFrequenc
  * @swagger
  * /api/localizacao/{uid}/{lat}/{long}:
  *  post: 
+ *    summary: Insere a localização de um dispositivo com um determinado id
  *    parameters:
  *      - name: uid
  *        in: path
@@ -88,7 +89,6 @@ router.get('/frequencia-pessoas/:lat1/:lng1/:lat2/:lng2', controller.getFrequenc
  *        type: number
  *        minimum: -180
  *        maximum: 180
- *    description: Insere a localização de um dispositivo com um determinado id
  *    responses:
  *      '201': 
  *        description: Localização do dispositivo inserida com sucesso 

@@ -5,13 +5,22 @@ const controller = require('../controllers/usuario.controller');
  * @swagger
  * /api/usuario:
  *  post: 
+ *    summary: Cadastra um usuário para acesso à aplicação web
  *    parameters:
  *      - name: usuario
  *        in: body
  *        description: Usuário a ser inserido
  *        required: true
- *        type: object
- *    description: Cadastra um usuário para acesso à aplicação web
+ *        schema:
+ *            type: object
+ *            required:
+ *                - email
+ *                - senha
+ *            properties:
+ *                email:
+ *                    type: string
+ *                senha:
+ *                    type: string
  *    responses:
  *      '201': 
  *        description: Usuário cadastrado com sucesso
@@ -26,13 +35,13 @@ router.post('/', controller.inserir);
  * @swagger
  * /api/usuario:
  *  put: 
+ *    summary: Atualiza um usuário da aplicação web
  *    parameters:
  *      - name: usuario
  *        in: body
  *        description: Usuário a ser atualizado
  *        required: true
  *        type: object
- *    description: Atualiza um usuário da aplicação web
  *    responses:
  *      '204': 
  *        description: Usuário atualizado com sucesso
@@ -49,13 +58,13 @@ router.put('/', controller.atualizar);
  * @swagger
  * /api/usuario/{id}:
  *  delete: 
+ *    summary: Exclui um usuário da aplicação web
  *    parameters:
  *      - name: id
  *        in: path
  *        description: Id do Usuário a ser excluído
  *        required: true
  *        type: integer
- *    description: Exclui um usuário da aplicação web
  *    responses:
  *      '200': 
  *        description: Usuário excluído com sucesso

@@ -5,7 +5,7 @@ const controller = require('../controllers/dispositivo.controller');
  * @swagger
  * /api/dispositivo/total:
  *  get: 
- *    description: Obtém o total de dispositivos cadastrados
+ *    summary: Obtém o total de dispositivos cadastrados
  *    responses:
  *      '200': 
  *        description: Total de dispositivos obtido com sucesso 
@@ -16,13 +16,13 @@ router.get('/total', controller.total);
  * @swagger
  * /api/dispositivo/{uid}:
  *  get: 
+ *    summary: Obtém um dispositivo pelo uid
  *    parameters:
  *      - name: uid
  *        in: path
  *        description: Identificador único do dispositivo
  *        required: true
  *        type: string
- *    description: Obtém um dispositivo pelo uid
  *    responses:
  *      '200': 
  *        description: Dispositivo obtido com sucesso 
@@ -33,6 +33,7 @@ router.get('/:uid', controller.get);
  * @swagger
  * /api/dispositivo/{uid}/{tipo}:
  *  post: 
+ *    summary: Registra um dispositivo com um determinado UID (Unique Identifier)
  *    parameters:
  *      - name: uid
  *        in: path
@@ -49,7 +50,6 @@ router.get('/:uid', controller.get);
  *        description: Código de validação do CAPTCHA
  *        required: true
  *        type: string
- *    description: Registra um dispositivo com um determinado UID (Unique Identifier)
  *    responses:
  *      '201': 
  *        description: Dispositivo registrado com sucesso
