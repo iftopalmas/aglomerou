@@ -1,19 +1,18 @@
 const router = require('express').Router();
 const controller = require('../controllers/localizacao.controller');
 
-
 /**
  * @swagger
  * paths:
  *  /notificacao
  *  post:
- *    summary: Inserir localização atual do usuário
+ *    summary: Registrar aglomeração notificada por usuário em um determinado local.
  *    consumes:
  *        - application/json
  *    parameters:
  *        - in: body
  *          name: notificacao
- *          description: A notificação a ser criada
+ *          description: Objeto com os dados da notificação a ser criada
  *          schema:
  *              type: object
  *              required:
