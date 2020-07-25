@@ -1,10 +1,10 @@
 const router = require('express').Router();
-const controller = require('../controllers/localizacao.controller');
+const controller = require('../controllers/notificacao.controller');
 
 /**
  * @swagger
  * paths:
- *  /notificacao:
+ *  /api/notificacao:
  *    post:
  *      summary: Registrar aglomeração notificada por usuário em um determinado local.
  *      consumes:
@@ -36,3 +36,5 @@ const controller = require('../controllers/localizacao.controller');
  *        description: Todos os valores devem ser preenchidos
  */
 router.post('/notificacao', controller.inserir);
+
+module.exports = router;
