@@ -45,6 +45,14 @@ create table localizacao_dispositivo (
 comment on column localizacao_dispositivo.latitude is 'Latitude em Graus Decimais';
 comment on column localizacao_dispositivo.longitude is 'Longitude em Graus Decimais';
 
+create table notificacao (
+    id serial not null primary key,
+    data_hora_cadastro timestamp default current_timestamp not null,
+    latitude numeric(10,7) not null,
+    longitude numeric(10,7) not null,
+    estimativa_total_pessoas int not null,
+    observacoes varchar(250)
+);
 
 create view vwUltimosDispositivosAtivos as 
 select uid, max(id) as id_localizacao from localizacao_dispositivo l 
