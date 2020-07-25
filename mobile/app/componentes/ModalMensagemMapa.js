@@ -48,15 +48,6 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginTop: 22,
-    /* flex: 1,
-    backgroundColor: '#fffafa',
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 10,
-    marginBottom: 10,
-    width: 300,
-    height: 5,
-    padding: 30, */
   },
   modalView: {
     margin: 20,

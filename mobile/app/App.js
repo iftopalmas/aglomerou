@@ -37,7 +37,7 @@ export default function App() {
           options={{
             title: 'Mapa de aglomeração',
             headerStyle: {
-              backgroundColor: '#E0FFFF',
+              backgroundColor: '#f5fffa',
             },
           }}
         />
