@@ -51,8 +51,17 @@ rerun()
 	eval "$1 run $2"
 }
 
+DB_CONTAINER_NAME="aglomerou-database"
+NETWORK_NAME="aglomerou-network"
+
+env_vars
+
+if [[ $1 == "network" &&  $2 == "create" ]]; then
+	docker network create $NETWORK_NAME
+	exit 0
+fi
+
 if [[ $2 == "backend" ]]; then
-	env_vars
 	IMAGE_NAME="manoelcampos/aglomerou:backend"
 	CONTAINER_NAME="aglomerou-backend"
 	if [[ $1 == "build" ]]; then
@@ -64,16 +73,17 @@ if [[ $2 == "backend" ]]; then
 		echo "Use $0 run $2 pra iniciar container criado"
 	elif [[ $1 == "run" ]]; then
 		# Executar o container em background (-d)
-		docker run --name $CONTAINER_NAME -d -p $PORT:8080 --env-file .env.production $IMAGE_NAME || exit -1
+		docker run --name $CONTAINER_NAME \
+			--network $NETWORK_NAME \
+			-d -p $PORT:8080 --env-file .env.production $IMAGE_NAME || exit -1
 		echo ""
 		echo "Use $0 logs $2 pra exibir os logs do container executado"
 	elif [[ $1 == "rerun" ]]; then
 		rerun $0 $2
 	fi
 elif [[ $2 == "database" || $2 == "db" ]]; then
-	env_vars
 	IMAGE_NAME="manoelcampos/aglomerou:database"
-	CONTAINER_NAME="aglomerou-postgres"
+	CONTAINER_NAME=$DB_CONTAINER_NAME
 
 	if [[ $1 == "build" ]]; then
 		docker build -f ../database/Dockerfile -t $IMAGE_NAME ../database || exit -1
@@ -82,6 +92,7 @@ elif [[ $2 == "database" || $2 == "db" ]]; then
 	elif [[ $1 == "run" ]]; then	
 		# Executar o container em background (-d)
 		docker run -d --name $CONTAINER_NAME \
+				--network $NETWORK_NAME \
 				-e POSTGRES_USER=$DB_USER -e POSTGRES_PASSWORD=$DB_PASSWORD \
 				-p $DB_PORT:5432 $IMAGE_NAME || exit -1
 		echo ""
