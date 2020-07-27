@@ -1,18 +1,18 @@
 const db = require("../config/db");
 
 exports.inserir = async (req, res) => {
-    const { id_dispositivo, latitude, longitude, estimativa_total_pessoas, observacoes } = req.body;
+    const { uid, latitude, longitude, estimativa_total_pessoas, observacoes } = req.body;
     const client = await db.connect();
     try {
         const sql = 'SELECT bloqueado FROM dispositivo WHERE uid = $1 ';
-        const resultado = await client.query(sql, [id_dispositivo]);
+        const resultado = await client.query(sql, [uid]);
 
         if (resultado.rowCount === 0) {
             return res.status(404).send({ message: 'Dispositivo não localizado!' });
         }
 
         if (resultado.rows[0].bloqueado) {
-            res.status(404).send({ message: 'Dispositivo bloqueado!' });
+            res.status(401).send({ message: 'Dispositivo bloqueado!' });
         } else {
             const sql = 'INSERT INTO notificacao ( latitude, longitude, estimativa_total_pessoas, observacoes ) VALUES ( $1, $2, $3, $4 )';
             await client.query(sql, [latitude, longitude, estimativa_total_pessoas, observacoes]);
