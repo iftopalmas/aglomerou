@@ -1,6 +1,7 @@
 
 const pool = require('pg');
 
+console.log(`Conectando ao banco de dados em ${process.env.DB_HOST}`);
 module.exports.connect = () => {
     const client = new pool.Client({
         user: process.env.DB_USER,
