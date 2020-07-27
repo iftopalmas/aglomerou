@@ -1,10 +1,10 @@
-const router = require('express').Router();
-const controller = require('../controllers/localizacao.controller');
+const router = require("express").Router();
+const controller = require("../controllers/notificacao.controller");
 
 /**
  * @swagger
  * paths:
- *  /notificacao:
+ *  /api/notificacao:
  *    post:
  *      summary: Registrar aglomeração notificada por usuário em um determinado local.
  *      consumes:
@@ -16,13 +16,13 @@ const controller = require('../controllers/localizacao.controller');
  *          schema:
  *              type: object
  *              required:
- *                  - id_dispositivo
+ *                  - uid
  *                  - latitude
  *                  - longitude
  *                  - estimativa_total_pessoas
  *              properties:
- *                  id_dispositivo:
- *                      type: number
+ *                  uid:
+ *                      type: string
  *                  latitude:
  *                      type: number
  *                  longitude:
@@ -36,3 +36,5 @@ const controller = require('../controllers/localizacao.controller');
  *        description: Todos os valores devem ser preenchidos
  */
 router.post('/notificacao', controller.inserir);
+
+module.exports = router;
