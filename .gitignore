@@ -118,3 +118,5 @@ dist
 
 #MacOS
 .DS_Store
+backend/controllers/localizacao.controller.js
+backend/controllers/dispositivo.controller.js

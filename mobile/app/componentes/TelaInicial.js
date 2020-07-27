@@ -5,6 +5,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp,
 } from 'react-native-responsive-screen';
+import { useFocusEffect } from '@react-navigation/native';
 
 import { FontAwesome5 as Fa } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-community/async-storage';
@@ -30,10 +31,14 @@ const TelaInicial = ({ navigation }) => {
   };
 
   const verificaRegistrado = async () => {
+    console.log('Verificando registro do dispositivo!');
     try {
       const captcha = await AsyncStorage.getItem(CAPTCHA_STORAGE_ITEM);
       if (captcha) {
         setRegistrado(true);
+        console.log('Dispositivo já registrado');
+      } else {
+        console.log('Registro não encontrado. Redirecionando para registro.');
       }
     } catch (error) {
       console.error(`Erro ao buscar código captcha: ${error}`);
@@ -41,7 +46,7 @@ const TelaInicial = ({ navigation }) => {
   };
 
   // verifica se o dispositivo já está registrado
-  useEffect(() => {
+  useFocusEffect(() => {
     let mounted = true;
 
     if (mounted) {
@@ -73,6 +78,7 @@ const TelaInicial = ({ navigation }) => {
         <TouchableOpacity
           style={styles.button}
           onPress={() => {
+            console.log('REGISTER:?', registrado);
             registrado
               ? navigation.navigate('Mapa')
               : setModalVisible(!modalVisible);
