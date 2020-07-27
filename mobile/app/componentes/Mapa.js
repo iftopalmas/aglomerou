@@ -12,7 +12,7 @@ import {
   getLocalizacaoDispositivo,
   getLocalizacoesRecentes,
   getGeocodingLocalizacao,
-  enviarLocalizacaoBackground
+  enviarLocalizacaoBackground,
 } from '../utils/LocalizacaoDispositivo';
 
 import BarraPesquisa from './BarraPesquisaLocal';
@@ -74,12 +74,12 @@ export default function App() {
         const { latitude, longitude } = await enviarLocalizacaoBackground();
         setLocalizacaoBackground({
           latitude,
-          longitude
-        })
+          longitude,
+        });
       } catch (error) {
-        console.log(`Erro ao enviar ao atualizar marker ${error}`)
+        console.log(`Erro ao enviar ao atualizar marker ${error}`);
       }
-    }
+    };
     const getLocalizaoInicial = async () => {
       try {
         const { latitude, longitude } = await getLocalizacaoDispositivo();
@@ -154,50 +154,50 @@ export default function App() {
       {loading ? (
         <Text>Carregando Mapa...</Text>
       ) : (
-          <>
-            <MapView
-              ref={mapRef}
-              style={styles.mapStyle}
-              initialRegion={{
-                latitude: localInicial.latitude,
-                longitude: localInicial.longitude,
-                latitudeDelta: 0.05,
-                longitudeDelta: 0.05,
+        <>
+          <MapView
+            ref={mapRef}
+            style={styles.mapStyle}
+            initialRegion={{
+              latitude: localInicial.latitude,
+              longitude: localInicial.longitude,
+              latitudeDelta: 0.05,
+              longitudeDelta: 0.05,
+            }}
+          >
+            <Marker
+              key="minha_localizacao"
+              title={longName}
+              coordinate={{
+                latitude: localizacaoBackground.latitude,
+                longitude: localizacaoBackground.longitude,
               }}
             >
-              <Marker
-                key="minha_localizacao"
-                title={longName}
-                coordinate={{
-                  latitude: localizacaoBackground.latitude,
-                  longitude: localizacaoBackground.longitude,
-                }}
-              >
-                <Mc name="circle-slice-8" size={24} color="#0000FF" />
-              </Marker>
-              {localizacoes.length > 0 ? (
-                localizacoes.map((local) => (
-                  <Marker
-                    key={local + Math.random()}
-                    coordinate={{
-                      latitude: parseFloat(local.latitude),
-                      longitude: parseFloat(local.longitude),
-                    }}
-                  >
-                    <Fa name="map-marker-alt" size={32} color="#e02041" />
-                  </Marker>
-                ))
-              ) : (
-                  <View />
-                )}
-            </MapView>
-            <BarraPesquisa
-              moverMapa={moverMapa}
-              localizacaoInicial={localInicial}
-            />
-            <ModalMensagemMapa />
-          </>
-        )}
+              <Mc name="circle-slice-8" size={24} color="#0000FF" />
+            </Marker>
+            {localizacoes.length > 0 ? (
+              localizacoes.map((local) => (
+                <Marker
+                  key={local + Math.random()}
+                  coordinate={{
+                    latitude: parseFloat(local.latitude),
+                    longitude: parseFloat(local.longitude),
+                  }}
+                >
+                  <Fa name="map-marker-alt" size={32} color="#e02041" />
+                </Marker>
+              ))
+            ) : (
+              <View />
+            )}
+          </MapView>
+          <BarraPesquisa
+            moverMapa={moverMapa}
+            localizacaoInicial={localInicial}
+          />
+          <ModalMensagemMapa />
+        </>
+      )}
     </View>
   );
 }
