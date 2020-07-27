@@ -48,10 +48,13 @@ comment on column localizacao_dispositivo.longitude is 'Longitude em Graus Decim
 create table notificacao (
     id serial not null primary key,
     data_hora_cadastro timestamp default current_timestamp not null,
+    uid varchar(200) not null, 
     latitude numeric(10,7) not null,
     longitude numeric(10,7) not null,
     estimativa_total_pessoas int not null,
-    observacoes varchar(250)
+    observacoes varchar(250),
+
+    constraint fk_notificacao_dispositivo foreign key (uid) references dispositivo(uid) on delete cascade
 );
 
 create view vwUltimosDispositivosAtivos as 
