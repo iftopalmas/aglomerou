@@ -22,7 +22,7 @@ const controller = require("../controllers/notificacao.controller");
  *                  - estimativa_total_pessoas
  *              properties:
  *                  uid:
- *                      type: number
+ *                      type: string
  *                  latitude:
  *                      type: number
  *                  longitude:
