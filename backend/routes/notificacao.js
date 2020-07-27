@@ -1,5 +1,5 @@
-const router = require('express').Router();
-const controller = require('../controllers/notificacao.controller');
+const router = require("express").Router();
+const controller = require("../controllers/notificacao.controller");
 
 /**
  * @swagger
@@ -16,12 +16,12 @@ const controller = require('../controllers/notificacao.controller');
  *          schema:
  *              type: object
  *              required:
- *                  - id_dispositivo
+ *                  - uid
  *                  - latitude
  *                  - longitude
  *                  - estimativa_total_pessoas
  *              properties:
- *                  id_dispositivo:
+ *                  uid:
  *                      type: number
  *                  latitude:
  *                      type: number
