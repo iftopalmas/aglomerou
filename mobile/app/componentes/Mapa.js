@@ -7,6 +7,10 @@ import {
 import { Marker } from 'react-native-maps';
 import MapView from 'react-native-map-clustering';
 
+import AsyncStorage from '@react-native-community/async-storage';
+
+import { MODAL_MAP_MESSAGE_ITEM } from '../Constants';
+
 import {
   startLocationBackgroundUpdate,
   getLocalizacaoDispositivo,
@@ -23,9 +27,11 @@ export default function App() {
     latitude: 0,
     longitude: 0,
   });
-  const [localBuscado, setLocalBuscado] = useState({});
+
   const [loading, setLoading] = useState(true);
   const [longName, setLongName] = useState('Você está aqui');
+
+  const [modalMensagem, setModalMensagem] = useState(false);
 
   const mapRef = useRef();
 
@@ -106,15 +112,6 @@ export default function App() {
     };
   }, []);
 
-  // Carrega markers
-  useEffect(() => {
-    let mounted = true;
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
   // Inicia serviço de localização em background
   useEffect(() => {
     const start = async () => startLocationBackgroundUpdate();
@@ -132,6 +129,31 @@ export default function App() {
 
     getLongNameNaLocalizacaoAtual();
   }, []);
+
+  useEffect(() => {
+    let mounted = true;
+
+    const checkModalVisto = async () => {
+      const modalVisto = await AsyncStorage.getItem(MODAL_MAP_MESSAGE_ITEM);
+      if (!modalVisto) {
+        setModalMensagem(true);
+      }
+    };
+
+    if (mounted) {
+      checkModalVisto();
+    }
+
+    return () => {
+      mounted = false;
+    };
+  }, []);
+
+  const defineModalVisto = async () => {
+    await AsyncStorage.setItem(MODAL_MAP_MESSAGE_ITEM, 'true');
+    setModalMensagem(false);
+  };
+
   return (
     <View style={styles.container}>
       {loading ? (
@@ -178,7 +200,10 @@ export default function App() {
             moverMapa={moverMapa}
             localizacaoInicial={localInicial}
           />
-          <ModalMensagemMapa />
+          <ModalMensagemMapa
+            modalVisible={modalMensagem}
+            fecharModal={defineModalVisto}
+          />
         </>
       )}
     </View>

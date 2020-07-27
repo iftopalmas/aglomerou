@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Modal,
   StyleSheet,
@@ -7,9 +7,7 @@ import {
   View,
 } from 'react-native';
 
-const ModalMensagemMapa = () => {
-  const [modalVisible, setModalVisible] = useState(true);
-
+const ModalMensagemMapa = ({ modalVisible, fecharModal }) => {
   return (
     <View style={styles.centeredView}>
       <Modal
@@ -17,7 +15,7 @@ const ModalMensagemMapa = () => {
         transparent
         visible={modalVisible}
         onRequestClose={() => {
-          setModalVisible(!modalVisible);
+          fecharModal();
         }}
       >
         <View style={styles.centeredView}>
@@ -30,7 +28,7 @@ const ModalMensagemMapa = () => {
             <TouchableHighlight
               style={{ ...styles.openButton, backgroundColor: '#94D451' }}
               onPress={() => {
-                setModalVisible(!modalVisible);
+                fecharModal();
               }}
             >
               <Text style={styles.textStyle}>OK</Text>
