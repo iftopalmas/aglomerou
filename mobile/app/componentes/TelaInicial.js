@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-expressions */
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { View, Image, Text, TouchableOpacity, StyleSheet } from 'react-native';
 import {
   widthPercentageToDP as wp,
@@ -8,8 +8,8 @@ import {
 import { useFocusEffect } from '@react-navigation/native';
 
 import { FontAwesome5 as Fa } from '@expo/vector-icons';
-import AsyncStorage from '@react-native-community/async-storage';
-import { CAPTCHA_STORAGE_ITEM } from '../Constants';
+
+import { verificaRegistrado } from '../utils/RegistroDispositivo';
 
 import ModalRegistroPermissoes from './ModalRegistroPermissoes';
 
@@ -30,27 +30,19 @@ const TelaInicial = ({ navigation }) => {
     navigation.navigate(destino);
   };
 
-  const verificaRegistrado = async () => {
-    console.log('Verificando registro do dispositivo!');
-    try {
-      const captcha = await AsyncStorage.getItem(CAPTCHA_STORAGE_ITEM);
-      if (captcha) {
-        setRegistrado(true);
-        console.log('Dispositivo já registrado');
-      } else {
-        console.log('Registro não encontrado. Redirecionando para registro.');
-      }
-    } catch (error) {
-      console.error(`Erro ao buscar código captcha: ${error}`);
-    }
-  };
-
   // verifica se o dispositivo já está registrado
   useFocusEffect(() => {
     let mounted = true;
+    async function buscaRegistro() {
+      const registro = await verificaRegistrado();
+
+      if (registro === true) {
+        setRegistrado(true);
+      }
+    }
 
     if (mounted) {
-      verificaRegistrado();
+      buscaRegistro();
     }
     return () => {
       mounted = false;
