@@ -28,7 +28,11 @@ const ModalMensagemMapa = ({ modalVisible, fecharModal }) => {
             <TouchableHighlight
               style={{ ...styles.openButton, backgroundColor: '#94D451' }}
               onPress={() => {
+<<<<<<< HEAD
                 fecharModal();
+=======
+                setModalVisible(!modalVisible);
+>>>>>>> Atualiza o model de informações sobre uso do mapa (#213)
               }}
             >
               <Text style={styles.textStyle}>OK</Text>
