@@ -5,4 +5,6 @@ const LOCATION_TASK_NAME = 'background-location-task';
  */
 const CAPTCHA_STORAGE_ITEM = 'captcha';
 
-export { LOCATION_TASK_NAME, CAPTCHA_STORAGE_ITEM };
+const MODAL_MAP_MESSAGE_ITEM = 'modalMensagem';
+
+export { LOCATION_TASK_NAME, CAPTCHA_STORAGE_ITEM, MODAL_MAP_MESSAGE_ITEM };
