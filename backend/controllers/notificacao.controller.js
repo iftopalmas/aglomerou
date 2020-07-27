@@ -14,8 +14,8 @@ exports.inserir = async (req, res) => {
         if (resultado.rows[0].bloqueado) {
             res.status(401).send({ message: 'Dispositivo bloqueado!' });
         } else {
-            const sql = 'INSERT INTO notificacao ( latitude, longitude, estimativa_total_pessoas, observacoes ) VALUES ( $1, $2, $3, $4 )';
-            await client.query(sql, [latitude, longitude, estimativa_total_pessoas, observacoes]);
+            const sql = 'INSERT INTO notificacao ( uid, latitude, longitude, estimativa_total_pessoas, observacoes ) VALUES ( $1, $2, $3, $4, $5 )';
+            await client.query(sql, [uid, latitude, longitude, estimativa_total_pessoas, observacoes]);
 
             const msg = {message: 'Notificação registrada com Sucesso!'};
             console.log(msg);
