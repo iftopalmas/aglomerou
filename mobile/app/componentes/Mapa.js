@@ -112,15 +112,6 @@ export default function App() {
     };
   }, []);
 
-  // Carrega markers
-  useEffect(() => {
-    let mounted = true;
-
-    return () => {
-      mounted = false;
-    };
-  }, []);
-
   // Inicia serviço de localização em background
   useEffect(() => {
     const start = async () => startLocationBackgroundUpdate();
