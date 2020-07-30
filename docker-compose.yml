@@ -19,7 +19,7 @@ services:
       DB_PASSWORD: default1
       DB_PORT: 5432
       DB_HOST: bd
-      CAPTCHA_SECRET_KEY: 6LfKeq0ZAAAAACf2nRlw4kk1AGHy_THs01XBFUwi
+      CAPTCHA_SECRET_KEY: 
     networks:
       - backend-network
     depends_on:
