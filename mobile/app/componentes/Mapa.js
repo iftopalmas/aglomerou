@@ -20,6 +20,7 @@ import {
 
 import BarraPesquisa from './BarraPesquisaLocal';
 import ModalMensagemMapa from './ModalMensagemMapa';
+import BotaoNotificar from './BotaoNotificar';
 
 export default function App() {
   const [localizacoes, setLocalizacoes] = useState([]);
@@ -155,6 +156,7 @@ export default function App() {
   };
 
   return (
+    <>
     <View style={styles.container}>
       {loading ? (
         <Text>Carregando Mapa...</Text>
@@ -207,6 +209,8 @@ export default function App() {
         </>
       )}
     </View>
+    <BotaoNotificar/>
+    </>
   );
 }
 
