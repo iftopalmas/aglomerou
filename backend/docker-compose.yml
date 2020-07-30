@@ -1,0 +1,30 @@
+version: '3'
+services: 
+  bd:
+    build: ../database/
+    ports:
+      - "10001:5432"
+    environment:
+      POSTGRES_PASSWORD: default1
+    networks:
+      - backend-network
+  
+  backend:
+    build: ./
+    ports:
+      - "10000:8080"
+    environment:
+      DB_USER: postgres
+      DB_DATABASE: aglomerou
+      DB_PASSWORD: default1
+      DB_PORT: 5432
+      DB_HOST: bd
+      CAPTCHA_SECRET_KEY: 
+    networks:
+      - backend-network
+    depends_on:
+      - bd
+
+networks:
+  backend-network:
+    driver: bridge

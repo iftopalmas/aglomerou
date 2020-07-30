@@ -1,5 +1,7 @@
 -- Dados para testes no ambiente de desenvolvimento
 
+\connect aglomerou
+
 --bf = algoritmo blowfish para gerar o salt e criptografar as senhas
 insert into usuario (data_hora_cadastro, email, senha)
 values ('2020-05-01', 'usuario1@gmail.com', crypt('123456', gen_salt('bf'))),
