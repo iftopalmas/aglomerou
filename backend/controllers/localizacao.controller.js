@@ -107,9 +107,20 @@ exports.inserir = async (req, res) => {
         if (resultado.rows[0].bloqueado) {
             res.status(404).send({ message: 'Dispositivo bloqueado!' });
         } else {
-            const sql = 'INSERT INTO localizacao_dispositivo (uid, latitude, longitude) VALUES ($1, $2, $3)';
-            await client.query(sql, [uid, lat, long]);
-            res.status(201).send({ message: 'Localização inserida com Sucesso!' });
+            try {
+                const sql1 = 'START TRANSACTION;';
+                const sql2 = 'INSERT INTO localizacao_dispositivo (uid, latitude, longitude) VALUES ($1, $2, $3);';
+                const sql3 = 'UPDATE dispositivo SET latitude = $2, longitude = $3 WHERE uid = $1;';
+                const sql4 = 'COMMIT;';
+                await client.query(sql1);
+                await client.query(sql2, [uid, lat, long]);
+                await client.query(sql3, [uid, lat, long]);
+                await client.query(sql4);
+                res.status(201).send({ message: 'Localização inserida com Sucesso!' });
+            } catch (error) {
+                const sql = 'rollback transaction;';
+                await client.query(sql);
+            }
         }
     } catch (error) {
         if (error.message.includes('fk_localizacao_dispositivo'))
