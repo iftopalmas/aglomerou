@@ -16,6 +16,7 @@ import {
   getLocalizacaoDispositivo,
   getLocalizacoesRecentes,
   getGeocodingLocalizacao,
+  enviarLocalizacaoBackground,
 } from '../utils/LocalizacaoDispositivo';
 
 import BarraPesquisa from './BarraPesquisaLocal';
@@ -29,7 +30,7 @@ export default function App() {
   });
 
   const [loading, setLoading] = useState(true);
-  const [longName, setLongName] = useState('Você está aqui');
+  const [longName, setLongName] = useState('Você está aqu');
 
   const [modalMensagem, setModalMensagem] = useState(false);
 
@@ -58,10 +59,17 @@ export default function App() {
       const locaisMarkers = await getLocalizacoesRecentes();
       return locaisMarkers;
     } catch (error) {
-      console.log(
-        'Não foi possível buscar as localizações para os markers: ',
-        error
-      );
+      console.log('Não foi possível buscar as localizações para os markers: ', error);
+      return error;
+    }
+  };
+
+  const getLocalizacaoBackground = async () => {
+    try {
+      const localizacaoBackground = await enviarLocalizacaoBackground();
+      return localizacaoBackground;
+    } catch (error) {
+      console.log('Não foi possível buscar localizaçação em background: ', error);
       return error;
     }
   };
@@ -101,6 +109,14 @@ export default function App() {
 
       if (mounted) {
         setLocalizacoes(markers);
+      }
+    };
+
+    const geBackground = async () => {
+      const background = await localizacaoBackground();
+
+      if (mounted) {
+        setLocalInicial(background);
       }
     };
 
@@ -189,7 +205,7 @@ export default function App() {
                     longitude: parseFloat(local.longitude),
                   }}
                 >
-                  <Fa name="map-marker-alt" size={32} color="#e02041" />
+                  <Fa name="map-marker-alt" size={32} color="#330041" />
                 </Marker>
               ))
             ) : (
