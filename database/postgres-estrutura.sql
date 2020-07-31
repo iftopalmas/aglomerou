@@ -20,8 +20,8 @@ create table dispositivo (
     uid varchar(200) not null primary key,
     tipo varchar(100) not null,
     bloqueado boolean not null default false,
-    latitude numeric(10,7) not null,
-    longitude numeric(10,7) not null,
+    latitude numeric(10,7),
+    longitude numeric(10,7),
     data_hora_ultima_atualizacao timestamp default CURRENT_TIMESTAMP,
     data_hora_cadastro timestamp default CURRENT_TIMESTAMP
 );
