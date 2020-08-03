@@ -99,6 +99,26 @@ const getGeocodingLocalizacao = async () => {
   return data.results[1].address_components[1].long_name;
 };
 
+const enviarNotificacaoAglomeracao = async (estimativa, observacao) => {
+  
+  try {
+    const {latitude, longitude} = await getLocalizacaoDispositivo();
+    const body = {
+      uid: uid,
+      latitude: latitude,
+      longitude: longitude,
+      estimativa_total_pessoas: estimativa,
+      observacoes: observacao,
+    }
+    const url = `/notificacao`;
+    console.log(api.defaults.baseURL + url);
+    const response = await api.post(url, body);
+  } catch (error) {
+    console.log(error)
+    console.log('Erro ao enviar notificação de aglomeração')
+  }
+};
+
 TaskManager.defineTask(LOCATION_TASK_NAME, enviarLocalizacaoBackground);
 
 export {
@@ -109,4 +129,5 @@ export {
   startLocationBackgroundUpdate,
   getLocalizacoesRecentes,
   getGeocodingLocalizacao,
+  enviarNotificacaoAglomeracao,
 };
