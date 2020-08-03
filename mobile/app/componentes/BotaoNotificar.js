@@ -3,28 +3,38 @@ import { StyleSheet, View, Dimensions, Text, TouchableOpacity } from 'react-nati
 import {
   AntDesign
 } from '@expo/vector-icons';
+import ModalFormNotificao from './ModalFormNotificacao';
 
 export default function BotaoNotificar(){
+  const [modalFromModificao, setModalFromNotificacao] = useState(false); 
   const notificar = () => {
-    console·log("!!!notificando aglomeração!!!")
+    setModalFromNotificacao(true);
+  }
+
+  const closeModal = () => {
+    setModalFromNotificacao(false);
   }
   
   return (
+    <>
     <View style={styles.container}>
       <TouchableOpacity 
         onPress={notificar}
         style={styles.button}
       >
-
-        <View>
-          <Text style={styles.texth}>Ajude no combate ao Corona Vírus.</Text>
-          <Text style={styles.textd}>Notifique aglomeração!</Text>
-        </View>
-        <View style={styles.rightIcon}>
-          <AntDesign name="right" size={30} color="#326002"/>
-        </View>
+      <View>
+        <Text style={styles.texth}>Ajude no combate ao Corona Vírus.</Text>
+        <Text style={styles.textd}>Notifique aglomeração!</Text>
+      </View>
+      <View style={styles.rightIcon}>
+        <AntDesign name="right" size={30} color="#326002"/>
+      </View>
       </TouchableOpacity>
     </View>
+    <ModalFormNotificao
+    modalVisible={modalFromModificao}
+    closeModal={closeModal}/>
+    </>
   )
 }
 

@@ -206,10 +206,10 @@ export default function App() {
             modalVisible={modalMensagem}
             fecharModal={defineModalVisto}
           />
+          <BotaoNotificar/>
         </>
       )}
     </View>
-    <BotaoNotificar/>
     </>
   );
 }
