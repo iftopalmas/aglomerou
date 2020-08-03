@@ -64,7 +64,7 @@ if [[ $2 == "backend" ]]; then
 		echo "Use $0 run $2 pra iniciar container criado"
 	elif [[ $1 == "run" ]]; then
 		# Executar o container em background (-d)
-		docker run --name $CONTAINER_NAME -d -p $PORT:8080 --env-file .env.production $IMAGE_NAME || exit -1
+		docker run --name $CONTAINER_NAME --restart unless-stopped -d -p $PORT:8080 --env-file .env.production $IMAGE_NAME || exit -1
 		echo ""
 		echo "Use $0 logs $2 pra exibir os logs do container executado"
 	elif [[ $1 == "rerun" ]]; then
@@ -81,7 +81,7 @@ elif [[ $2 == "database" || $2 == "db" ]]; then
 		echo "Use $0 run $2 pra iniciar container criado"
 	elif [[ $1 == "run" ]]; then	
 		# Executar o container em background (-d)
-		docker run -d --name $CONTAINER_NAME \
+		docker run -d --name $CONTAINER_NAME --restart unless-stopped \
 				-e POSTGRES_USER=$DB_USER -e POSTGRES_PASSWORD=$DB_PASSWORD \
 				-p $DB_PORT:5432 $IMAGE_NAME || exit -1
 		echo ""
