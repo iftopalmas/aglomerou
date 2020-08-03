@@ -35,6 +35,6 @@ const controller = require("../controllers/notificacao.controller");
  *      '422':
  *        description: Todos os valores devem ser preenchidos
  */
-router.post('/notificacao', controller.inserir);
+router.post('/', controller.inserir);
 
 module.exports = router;
