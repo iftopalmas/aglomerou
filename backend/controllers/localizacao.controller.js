@@ -96,6 +96,7 @@ exports.inserir = async (req, res) => {
     }
 
     const client = await db.connect();
+    let rollback = false;
     try {
         const sql = 'SELECT bloqueado FROM dispositivo WHERE uid = $1 ';
         const resultado = await client.query(sql, [uid]);
@@ -105,24 +106,27 @@ exports.inserir = async (req, res) => {
         }
 
         if (resultado.rows[0].bloqueado) {
-            res.status(404).send({ message: 'Dispositivo bloqueado!' });
-        } else {
-            try {
-                const sql1 = 'INSERT INTO localizacao_dispositivo (uid, latitude, longitude) VALUES ($1, $2, $3)';
-                const sql2 = 'UPDATE dispositivo SET latitude = $2, longitude = $3 WHERE uid = $1';
-                await client.query('START TRANSACTION');
-                await client.query(sql1, [uid, lat, long]);
-                await client.query(sql2, [uid, lat, long]);
-                await client.query('COMMIT');
-                res.status(201).send({ message: 'Localização inserida com Sucesso!' });
-            } catch (error) {
-                await client.query('rollback transaction');
-            }
-        }
+            return res.status(404).send({ message: 'Dispositivo bloqueado!' });
+        } 
+        
+        const sql1 = 'INSERT INTO localizacao_dispositivo (uid, latitude, longitude) VALUES ($1, $2, $3)';
+        const sql2 = 'UPDATE dispositivo SET latitude = $2, longitude = $3 WHERE uid = $1';
+        await client.query('START TRANSACTION');
+        rollback = true;
+        await client.query(sql1, [uid, lat, long]);
+        await client.query(sql2, [uid, lat, long]);
+        await client.query('COMMIT');
+        res.status(201).send({ message: 'Localização inserida com Sucesso!' });
     } catch (error) {
-        if (error.message.includes('fk_localizacao_dispositivo'))
-            res.status(403).send({ message: 'Dispositivo não cadastrado!' });
-        else serverError(res, error);
+        if(rollback){
+            await client.query('rollback transaction');
+        }
+        
+        if (error.message.includes('fk_localizacao_dispositivo')) {
+            return res.status(403).send({ message: 'Dispositivo não cadastrado!' });
+        }
+
+        serverError(res, error);
     } finally {
         client.end();
     }
