@@ -1,18 +1,18 @@
 version: '3'
 services: 
   bd:
-    build: database/
+    build: ../database/
     ports:
-      - "5432:5432"
+      - "10001:5432"
     environment:
       POSTGRES_PASSWORD: default1
     networks:
       - backend-network
   
   backend:
-    build: backend/
+    build: ./
     ports:
-      - "8080:8080"
+      - "10000:8080"
     environment:
       DB_USER: postgres
       DB_DATABASE: aglomerou
