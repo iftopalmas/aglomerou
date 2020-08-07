@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import {
   StyleSheet,
   View,
-  Dimensions,
+  // Dimensions,
   Text,
   TouchableOpacity,
 } from 'react-native';

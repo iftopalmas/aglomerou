@@ -5,16 +5,46 @@ import {
   Text,
   TouchableOpacity,
   View,
-  Button,
+  FlatList,
 } from 'react-native';
+import Constants from 'expo-constants';
 import * as WebBrowser from 'expo-web-browser';
 
+const newsLinks = [
+  {
+    id: 1,
+    name: 'Ministério da Saúde',
+    url: 'https://covid.saude.gov.br/',
+  },
+  {
+    id: 2,
+    name: 'Secretaria de Saúde - Palmas',
+    url: 'https://coronavirus.palmas.to.gov.br/',
+  },
+  {
+    id: 3,
+    name: 'BBC News Brasil - Saúde',
+    url: 'https://www.bbc.com/portuguese/topics/c340q430z4vt',
+  },
+  {
+    id: 4,
+    name: 'Exame - Notícias sobre Coronavírus',
+    url: 'https://exame.com/noticias-sobre/coronavirus/',
+  },
+  {
+    id: 5,
+    name: 'G1 - Bem Estar',
+    url: 'https://g1.globo.com/bemestar/coronavirus/',
+  },
+  {
+    id: 6,
+    name: 'Saúde Brasil - Dicas práticas',
+    url: 'https://saudebrasil.saude.gov.br/',
+  },
+];
 export default function ModalLinksNoticias({ modalVisible, closeModal }) {
-  const handlePainelCoronavirus = () => {
-    WebBrowser.openBrowserAsync('https://covid.saude.gov.br/');
-  };
-  const handlePalmasCoronavirus = () => {
-    WebBrowser.openBrowserAsync('https://coronavirus.palmas.to.gov.br/');
+  const handlePressButtonAsync = (site) => {
+    WebBrowser.openBrowserAsync(site);
   };
 
   return (
@@ -35,19 +65,20 @@ export default function ModalLinksNoticias({ modalVisible, closeModal }) {
         >
           <View style={styles.centeredView}>
             <View style={styles.modalView}>
-              <Text>Painel Coronavírus</Text>
-              <Button
-                title="Painel Coronavírus"
-                id="1"
-                onPress={handlePainelCoronavirus}
-                style={styles.button}
-              />
-              <Text>Coronavírus Palmas</Text>
-              <Button
-                title="Painel Coronavírus"
-                id="2"
-                onPress={handlePalmasCoronavirus}
-                style={styles.button}
+              <Text style={styles.titulo}>Veja as últimas notícias</Text>
+              <FlatList
+                data={newsLinks}
+                renderItem={({ item }) => (
+                  <TouchableOpacity
+                    style={styles.card}
+                    onPress={() => {
+                      handlePressButtonAsync(item.url);
+                    }}
+                  >
+                    <Text style={styles.text}>{item.name}</Text>
+                  </TouchableOpacity>
+                )}
+                keyExtractor={(item) => String(item.id)}
               />
             </View>
           </View>
@@ -58,34 +89,14 @@ export default function ModalLinksNoticias({ modalVisible, closeModal }) {
 }
 
 const styles = StyleSheet.create({
-  label: {
-    alignSelf: 'flex-start',
-    color: '#326002',
-    fontWeight: 'bold',
-    marginTop: 5,
-  },
-  input: {
-    backgroundColor: '#eee',
-    alignSelf: 'stretch',
-    textAlign: 'left',
-    margin: 10,
-    padding: 10,
-    borderRadius: 20,
-  },
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
+    marginTop: Constants.statusBarHeight,
+    marginHorizontal: 16,
   },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
-  },
-  modalView: {
+  card: {
     margin: 20,
-    backgroundColor: '#fff',
+    backgroundColor: '#94D451',
     borderRadius: 20,
     padding: 15,
     alignItems: 'center',
@@ -98,23 +109,21 @@ const styles = StyleSheet.create({
     shadowRadius: 3.84,
     elevation: 10,
   },
-  openButton: {
-    backgroundColor: '#94D451',
-    borderRadius: 20,
-    padding: 15,
-    elevation: 5,
-    margin: 10,
-    width: 250,
+  item: {
+    backgroundColor: '#f9c2ff',
+    padding: 20,
+    marginVertical: 8,
   },
-  textStyle: {
-    color: 'white',
+  header: {
+    fontSize: 32,
+    backgroundColor: '#fff',
+  },
+  text: {
+    fontSize: 16,
+    color: '#fff',
+  },
+  titulo: {
+    fontSize: 20,
     fontWeight: 'bold',
-    textAlign: 'center',
-    fontSize: 15,
-  },
-  modalText: {
-    marginBottom: 5,
-    textAlign: 'center',
-    color: '#41414d',
   },
 });
