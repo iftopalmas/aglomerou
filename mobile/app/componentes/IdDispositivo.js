@@ -80,7 +80,7 @@ export default class IdDispositivo extends Component {
       const response = await api.post(url, { captcha });
     } catch (error) {
       console.error(`Erro ao registrar dispositivo: ${error}`);
-      alert('Não foi possível acessar o servidor para registrar o dispositivo. Vefique sua conexão de internet ou tente mais tarde.');
+      alert('Não foi possível acessar o servidor para registrar o dispositivo. Verifique sua conexão de internet ou tente mais tarde.');
       return;
     }
 

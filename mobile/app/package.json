@@ -24,6 +24,7 @@
     "expo-location": "~8.1.0",
     "expo-permissions": "~8.1.0",
     "expo-task-manager": "~8.1.0",
+    "expo-web-browser": "~8.2.1",
     "global": "^4.4.0",
     "react": "~16.9.0",
     "react-dom": "~16.9.0",
