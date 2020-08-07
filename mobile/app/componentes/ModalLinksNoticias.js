@@ -1,10 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import {
   Modal,
   StyleSheet,
   Text,
-  TextInput,
-  TouchableHighlight,
   TouchableOpacity,
   View,
   Button,
@@ -12,17 +10,6 @@ import {
 import * as WebBrowser from 'expo-web-browser';
 
 export default function ModalLinksNoticias({ modalVisible, closeModal }) {
-  // const [observacao, setObservacao] = useState('');
-  // const [estimativa, setEstimativa] = useState('');
-  /* const urls = [
-    'https://covid.saude.gov.br/',
-    'https://coronavirus.palmas.to.gov.br/',
-    'https://www.bbc.com/portuguese/topics/c340q430z4vt',
-    'https://exame.com/noticias-sobre/coronavirus/ ',
-    'https://g1.globo.com/bemestar/coronavirus/',
-    'https://saudebrasil.saude.gov.br/',
-  ]; */
-
   const handlePainelCoronavirus = () => {
     WebBrowser.openBrowserAsync('https://covid.saude.gov.br/');
   };
