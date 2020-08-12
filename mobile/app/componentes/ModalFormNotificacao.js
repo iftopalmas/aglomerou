@@ -41,7 +41,7 @@ export default function ModalFormNotificacao({ modalVisible, closeModal }) {
                                 <Picker
                                     selectedValue={estimativaPicker}
                                     onValueChange={value => setEstimativaPicker(value)}>
-                                    <Picker.Item label="0 a 9" value="0" />
+                                    <Picker.Item label="5 a 9" value="5" />
                                     <Picker.Item label="10 a 19" value="10" />
                                     <Picker.Item label="20 a 39" value="20" />
                                     <Picker.Item label="40 a 79" value="40" />
