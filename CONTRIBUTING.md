@@ -6,7 +6,7 @@ Desta forma, podemos manter o controle das coisas.
 Estas diretrizes são principalmente relevantes quando você está planejando contribuir com o código fonte do projeto,
 de forma que a qualidade do código é preservada e o [aprodecimento de código](https://en.wikipedia.org/wiki/Software_rot) é evitado.
 
-# Formas de contribuir
+# 1. Formas de contribuir
 
 1. Clicando no botão "Star" no topo da página do projeto no GitHub, nos dando mais visibilidade.
 1. Promovendo o projeto nas suas redes sociais.
@@ -16,28 +16,28 @@ de forma que a qualidade do código é preservada e o [aprodecimento de código]
 
 As seções abaixo apresentam mais informações de como contribuir em algumas destas formas.
 
-# Iniciando sua Contribuição
+# 2. Iniciando sua Contribuição
 
-## Solicitando recurso ou relatando um problema
+## 2.1 Solicitando recurso ou relatando um problema
 
 Se você quer solicitar um recurso ou relatar um problema, verifique primeiro se o problema/recurso que você quer reportar/requisitar não foi reportado/requisitado ainda na [página de issues](https://github.com/ifto-palmas/aglomerou/issues).
 Tente pesquisar as issues existentes usando alguma palavra-chave antes de criar nova issue. 
 Se não existe uma issue relacionada ainda, sinta-se livre para criar uma.
 Por fim, tenha certeza de que cada issue criada esteja relacionada a um único recurso solicitado ou bug.
 
-## Corrigindo um bug ou implementando novo recurso
+## 2.2 Corrigindo um bug ou implementando novo recurso
 
 Antes de começar a programar, você precisa primeiro fazer um fork do repositório do projeto no GitHub.
 Você pode corrigir um bug ou implementar um recurso de uma issue já aberta por outra pessoa ou por você mesmo,
 seguindo mandatoriamente os passos abaixo:
 
-### 1. Crie um branch específico para trabalhar na issue
+### 2.2.1. Crie um branch específico para trabalhar na issue
 
 * Crie um novo branch a partir do branch `master` para incluir suas alterações. O nome de tal branch deve ter o formato `issue-XYZ`
 * Para criar um novo branch a partir de `master`, execute: `git checkout master -b issue-XYZ`. 
   Por favor, evite fazer alterações diretamente no branch `master`.
 
-### 2. Diretrizes de qualidade de código
+### 2.2.2. Diretrizes de qualidade de código
 
 O último passo antes de você iniciar a programar é ter em mente as seguintes diretrizes, de forma que a probabilidade de suas contribuições serem incluídas no projeto serão maiores:
 
@@ -47,14 +47,14 @@ O último passo antes de você iniciar a programar é ter em mente as seguintes 
 - Considere incluir documentação nas funções.
 - Nós nos importamos com organização e indentação do código.
 
-### 3. Faça seus commits
+### 2.2.3. Faça seus commits
 
 Crie commits pequenos, específicos.
 Assim como suas funções devem ser pequenas, seus commits devem ser focados em resolver um único problema.
 A resolução de uma issue normalmente pode requerer vários commits.
 Gaste algum tempo escrevendo mensagens de commit estruturadas, informativas e que descrevem claramente o que você fez em cada commit.
 
-### 4. Envie suas alterações
+### 2.2.4. Envie suas alterações
 
 * Atualize o branch `master` do seu fork para obter a última versão do projeto:  
 
