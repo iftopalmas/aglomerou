@@ -57,12 +57,10 @@ export default function App() {
 
   const getMarkersRecentes = async () => {
     try {
-      const locaisMarkers = await getLocalizacoesRecentes();
-      return locaisMarkers;
+      return await getLocalizacoesRecentes();
     } catch (error) {
-      console.log(
-        'Não foi possível buscar as localizações para os markers: ',
-        error
+      console.error(
+        `Erro ao obter última localização dos dispositivos ativos: ${error}`
       );
       return error;
     }

@@ -77,18 +77,12 @@ const enviarLocalizacaoBackground = async ({ data: { locations }, error }) => {
 };
 
 const getLocalizacoesRecentes = async () => {
-  try {
-    const { data } = await api.get('/localizacao/');
-    console.log(
-      `Obtido última localização de ${data.length} dispositivos ativos atualmente.`
-    );
+  const { data } = await api.get('/localizacao/');
+  console.log(
+    `Obtido última localização de ${data.length} dispositivos ativos atualmente.`
+  );
 
-    return data;
-  } catch (error) {
-    console.error(
-      `Erro ao obter última localização dos dispositivos ativos: ${error}`
-    );
-  }
+  return data;
 };
 
 const getGeocodingLocalizacao = async () => {
