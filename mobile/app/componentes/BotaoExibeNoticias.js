@@ -1,23 +1,13 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  // Dimensions,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
 import ModalLinksNoticias from './ModalLinksNoticias';
 
 export default function BotaoExibeNoticias() {
   const [modalLinksNoticias, setModalLinksNoticias] = useState(false);
-  const notificar = () => {
-    setModalLinksNoticias(true);
-  };
+  const notificar = () => setModalLinksNoticias(true);
 
-  const closeModal = () => {
-    setModalLinksNoticias(false);
-  };
+  const closeModal = () => setModalLinksNoticias(false);
 
   return (
     <>
