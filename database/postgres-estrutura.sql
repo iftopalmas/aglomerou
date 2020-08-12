@@ -64,3 +64,5 @@ create view vwUltimaLocalizacaoTodos as
 select latitude, longitude
 from dispositivo d
 where extract(epoch from (CURRENT_TIMESTAMP - data_hora_ultima_atualizacao)) <= 300;
+
+comment on view vwUltimaLocalizacaoTodos is 'Obtém a localização dos dispositivos que estiveram ativos nos últimos 5 minutos';
