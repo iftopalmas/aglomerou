@@ -21,6 +21,7 @@ import {
 import BarraPesquisa from './BarraPesquisaLocal';
 import ModalMensagemMapa from './ModalMensagemMapa';
 import BotaoNotificar from './BotaoNotificar';
+import BotaoExibeNoticias from './BotaoExibeNoticias';
 
 export default function App() {
   const [localizacoes, setLocalizacoes] = useState([]);
@@ -157,59 +158,60 @@ export default function App() {
 
   return (
     <>
-    <View style={styles.container}>
-      {loading ? (
-        <Text>Carregando Mapa...</Text>
-      ) : (
-        <>
-          <MapView
-            ref={mapRef}
-            style={styles.mapStyle}
-            initialRegion={{
-              latitude: localInicial.latitude,
-              longitude: localInicial.longitude,
-              latitudeDelta: 0.05,
-              longitudeDelta: 0.05,
-            }}
-          >
-            <Marker
-              key="minha_localizacao"
-              title={longName}
-              coordinate={{
+      <View style={styles.container}>
+        {loading ? (
+          <Text>Carregando Mapa...</Text>
+        ) : (
+          <>
+            <MapView
+              ref={mapRef}
+              style={styles.mapStyle}
+              initialRegion={{
                 latitude: localInicial.latitude,
                 longitude: localInicial.longitude,
+                latitudeDelta: 0.05,
+                longitudeDelta: 0.05,
               }}
             >
-              <Mc name="circle-slice-8" size={24} color="#0000FF" />
-            </Marker>
-            {localizacoes.length > 0 ? (
-              localizacoes.map((local) => (
-                <Marker
-                  key={local + Math.random()}
-                  coordinate={{
-                    latitude: parseFloat(local.latitude),
-                    longitude: parseFloat(local.longitude),
-                  }}
-                >
-                  <Fa name="map-marker-alt" size={32} color="#e02041" />
-                </Marker>
-              ))
-            ) : (
-              <View />
-            )}
-          </MapView>
-          <BarraPesquisa
-            moverMapa={moverMapa}
-            localizacaoInicial={localInicial}
-          />
-          <ModalMensagemMapa
-            modalVisible={modalMensagem}
-            fecharModal={defineModalVisto}
-          />
-          <BotaoNotificar/>
-        </>
-      )}
-    </View>
+              <Marker
+                key="minha_localizacao"
+                title={longName}
+                coordinate={{
+                  latitude: localInicial.latitude,
+                  longitude: localInicial.longitude,
+                }}
+              >
+                <Mc name="circle-slice-8" size={24} color="#0000FF" />
+              </Marker>
+              {localizacoes.length > 0 ? (
+                localizacoes.map((local) => (
+                  <Marker
+                    key={local + Math.random()}
+                    coordinate={{
+                      latitude: parseFloat(local.latitude),
+                      longitude: parseFloat(local.longitude),
+                    }}
+                  >
+                    <Fa name="map-marker-alt" size={32} color="#e02041" />
+                  </Marker>
+                ))
+              ) : (
+                <View />
+              )}
+            </MapView>
+            <BarraPesquisa
+              moverMapa={moverMapa}
+              localizacaoInicial={localInicial}
+            />
+            <ModalMensagemMapa
+              modalVisible={modalMensagem}
+              fecharModal={defineModalVisto}
+            />
+            <BotaoExibeNoticias />
+            <BotaoNotificar />
+          </>
+        )}
+      </View>
     </>
   );
 }

@@ -41,7 +41,7 @@ export default function BarraPesquisa({ moverMapa, localizacaoInicial }) {
 const styles = {
   container: {
     position: 'absolute',
-    top: 40,
+    top: 20,
     alignItems: 'center',
     width: '96%',
   },

@@ -1,39 +1,31 @@
 import React, { useState } from 'react';
-import {
-  StyleSheet,
-  View,
-  Dimensions,
-  Text,
-  TouchableOpacity,
-} from 'react-native';
+import { StyleSheet, View, Text, TouchableOpacity } from 'react-native';
 import { AntDesign } from '@expo/vector-icons';
-import ModalFormNotificao from './ModalFormNotificacao';
+import ModalLinksNoticias from './ModalLinksNoticias';
 
-export default function BotaoNotificar() {
-  const [modalFromModificao, setModalFromNotificacao] = useState(false);
-  const notificar = () => {
-    setModalFromNotificacao(true);
-  };
+export default function BotaoExibeNoticias() {
+  const [modalLinksNoticias, setModalLinksNoticias] = useState(false);
+  const notificar = () => setModalLinksNoticias(true);
 
-  const closeModal = () => {
-    setModalFromNotificacao(false);
-  };
+  const closeModal = () => setModalLinksNoticias(false);
 
   return (
     <>
       <View style={styles.container}>
         <TouchableOpacity onPress={notificar} style={styles.button}>
           <View>
-            <Text style={styles.texth}>Ajude no combate ao Coronavírus.</Text>
-            <Text style={styles.textd}>Notifique aglomeração!</Text>
+            <Text style={styles.texth}>Mantenha-se informado!</Text>
+            <Text style={styles.textd}>
+              Acesse as notícias sobre a COVID-19.
+            </Text>
           </View>
           <View style={styles.rightIcon}>
             <AntDesign name="right" size={30} color="#326002" />
           </View>
         </TouchableOpacity>
       </View>
-      <ModalFormNotificao
-        modalVisible={modalFromModificao}
+      <ModalLinksNoticias
+        modalVisible={modalLinksNoticias}
         closeModal={closeModal}
       />
     </>
@@ -42,8 +34,8 @@ export default function BotaoNotificar() {
 
 const styles = StyleSheet.create({
   container: {
-    position: 'absolute', // use absolute position to show button on top of the map
-    bottom: '4%',
+    position: 'absolute',
+    bottom: '15%',
     left: '2%',
     right: '2%',
     alignSelf: 'center',
