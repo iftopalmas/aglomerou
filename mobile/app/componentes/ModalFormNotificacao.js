@@ -6,44 +6,55 @@ import {
   TextInput,
   TouchableHighlight,
   TouchableOpacity,
+  TouchableWithoutFeedback,
   View,
+  Picker,
 } from 'react-native';
 import { enviarNotificacaoAglomeracao } from '../utils/LocalizacaoDispositivo';
 
 export default function ModalFormNotificacao({ modalVisible, closeModal }) {
   const [observacao, setObservacao] = useState('');
   const [estimativa, setEstimativa] = useState('');
-
+  const [estimativaPicker, setEstimativaPicker] = useState('');
   return (
     <View style={styles.centeredView}>
       <Modal
         animationType="slide"
-        transparent={true}
+        transparent
         visible={modalVisible}
         onRequestClose={() => {}}
       >
         <TouchableOpacity
-          style={styles.container}
+          style={styles.containerTouchable}
           activeOpacity={1}
           onPressOut={() => {
             closeModal();
+            setEstimativaPicker('');
+            setObservacao('');
           }}
         >
-          <View style={styles.centeredView}>
+          <TouchableWithoutFeedback onPress={() => {}}>
             <View style={styles.modalView}>
               <Text style={styles.label}>Estimativa de pessoas</Text>
-              <TextInput
-                style={styles.input}
-                placeholder="Número de pessoas no local"
-                numeric
-                keyboardType={'numeric'}
-                onChangeText={(number) => setEstimativa(number)}
-              />
+              <View style={styles.inputPicker}>
+                <Picker
+                  selectedValue={estimativaPicker}
+                  onValueChange={(value) => setEstimativaPicker(value)}
+                >
+                  <Picker.Item label="5 a 9" value="5" />
+                  <Picker.Item label="10 a 19" value="10" />
+                  <Picker.Item label="20 a 39" value="20" />
+                  <Picker.Item label="40 a 79" value="40" />
+                  <Picker.Item label="80 a 99" value="80" />
+                  <Picker.Item label="100 a 999" value="100" />
+                  <Picker.Item label="1000 ou mais" value="1000" />
+                </Picker>
+              </View>
               <Text style={styles.label}>Observação</Text>
               <TextInput
                 style={styles.input}
                 placeholder="(Opicional)"
-                multiline={true}
+                multiline
                 value={observacao}
                 onChangeText={(text) => setObservacao(text)}
               />
@@ -55,7 +66,7 @@ export default function ModalFormNotificacao({ modalVisible, closeModal }) {
                     const enviarNotificacao = async () => {
                       try {
                         await enviarNotificacaoAglomeracao(
-                          estimativa,
+                          estimativaPicker,
                           observacao
                         );
                       } catch (error) {
@@ -65,14 +76,14 @@ export default function ModalFormNotificacao({ modalVisible, closeModal }) {
                     enviarNotificacao();
                   }
                   setObservacao('');
-                  setEstimativa('');
+                  setEstimativaPicker('');
                   closeModal();
                 }}
               >
                 <Text style={styles.textStyle}>Enviar notificação</Text>
               </TouchableHighlight>
             </View>
-          </View>
+          </TouchableWithoutFeedback>
         </TouchableOpacity>
       </Modal>
     </View>
@@ -80,6 +91,11 @@ export default function ModalFormNotificacao({ modalVisible, closeModal }) {
 }
 
 const styles = StyleSheet.create({
+  containerTouchable: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+  },
   label: {
     alignSelf: 'flex-start',
     color: '#326002',
@@ -94,16 +110,12 @@ const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 20,
   },
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  centeredView: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    marginTop: 22,
+  inputPicker: {
+    backgroundColor: '#eee',
+    alignSelf: 'stretch',
+    textAlign: 'left',
+    margin: 10,
+    borderRadius: 20,
   },
   modalView: {
     margin: 20,

@@ -3,7 +3,7 @@ import Constants from 'expo-constants';
 import * as TaskManager from 'expo-task-manager';
 import axios from 'axios';
 import { REACT_NATIVE_GOOGLE_MAPS_API_KEY } from 'react-native-dotenv';
-import { LOCATION_TASK_NAME } from '../Constants.js';
+import { LOCATION_TASK_NAME } from '../Constants';
 import api from '../service/api';
 
 const uid = Constants.installationId;
@@ -100,22 +100,21 @@ const getGeocodingLocalizacao = async () => {
 };
 
 const enviarNotificacaoAglomeracao = async (estimativa, observacao) => {
-  
   try {
-    const {latitude, longitude} = await getLocalizacaoDispositivo();
+    const { latitude, longitude } = await getLocalizacaoDispositivo();
     const body = {
-      uid: uid,
-      latitude: latitude,
-      longitude: longitude,
+      uid,
+      latitude,
+      longitude,
       estimativa_total_pessoas: estimativa,
       observacoes: observacao,
-    }
+    };
     const url = `/notificacao`;
     console.log(api.defaults.baseURL + url);
     const response = await api.post(url, body);
   } catch (error) {
-    console.log(error)
-    console.log('Erro ao enviar notificação de aglomeração')
+    console.log(error);
+    console.log('Erro ao enviar notificação de aglomeração');
   }
 };
 
