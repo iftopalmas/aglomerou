@@ -3,7 +3,32 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Em busca de soluções tecnológicas para a atual pandemia do coronavírus, o presente projeto visa o desenvolvimento de um software para rastrear a localização de pessoas, sem coletar qualquer informação pessoal, incluindo aplicativo para smartphones e aplicação web para monitoramento pelas autoridades públicas. O aplicativo pode ser usado para fornecer informações em tempo real para a população decidir o melhor momento de ir a um estabelecimento. O sistema web pode ser usado para autoridades obterem informações e estatísticas sobre o isolamento social, receber denúncias e dispersar multidões.
+Em busca de soluções tecnológicas para a atual pandemia do coronavírus, 
+o Aglomerou é um app que te permite contribuir e aumentar a segurança de todos.
+
+Você baixa o app, aceita os termos de uso e concente em 
+fornecer sua localização.
+O app então mostra em tempo real os pontos de aglomeração
+ao redor da cidade.
+
+A recomendação durante a pandemia é ficar em casa, para quem pode
+ficar. Mas em qualquer momento que você precisar ir a algum lugar
+como um supermercado, posto de combustíveis, farmácia ou qualquer outro,
+você pode verificar no app se existe aglomeração naquele local.
+Caso exista, você pode decidir ir em outro horário e assim contribuir
+para reduzir a propagação do vírus.
+
+O app não coleta nenhum dado pessoal como telefone, email ou qualquer outro
+dado que te identifique. Ele apenas obtém as coordenadas
+geográficas da sua localização e não há qualquer maneira
+de nós sabermos quem você é.
+
+As únicas informações armazenadas em nosso servidor são estes dados
+anônimos. Assim, não há nenhum risco de vazamento de dados e comprometimento 
+de informações pessoais, pois nós simplesmente não coletamos 
+tais dados em momento algum.
+
+Ajuda a combater a COVID utilizando nosso app.
 
 Uma reportagem sobre o aplicativo pode ser vista [aqui](https://g1.globo.com/to/tocantins/edicao/2020/07/01/videos-ja-1-edicao-desta-quarta-feira-1-de-julho.ghtml#video-8666242-id).
 
