@@ -6,7 +6,7 @@
 Em busca de soluções tecnológicas para a atual pandemia do coronavírus, 
 o Aglomerou é um app que te permite contribuir e aumentar a segurança de todos.
 
-Você baixa o app, aceita os termos de uso e concente em 
+Você baixa o app, aceita os termos de uso e concorda em 
 fornecer sua localização.
 O app então mostra em tempo real os pontos de aglomeração
 ao redor da cidade.
