@@ -1,29 +1,30 @@
-version: '3'
+version: '3.8'
 services: 
-  bd:
+  database:
     build: ../database/
-    ports:
-      - "10001:5432"
+    # Variáveis de ambiente obtidas do arquivo .env, a serem passadas ao container
     environment:
-      POSTGRES_PASSWORD: default1
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    ports:
+      - "$POSTGRES_PORT:5432"
     networks:
       - backend-network
   
   backend:
     build: ../backend/
-    ports:
-      - "10000:8080"
+    # Variáveis de ambiente obtidas do arquivo .env, a serem passadas ao container
     environment:
-      DB_USER: postgres
-      DB_DATABASE: aglomerou
-      DB_PASSWORD: default1
-      DB_PORT: 5432
-      DB_HOST: bd
-      CAPTCHA_SECRET_KEY: 
+      - POSTGRES_HOST
+      - POSTGRES_DATABASE
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    ports:
+      - "$PORT:8080"
     networks:
       - backend-network
     depends_on:
-      - bd
+      - database
 
 networks:
   backend-network:
