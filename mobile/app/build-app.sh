@@ -5,6 +5,18 @@
 
 clear
 
+
+if [[ $1 == "/h" || $1 == "-h" || $1 == "--help" ]]; then
+    echo "Usage"
+    echo -e "\t$0 \t\t\tbuild an Android aab bundle"
+    echo -e "\t$0 android|ios \tbuild an Android aab bundle or iOS package"
+    echo -e "\t$0 android apk|aab \tbuild an Android aab bundle or apk package"
+    echo ""
+    exit 0
+else    
+    echo "expo app builder script (-h for help)"
+fi
+
 #O javac manda o número da versão para a saída de erro
 JDK_VERSION=`javac -version 2>&1 | cut -d' ' -f2`
 if [[ $? -eq 0 ]]; then
@@ -25,8 +37,14 @@ fi
 (echo -e "expo-cli \c" && expo --version)  || yarn global add expo-cli
 echo ""
 
-if [[ $# == 0 || $1 == "android" ]]; then
-    echo "Building Android package"
+if [[ $2 == "" ]]; then
+   BUILD_TYPE="app-bundle"
+else
+   BUILD_TYPE=$2
+fi
+
+if [[ $# == 1 || $1 == "android" ]]; then
+    echo "Building Android $BUILD_TYPE package"
 else 
     echo "Building iOS package"
 fi
@@ -81,12 +99,6 @@ if [[ $# == 0 || $1 == "android" ]]; then
 fi
 
 expo publish
-
-if [[ $2 == "" ]]; then
-   BUILD_TYPE="app-bundle"
-else
-   BUILD_TYPE=$2
-fi
 
 if [[ $# == 0 || $1 == "android" ]]; then
     turtle build:android \
