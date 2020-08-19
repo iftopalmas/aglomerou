@@ -1,7 +1,8 @@
 version: '3.8'
 services: 
-  database:
+  postgres:
     build: ../database/
+    container_name: aglomerou-postgres
     # Variáveis de ambiente obtidas do arquivo .env, a serem passadas ao container
     environment:
       - POSTGRES_USER
@@ -13,6 +14,7 @@ services:
   
   backend:
     build: ../backend/
+    container_name: aglomerou-backend
     # Variáveis de ambiente obtidas do arquivo .env, a serem passadas ao container
     environment:
       - POSTGRES_HOST
@@ -24,7 +26,7 @@ services:
     networks:
       - backend-network
     depends_on:
-      - database
+      - postgres
 
 networks:
   backend-network:
