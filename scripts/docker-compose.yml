@@ -1,5 +1,6 @@
 # As variáveis de ambiente usadas diretamente aqui são obtidas do arquivo .env,
 # sendo algumas destas variáveis repassadas aos containers.
+# Execute docker-compose up --build -d pra fazer build e rodar os dois containers
 version: '3'
 services: 
   postgres:
