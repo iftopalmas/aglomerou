@@ -7,7 +7,7 @@ export default {
   name: 'Aglomerou',
   slug: 'Aglomerou',
   platforms: ['ios', 'android'],
-  version: '1.0.0',
+  version: '1.1.0',
   orientation: 'portrait',
   splash: {
     image: './assets/splash.png',
