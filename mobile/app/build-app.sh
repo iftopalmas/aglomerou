@@ -32,7 +32,7 @@ else
 fi
 
 
-ENV_FILE=".env.production"
+ENV_FILE=".env"
 # Criar variáveis de ambiente
 source $ENV_FILE
 
