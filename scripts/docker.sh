@@ -30,12 +30,12 @@ env_vars()
 	# apenas quando for rodar o container.
 	# Assim, nenhuma informação possivelmente sensível
 	# é armazenada dentro do imagem públic em hub.docker.com
-	if [[ ! -f .env.production ]]; then
-		echo "Arquivo .env.production não foi localizado. Copie a partir de backend/.env" >&2
+	if [[ ! -f .env ]]; then
+		echo "Arquivo .env não foi localizado. Copie a partir de backend/.env" >&2
 		exit -1
 	fi
 
-	source .env.production
+	source .env
 }
 
 # Re-executa um container, baixando a imagem do Docker Hub
@@ -64,7 +64,7 @@ if [[ $2 == "backend" ]]; then
 		echo "Use $0 run $2 pra iniciar container criado"
 	elif [[ $1 == "run" ]]; then
 		# Executar o container em background (-d)
-		docker run --name $CONTAINER_NAME --restart unless-stopped -d -p $PORT:8080 --env-file .env.production $IMAGE_NAME || exit -1
+		docker run --name $CONTAINER_NAME --restart unless-stopped -d -p $PORT:8080 --env-file .env $IMAGE_NAME || exit -1
 		echo ""
 		echo "Use $0 logs $2 pra exibir os logs do container executado"
 	elif [[ $1 == "rerun" ]]; then
@@ -82,8 +82,8 @@ elif [[ $2 == "database" || $2 == "db" ]]; then
 	elif [[ $1 == "run" ]]; then	
 		# Executar o container em background (-d)
 		docker run -d --name $CONTAINER_NAME --restart unless-stopped \
-				-e POSTGRES_USER=$DB_USER -e POSTGRES_PASSWORD=$DB_PASSWORD \
-				-p $DB_PORT:5432 $IMAGE_NAME || exit -1
+				-e POSTGRES_USER -e POSTGRES_PASSWORD \
+				-p $POSTGRES_PORT:5432 $IMAGE_NAME || exit -1
 		echo ""
 		echo "Use $0 logs $2 pra exibir os logs do container executado"
 		echo "Use $0 connect $2 pra conectar ao servidor Postgres no container"
@@ -91,7 +91,7 @@ elif [[ $2 == "database" || $2 == "db" ]]; then
 		rerun $0 $2
 	elif [[ $1 == "connect" ]]; then
 		#https://www.postgresql.org/docs/9.1/libpq-envars.html
-		PGPASSWORD=$DB_PASSWORD psql -h $DB_HOST -p $DB_PORT -U $DB_USER $DB_DATABASE 
+		PGPASSWORD=$POSTGRES_PASSWORD psql -h $POSTGRES_HOST -p $POSTGRES_PORT -U $POSTGRES_USER $POSTGRES_DATABASE 
 	fi
 elif [[ $2 == "all" ]]; then	
 	if [[ $1 == "rerun" ]]; then

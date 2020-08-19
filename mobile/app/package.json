@@ -1,7 +1,7 @@
 {
   "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start -c",
     "android": "expo start --android",
     "ios": "expo start --ios",
     "web": "expo start --web",
@@ -10,7 +10,8 @@
     "publish": "publish",
     "list-emulator": "$ANDROID_SDK/tools/emulator -list-avds",
     "emulator": "$ANDROID_SDK/tools/emulator -avd ${npm_config_AVDNAME} &",
-    "fix": "eslint --fix ."
+    "fix": "eslint --fix .",
+    "clean-cache": "expo r -c"
   },
   "dependencies": {
     "@react-native-community/async-storage": "~1.11.0",

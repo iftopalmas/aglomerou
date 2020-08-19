@@ -1,0 +1,35 @@
+# As variáveis de ambiente usadas diretamente aqui são obtidas do arquivo .env,
+# sendo algumas destas variáveis repassadas aos containers.
+version: '3'
+services: 
+  postgres:
+    build: ../database/
+    container_name: aglomerou-postgres
+    # Variáveis de ambiente obtidas do arquivo .env, a serem passadas ao container
+    environment:
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    ports:
+      - "$POSTGRES_PORT:5432"
+    networks:
+      - backend-network
+  
+  backend:
+    build: ../backend/
+    container_name: aglomerou-backend
+    # Variáveis de ambiente obtidas do arquivo .env, a serem passadas ao container
+    environment:
+      - POSTGRES_HOST
+      - POSTGRES_DATABASE
+      - POSTGRES_USER
+      - POSTGRES_PASSWORD
+    ports:
+      - "$PORT:8080"
+    networks:
+      - backend-network
+    depends_on:
+      - postgres
+
+networks:
+  backend-network:
+    driver: bridge
