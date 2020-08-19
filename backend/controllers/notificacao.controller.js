@@ -1,4 +1,23 @@
 const db = require("../config/db");
+const { serverError } = require("../util");
+
+exports.getNotificacoesRecentes = async (req, res) => {
+    const client = await db.connect();
+    try {
+        /*
+        TODO: A view corta 2 casas decimais como uma forma simplória de agrupar notificações por local. 
+        É preciso buscar uma solução com maior precisão.
+        */
+        const sql = 'select * from vwNotificacoesRecentes';
+        const { rows } = await client.query(sql);
+        console.log(`Total de locais com notificações atuais: ${rows.length}`);
+        res.status(200).send(rows);
+    } catch (error) {
+        serverError(res, error);
+    } finally {
+        client.end();
+    }
+};
 
 exports.inserir = async (req, res) => {
     const { uid, latitude, longitude, estimativa_total_pessoas, observacoes } = req.body;
