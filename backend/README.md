@@ -24,11 +24,12 @@ Após a instalação e configuração é necessário reiniciar o computador para
 
 ### Configurações adicionais
 
-O arquivo [docker-compose.yml](docker-compose.yml) carrega as configurações básicas do servidor de banco de dados e do servidor de aplicação (servidor *NodeJS*). Este arquivo executa o build dos arquivos ***Dockerfile***, tanto do banco de dados (localizado em [/database/Dockerfile](../database/Dockerfile)), quanto arquivo que se encontra neste diretório ([/backend/Dockerfile](../backend/Dockerfile)). Além disso o arquivo está configurado para executar o servidor de aplicação na **porta 10000**, e o servidor de banco de dados na **porta 10001**, caso seja necessário basta modificar estes números dentro do arquivo para ter estes servidores disponíveis em portas diferentes. Antes de executar o arquivo [docker-compose.yml](docker-compose.yml) ainda é necessário **adicionar a *secret key* do captcha**.
+O arquivo [../scripts/docker-compose.yml](docker-compose.yml) carrega as configurações básicas do servidor de banco de dados e do servidor web (*NodeJS*). Este arquivo executa o build dos arquivos [Dockerfile pra o backend](Dockerfile) quanto para o ([banco de dados](../database/Dockerfile)). 
+As configurações usadas pelos containers devem ser definidas em um arquivo `.env` dentro da pasta `scripts`. Veja o arquivo [.env.dist](../scripts/.env.dist) para mais detalhes. 
 
 ### Executando servidor
 
-Para executar o servidor basta, executar o comando abaixo dentro deste diretório:
+Para executar o servidor, basta executar o comando abaixo dentro deste diretório:
 
 ```sh
 docker-compose up
