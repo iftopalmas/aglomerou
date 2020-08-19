@@ -41,7 +41,7 @@ router.post('/', controller.inserir);
  * @swagger
  * /api/notificacao:
  *  get: 
- *    summary: Obtém as notificações, com valores médios para o total de pessoas por local, nos últimos 5 minutos.
+ *    summary: Obtém as notificações, com valores médios para o total de pessoas por local, nos últimos 15 minutos.
  *    responses:
  *      '200': 
  *        description: Notificações recentes obtidas com sucesso.

@@ -71,7 +71,7 @@ create view vwNotificacoesRecentes as
 select latitude::numeric(8,5), longitude::numeric(8,5), 
 avg(estimativa_total_pessoas)::int as estimativa_media_pessoas 
 from notificacao  
-where extract(epoch from (CURRENT_TIMESTAMP - data_hora_cadastro)) <= 300
+where extract(epoch from (CURRENT_TIMESTAMP - data_hora_cadastro)) <= 750
 group by 1, 2;
 
-comment on view vwNotificacoesRecentes is 'Obtém as notificações, com valores médios para o total de pessoas por local, nos últimos 5 minutos. O agrupamento por local atualmente está sendo feito cortando-se 2 casas decimais das coordenadas, o que é uma solução imprecisa e paliativa.';
+comment on view vwNotificacoesRecentes is 'Obtém as notificações, com valores médios para o total de pessoas por local, nos últimos 15 minutos. O agrupamento por local atualmente está sendo feito cortando-se 2 casas decimais das coordenadas, o que é uma solução imprecisa e paliativa.';
