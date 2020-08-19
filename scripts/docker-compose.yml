@@ -10,7 +10,7 @@ services:
       - backend-network
   
   backend:
-    build: ./
+    build: ../backend/
     ports:
       - "10000:8080"
     environment:
