@@ -24,7 +24,7 @@ Após a instalação e configuração é necessário reiniciar o computador para
 
 ### Configurações adicionais
 
-O arquivo [../scripts/docker-compose.yml](docker-compose.yml) carrega as configurações básicas do servidor de banco de dados e do servidor web (*NodeJS*). Este arquivo executa o build dos arquivos [Dockerfile pra o backend](Dockerfile) quanto para o ([banco de dados](../database/Dockerfile)). 
+O arquivo [docker-compose.yml](../scripts/docker-compose.yml) carrega as configurações básicas do servidor de banco de dados e do servidor web (*NodeJS*). Este arquivo executa o build dos arquivos [Dockerfile pra o backend](Dockerfile) quanto para o ([banco de dados](../database/Dockerfile)). 
 As configurações usadas pelos containers devem ser definidas em um arquivo `.env` dentro da pasta `scripts`. Veja o arquivo [.env.dist](../scripts/.env.dist) para mais detalhes. 
 
 ### Executando servidor
