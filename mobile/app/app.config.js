@@ -6,7 +6,7 @@ import {
 export default {
   name: 'Aglomerou',
   slug: 'Aglomerou',
-  platforms: ['ios', 'android', 'web'],
+  platforms: ['ios', 'android'],
   version: '1.0.0',
   orientation: 'portrait',
   splash: {
