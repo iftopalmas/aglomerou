@@ -46,7 +46,7 @@ router.post('/', controller.inserir);
  *      '200': 
  *        description: Notificações recentes obtidas com sucesso.
  *        examples:
- *          application/json: [{ "latitude": 90, "longitude": 180, estimativa_media_pessoas: 54 }, { "latitude": 92, "longitude": 150, estimativa_media_pessoas: 42 }]
+ *          application/json: [{ "latitude": 90, "longitude": 180, "estimativa_media_pessoas": 54 }, { "latitude": 92, "longitude": 150, "estimativa_media_pessoas": 42 }]
  */
 router.get('/', controller.getNotificacoesRecentes);
 
