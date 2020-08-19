@@ -82,11 +82,17 @@ fi
 
 expo publish
 
+if [[ $2 == "" ]]; then
+   BUILD_TYPE="app-bundle"
+else
+   BUILD_TYPE=$2
+fi
+
 if [[ $# == 0 || $1 == "android" ]]; then
     turtle build:android \
         --keystore-path ./Aglomerou.jks \
         --keystore-alias $EXPO_KEYSTORE_ALIAS -c app.config.js \
-        -u $EXPO_USERNAME -p $EXPO_PASSWORD
+        -u $EXPO_USERNAME -p $EXPO_PASSWORD -t $BUILD_TYPE
 else
     #https://github.com/expo/turtle-cli-example
     # O build local para iOS requer o XCode, que são 9GB.
