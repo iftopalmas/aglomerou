@@ -33,14 +33,3 @@ Para executar o servidor basta, executar o comando abaixo dentro deste diretóri
 ```sh
 docker-compose up
 ```
-
-### Utilizando servidor localmente
-
-Com o servidor em execução, as demais aplicações deverão apontar o **endereço IP** do computador local, desta forma, direcionando as requisições ao servidor local. É **fortemente recomendado que seja utilizado o endereço "numérico" (ex: 192.168.0.1:10000), ao invés da representação "*localhost*"**. Desta forma é possível garantir que mesmo as aplicações que estejam sendo executados em dispositivos móveis possam acessar o servidor backend. Também é importante enfatizar que fazendo teste com o aplicativo mobile, foi necessário uma "limpeza completa" do cache do projeto para que a modificação de endereço fosse efetiva. Esse processo deletou as pastas *.expo*, *.expo-shared* e *node_modules* localizados em [/mobile/app](../mobile/app), além de limpar o cache do *yarn* e reinstalar as dependências, como é demonstrado nos comandos abaixo:
-
-```sh
-rm -rf .expo .expo-shared node_modules
-yarn cache clean
-yarn install
-yarn start
-```
