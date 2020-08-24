@@ -5,10 +5,9 @@ import {
   MaterialCommunityIcons as Mc,
 } from '@expo/vector-icons';
 import { Marker } from 'react-native-maps';
+import * as Location from 'expo-location';
 import MapView from 'react-native-map-clustering';
-
 import AsyncStorage from '@react-native-community/async-storage';
-
 import { MODAL_MAP_MESSAGE_ITEM } from '../Constants';
 
 import {
@@ -37,6 +36,9 @@ export default function App() {
 
   const mapRef = useRef();
 
+  const [novaLatitude, setNovaLatitude] = useState();
+  const [novaLongitude, setNovaLongitude] = useState();
+
   const moverMapa = async (novoLocal) => {
     console.log('movendo para o endereco recebido ->', novoLocal);
 
@@ -46,7 +48,7 @@ export default function App() {
       latitudeDelta: 0.009,
       longitudeDelta: 0.009,
     };
-    console.log('Atualiando markers. Novo local ->', novoLocal);
+    console.log('Atualizando markers. Novo local ->', novoLocal);
 
     mapRef.current.animateToRegion(region, 1200);
 
@@ -79,6 +81,8 @@ export default function App() {
             latitude,
             longitude,
           });
+          setNovaLatitude(latitude);
+          setNovaLongitude(longitude);
           setLoading(false);
         }
       } catch (error) {
@@ -149,6 +153,35 @@ export default function App() {
     };
   }, []);
 
+  const config = {
+    enableHighAcurracy: true,
+    distanceInterval: 1,
+    timeInterval: 2000,
+  };
+
+  const rastrearMovimento = async () => {
+    const location = await Location.watchPositionAsync(
+      config,
+      (newLocation) => {
+        const { coords } = newLocation;
+        setNovaLatitude(coords.latitude);
+        setNovaLongitude(coords.longitude);
+
+        const novoLocal = {
+          lat: coords.latitude,
+          lng: coords.longitude,
+        };
+        moverMapa(novoLocal);
+      }
+    );
+    return location;
+  };
+
+  useEffect(() => {
+    const start = async () => rastrearMovimento();
+    start();
+  }, []);
+
   const defineModalVisto = async () => {
     await AsyncStorage.setItem(MODAL_MAP_MESSAGE_ITEM, 'true');
     setModalMensagem(false);
@@ -174,9 +207,10 @@ export default function App() {
               <Marker
                 key="minha_localizacao"
                 title={longName}
+                cluster={false}
                 coordinate={{
-                  latitude: localInicial.latitude,
-                  longitude: localInicial.longitude,
+                  latitude: novaLatitude,
+                  longitude: novaLongitude,
                 }}
               >
                 <Mc name="circle-slice-8" size={24} color="#0000FF" />
