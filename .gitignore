@@ -118,3 +118,4 @@ dist
 
 #MacOS
 .DS_Store
+frontend/app/yarn.lock
