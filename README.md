@@ -3,17 +3,13 @@
 [![All Contributors](https://img.shields.io/badge/all_contributors-8-orange.svg?style=flat-square)](#contributors-)
 <!-- ALL-CONTRIBUTORS-BADGE:END -->
 
-Em busca de soluções tecnológicas para a atual pandemia do coronavírus, 
-o Aglomerou te permite contribuir e aumentar a segurança de todos, sem qualquer esforço.
-
+Precisa sair de casa e não quer se deparar com aglomerações? O "Aglomerou?" te ajuda a decidir o melhor momento para ir a um determinado estabelecimento.
 Você baixa o app, aceita os termos de uso e concorda em fornecer sua localização anonimamente. Ele então mostra em tempo real os pontos de aglomeração ao redor da cidade.
 
-A recomendação durante a pandemia é ficar em casa, para quem pode
-ficar. Mas em qualquer momento que você precisar ir a algum lugar
+Em qualquer momento que você precisar ir a algum lugar
 como um supermercado, posto de combustíveis, farmácia ou qualquer outro,
 você pode verificar no app se existe aglomeração naquele local.
-Caso exista, você pode decidir ir em outro horário e assim contribuir
-para reduzir a propagação do coronavírus.
+Caso exista, você pode decidir ir em outro horário e assim, evitar filas e ganhar tempo.
 
 O app não coleta nenhum dado pessoal como seu nome, telefone, email ou qualquer outro dado que te identifique. Ele apenas obtém as coordenadas
 geográficas da sua localização e não há qualquer maneira
@@ -22,7 +18,7 @@ de nós ou outra pessoa sabermos quem você é.
 As únicas informações armazenadas em nosso servidor são estes dados
 anônimos. Portanto, não há nenhum risco de vazamento de dados e comprometimento de informações pessoais, pois nós simplesmente não coletamos tais dados em momento algum.
 
-Ajude a combater a COVID utilizando nosso app. Não requer esforço algum, pois você só precisa deixá-lo instalado. E você sempre vai ver uma notificação informando que ele está coletando sua localização, para você ficar ciente o tempo todo e também lembrar de abrir o app quando precisar sair de casa.
+Contribuir não requer esforço algum, pois você só precisa deixar o app instalado. E você sempre vai ver uma notificação informando que ele está coletando sua localização, para ficar ciente o tempo todo e também lembrar de abrir o app quando precisar sair de casa.
 
 Uma reportagem sobre o aplicativo pode ser vista [aqui](https://g1.globo.com/to/tocantins/edicao/2020/07/01/videos-ja-1-edicao-desta-quarta-feira-1-de-julho.ghtml#video-8666242-id).
 
