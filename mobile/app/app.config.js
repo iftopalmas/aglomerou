@@ -20,7 +20,7 @@ export default {
   assetBundlePatterns: ['**/*'],
   ios: {
     icon: './assets/ios-icon.png',
-    bundleIdentifier: 'br.edu.ifto.aglomerouapp',
+    bundleIdentifier: 'br.edu.ifto.apps.aglomerou',
     supportsTablet: true,
     config: {
       googleMapsApiKey: REACT_NATIVE_GOOGLE_MAPS_API_KEY,
@@ -28,7 +28,7 @@ export default {
   },
   android: {
     icon: './assets/android-icon.png',
-    package: 'br.edu.ifto.aglomerouapp',
+    package: 'br.edu.ifto.apps.aglomerou',
     config: {
       googleMaps: {
         apiKey: REACT_NATIVE_GOOGLE_MAPS_API_KEY,
