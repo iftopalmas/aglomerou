@@ -6,7 +6,8 @@
 Em busca de soluções tecnológicas para a atual pandemia do coronavírus, 
 o Aglomerou te permite contribuir e aumentar a segurança de todos, sem qualquer esforço.
 
-Você baixa o app, aceita os termos de uso e concorda em fornecer sua localização anonimamente. Ele então mostra em tempo real os pontos de aglomeração ao redor da cidade.
+O app está disponível para Android na [Google Play neste link](https://play.google.com/store/apps/details?id=br.edu.ifto.apps.aglomerou).
+Você faz o download no seu smartphone, aceita os termos de uso e concorda em fornecer sua localização anonimamente. Ele então mostra em tempo real os pontos de aglomeração ao redor da cidade.
 
 A recomendação durante a pandemia é ficar em casa, para quem pode
 ficar. Mas em qualquer momento que você precisar ir a algum lugar
