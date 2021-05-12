@@ -10,7 +10,7 @@
     "@types/dotenv": "^8.2.0",
     "axios": "^0.19.2",
     "bootstrap": "^4.5.0",
-    "chart.js": "^2.9.3",
+    "chart.js": "^2.9.4",
     "classnames": "^2.2.6",
     "dotenv": "^8.2.0",
     "polished": "^3.6.5",
