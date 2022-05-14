@@ -23,7 +23,7 @@ anônimos. Portanto, não há nenhum risco de vazamento de dados e comprometimen
 
 Ajude a combater a COVID utilizando nosso app. Não requer esforço algum, pois você só precisa deixá-lo instalado. E você sempre vai ver uma notificação informando que ele está coletando sua localização, para você ficar ciente o tempo todo e também lembrar de abrir o app quando precisar sair de casa.
 
-Uma reportagem sobre o aplicativo pode ser vista [aqui](https://g1.globo.com/to/tocantins/edicao/2020/07/01/videos-ja-1-edicao-desta-quarta-feira-1-de-julho.ghtml#video-8666242-id).
+Uma reportagem sobre o aplicativo pode ser vista [aqui](https://g1.globo.com/to/tocantins/edicao/2020/07/01/videos-ja-1-edicao-desta-quarta-feira-1-de-julho.ghtml#video-8666242-id). E uma breve apresentação sobre o projeto e algumas opções de tecnologia para o desenvolvimento do app são [apresentadas nestes slides](https://docs.google.com/presentation/d/1T_NSw0kG7UM1h7-xwHAAJAM9Z3BgM6msGM07DffPv5E/edit?usp=sharing).
 
 O projeto é composto por 3 sub-projetos:
 
