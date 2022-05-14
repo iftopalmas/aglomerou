@@ -33,6 +33,23 @@ O projeto é composto por 3 sub-projetos:
 - [frontend](frontend): aplicação web em [React](http://reactjs.org) que fornece uma interface gráfica para acesso a relatórios e gráficos estatísticos.
 - [mobile](mobile): aplicativo mobile em [React Native](http://reactnative.dev) que obtém a localização do usuário de forma automatizada e anônima, enviando ao backend.
 
+## Screenshots do app mobile
+
+<table>
+<tr>
+  <td><img src="mobile/imagens/screenshots/screenshot1.png" /></td>
+  <td><img src="mobile/imagens/screenshots/screenshot2.png" /></td>
+</tr>
+<tr>
+  <td><img src="mobile/imagens/screenshots/screenshot3.png" /></td>
+  <td><img src="mobile/imagens/screenshots/screenshot4.png" /></td>
+</tr>
+<tr>
+  <td><img src="mobile/imagens/screenshots/screenshot5.png" /></td>
+  <td><img src="mobile/imagens/screenshots/screenshot6.png" /></td>
+</tr>
+</table>
+
 ## Equipe e Colaboradores
 
 Este projeto só foi possível graças aos colaboradores listados abaixo ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
